@@ -1,0 +1,13 @@
+# Cache đọc từ Sheets — không phải nguồn sự thật
+00_System/cache/*
+!00_System/cache/.gitkeep
+
+# Hệ điều hành / tạm
+.DS_Store
+Thumbs.db
+*.tmp
+~$*
+
+# File render tạm khi dựng báo cáo
+*.pdf
+page-*.jpg

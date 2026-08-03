@@ -1,0 +1,33 @@
+os_name: AI OS
+owner: PER-TTT
+owner_name: Trần Thế Tuân
+version: 0.3.0
+stage: Phase 5 - Implementation (Sprint 3)
+created: 2026-08-03
+updated: 2026-08-03
+
+principles_order: [chuan-hoa, don-gian, tai-su-dung, tu-dong, ai, scale]
+
+layers:
+  - 00_System
+  - 01_Soul
+  - 02_Rules
+  - 03_Skills
+  - 04_Knowledge
+  - 05_Journal
+  - 06_Tools
+  - 07_Agents
+
+domains:
+  operational: google_sheets   # nguồn chính, truy cập qua GAS
+  knowledge: 04_Knowledge
+  journal: 05_Journal
+  config: [01_Soul, 02_Rules, 03_Skills]
+
+data_boundary:
+  allowed: work_metadata_only
+  forbidden: customer_data
+  see: 02_Rules/data-boundary.md
+
+model_neutral: true
+canonical_store: local_first     # cloud (Google Drive) là hướng mở rộng
