@@ -15,3 +15,6 @@
 
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
+
+## Delta (2026-08-03, Claude Code)
+Sprint 4 + Sprint 5 đã push. Không đổi thứ tự ưu tiên: mục #1–2 (GAS live cho weekly-report) vẫn đứng đầu, giao [CC].

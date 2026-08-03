@@ -27,4 +27,8 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 
 ## Rủi ro/hiện tượng đã biết
 - Commit từ sandbox Cowork có thể vướng `.git/index.lock` trên ổ Windows → commit từ máy hoặc Claude Code.
+- Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
+
+## Delta (2026-08-03, Claude Code)
+Sprint 4 (69896f2) + Sprint 5 (dc83419) đã commit + push lên origin/master. Trạng thái chức năng không đổi; ưu tiên tiếp theo vẫn là wiring GAS live cho weekly-report (TODO #1–2).
