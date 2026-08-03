@@ -1,0 +1,30 @@
+# PROJECT STATE — AI OS
+
+**Cập nhật:** 2026-08-03 (Sprint 5)
+**Version:** 0.5.0
+**Repo:** https://github.com/tuanttstb-debug/AI-US
+
+## Tóm tắt
+AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác nghiệp). Đơn người dùng (PER-TTT). Chỉ metadata công việc. Trung lập model, local-first, có Git + GitHub.
+
+## Đã có
+- Nền: 00_System (README, INDEX, manifest, CHANGELOG, 6 template), 01_Soul, 02_Rules, 06_Tools/gas.
+- Knowledge: SYS-GNOL, SYS-BLOL, PER-TTT.
+- Journal: 5 Decision (DEC-20260803-01..05).
+- Skills: weekly-report (v2, có mẫu .docx), deadline-brief, decision-brief, intake-triage.
+- Lịch: thứ 6 17:00 nhắc data, 18:00 dựng báo cáo.
+- 07_Agents: trống (theo agent-hiring-rule).
+
+## Nguồn tác nghiệp (Google Sheets qua GAS)
+- Spreadsheet: `1cpg1p_8TGGbvZNNWZmjsKANqHW1tQijbiQBFLYn56Hk`
+- Endpoint: xem `06_Tools/connectors/gas.md`
+- 9 sheet: Task_Master(24), Initiative_Master(15), Case_Pipeline(20), Issue_Tracker(18), Dev_Plan(12), KPI_Summary, Notifications, User_Master, Audit_Log.
+
+## Đang treo
+- Chạy thử weekly-report một kỳ thật với GAS (điều kiện tiên quyết trước khi tuyển agent).
+- Bổ sung dữ liệu Đào tạo AI vào Initiative/Task.
+- Làm giàu Knowledge GNOL/BLOL (qua phỏng vấn).
+
+## Rủi ro/hiện tượng đã biết
+- Commit từ sandbox Cowork có thể vướng `.git/index.lock` trên ổ Windows → commit từ máy hoặc Claude Code.
+- Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.

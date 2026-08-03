@@ -1,8 +1,8 @@
 os_name: AI OS
 owner: PER-TTT
 owner_name: Trần Thế Tuân
-version: 0.4.0
-stage: Phase 5 - Implementation (Sprint 4)
+version: 0.5.0
+stage: Phase 5 - Implementation (Sprint 5)
 created: 2026-08-03
 updated: 2026-08-03
 
@@ -23,6 +23,11 @@ domains:
   knowledge: 04_Knowledge
   journal: 05_Journal
   config: [01_Soul, 02_Rules, 03_Skills]
+  ai_context: AI_CONTEXT   # bàn giao & trạng thái đa công cụ
+
+collaboration:
+  tools: [cowork, claude_code]
+  protocol: 02_Rules/collaboration-protocol.md
 
 data_boundary:
   allowed: work_metadata_only

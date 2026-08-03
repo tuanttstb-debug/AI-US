@@ -2,6 +2,11 @@
 
 Nhật ký thay đổi cấu trúc và nội dung nền của AI OS.
 
+## 2026-08-03 — Sprint 5 (v0.5.0)
+- Thêm lớp `AI_CONTEXT/` (SESSION_HANDOVER, PROJECT_STATE, TODO_NEXT, SYSTEM_ARCHITECTURE_CURRENT) cho cộng tác đa công cụ.
+- Thêm `02_Rules/collaboration-protocol.md` — quy trình làm việc song song Cowork + Claude Code (phân vai, vùng sở hữu file, nhịp pull/commit/push, chống xung đột).
+- Cập nhật README + manifest (v0.5.0).
+
 ## 2026-08-03 — Sprint 4 (v0.4.0)
 - Hoàn thiện 3 skill ưu tiên: deadline-brief (#2), decision-brief (#3), intake-triage (#4).
 - Cập nhật INDEX; bump version 0.4.0.
