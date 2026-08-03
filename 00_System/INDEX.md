@@ -17,6 +17,9 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 | Tên | Mục đích | File |
 |---|---|---|
 | weekly-report | Dựng báo cáo tuần cho BLĐ | `03_Skills/weekly-report/SKILL.md` |
+| deadline-brief | Nâng chất cảnh báo hạn | `03_Skills/deadline-brief/SKILL.md` |
+| decision-brief | Brief hỗ trợ quyết định nhanh | `03_Skills/decision-brief/SKILL.md` |
+| intake-triage | Thu thập & định tuyến việc đột xuất | `03_Skills/intake-triage/SKILL.md` |
 
 ## Decision (DEC)
 | ID | Tiêu đề | File |

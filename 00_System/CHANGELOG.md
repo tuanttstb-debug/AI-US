@@ -2,6 +2,15 @@
 
 Nhật ký thay đổi cấu trúc và nội dung nền của AI OS.
 
+## 2026-08-03 — Sprint 4 (v0.4.0)
+- Hoàn thiện 3 skill ưu tiên: deadline-brief (#2), decision-brief (#3), intake-triage (#4).
+- Cập nhật INDEX; bump version 0.4.0.
+- Repo đã push GitHub: https://github.com/tuanttstb-debug/AI-US
+
+### Hạng mục treo
+- Chạy thử weekly-report một kỳ thật (điều kiện tiên quyết trước khi tuyển agent).
+- Bổ sung dữ liệu Đào tạo AI; làm giàu Knowledge GNOL/BLOL qua phỏng vấn.
+
 ## 2026-08-03 — Sprint 3 (v0.3.0)
 - Thiết kế mẫu báo cáo tuần mới v2 (.docx 4 mảng, tổng quan 15s, biểu đồ, KH tuần tới) — file mẫu tại 00_System/templates/bao-cao-tuan_MAU.docx.
 - Cập nhật skill weekly-report v2 + template report.md + build_report.js.
