@@ -2,6 +2,15 @@
 
 Nợ kỹ thuật & hiện tượng lặp lại. Mới nhất trên cùng.
 
+## TD-WR-03 — Report artifacts không có lịch sử trên Git (2026-08-14)
+`.docx` báo cáo + `report_data.json` chứa tên KH → gitignore, chỉ local. Hệ quả: không có lịch sử báo cáo các kỳ trên GitHub; máy khác phải dựng lại từ live. Nếu cần lưu vết → cân nhắc repo private riêng cho reports, hoặc bản redact tên KH để commit. Ưu tiên thấp.
+
+## TD-WR-02 — aggregate.js hardcode index cột theo schema (2026-08-14)
+`aggregate.js` map cột Task/Initiative/Case bằng CHỈ SỐ (C/I/K) theo schema Dashboard hiện tại (Task 25 cột, Initiative 15, Case 20). Nếu Dashboard chèn/đổi cột → parse lệch. **Nên map theo tên header** (đọc row 0) thay vì index cố định. Trung bình.
+
+## TD-WR-01 — Classifier phân 5 mảng bằng heuristic (2026-08-14)
+Phân task vào 5 mảng bằng regex keyword + team + category (`classifyTask` trong `aggregate.js`), vì nguồn không có trường "mảng báo cáo" chuẩn. Rủi ro xếp nhầm task biên khi tên/category thay đổi. **Hướng trả nợ:** chốt taxonomy chuẩn tại Dashboard (thêm cột phân loại mảng, hoặc chuẩn hoá Category/Initiative) để phân loại xác định thay vì đoán. Đã rà tay kỳ W33; chấp nhận tạm. Trung bình.
+
 ## TD-GIT-01 — Lock git stale chặn commit (2026-08-03)
 **Hiện tượng:** Commit vướng `.git/index.lock` rồi `.git/HEAD.lock` (`fatal: Unable to create ... lock: File exists`). Gặp cả từ Cowork sandbox lẫn Claude Code khi một lần commit trước bị gián đoạn giữa chừng.
 

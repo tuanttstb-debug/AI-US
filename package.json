@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@napi-rs/canvas": "^1.0.6",
+    "docx": "^9.7.1"
+  }
+}

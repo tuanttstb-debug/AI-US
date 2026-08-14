@@ -11,3 +11,18 @@ Thumbs.db
 # File render tạm khi dựng báo cáo
 *.pdf
 page-*.jpg
+prog_bars.png
+rag_donut.png
+
+# Secret kết nối GAS — KHÔNG BAO GIỜ commit
+06_Tools/connectors/.gas-secret.json
+**/.gas-secret.json
+
+# Sản phẩm sinh từ dữ liệu tác nghiệp (có thể chứa tên KH) — chỉ local, KHÔNG đẩy lên cloud/GitHub
+03_Skills/weekly-report/report_data.json
+05_Journal/reports/*.docx
+!05_Journal/reports/.gitkeep
+
+# Node
+node_modules/
+package-lock.json

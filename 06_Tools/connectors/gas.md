@@ -25,10 +25,18 @@ updated: 2026-08-03
 | User_Master | — | — | Người dùng, RBAC |
 | Audit_Log | — | — | Vết kiểm toán |
 
+## Xác thực (bắt buộc cho mọi read)
+Trừ `auth-login`, mọi action đều cần `token`. Luồng:
+1. POST `{ action:'auth-login', username, password }` → `{ token, user }`.
+2. Gửi kèm `token` ở các request sau.
+- Credential lưu untracked `06_Tools/connectors/.gas-secret.json` (đã gitignore — **không commit**) hoặc env `GAS_USER/GAS_PASS/GAS_URL`.
+
 ## Action đọc chính
-- `read` → Task_Master (2D array)
-- `initiative-read` → Initiative_Master
-- (Case/Issue/Dev có route tương ứng trong backend/Code.gs)
+- `batch-read` `{ token, domains:['tasks','initiatives','cases','issues'] }` → `{ data:{ tasks:{values}, ... }, serverTs, ver }` — **1 request, sạch, đủ** (đường dùng cho weekly-report).
+- `read` → Task_Master (2D array) · `initiative-read` → Initiative_Master · `case-pipeline-read` · `issue-read` · `dev-read`.
+- Mỗi domain là mảng 2D `[header, ...rows]` (display values).
+
+> ⚠️ KHÔNG dùng connector Google Drive `read_file_content` để đọc spreadsheet này cho pipeline: nó làm phẳng & trộn lẫn các sheet, có thể cắt bớt file lớn (lossy). Dùng `batch-read`.
 
 ## Nguyên tắc dùng
 - AI OS **chỉ đọc** cho mục đích tổng hợp/phân tích; hạn chế ghi, ưu tiên để Dashboard là nơi ghi tác nghiệp.
