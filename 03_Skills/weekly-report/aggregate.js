@@ -98,19 +98,34 @@ function classifyTask(r) {
 }
 
 const AREA_META = [
-  { key: AREA.SANPHAM, no: 1, title: 'Công tác phát triển sản phẩm mới' },
-  { key: AREA.DUAN, no: 2, title: 'Các line dự án / initiative lớn đang chạy' },
-  { key: '__CASE', no: 3, title: 'Hồ sơ / case lớn đang theo dõi' },
-  { key: AREA.DANHMUC, no: 4, title: 'Quản lý danh mục & giám sát nợ có vấn đề' },
-  { key: AREA.AI, no: 5, title: 'Chương trình AI của Trung tâm' },
+  { key: AREA.SANPHAM, no: 1, priority: 1, title: 'Công tác phát triển sản phẩm mới' },
+  { key: AREA.DUAN, no: 2, priority: 1, title: 'Các line dự án / initiative lớn đang chạy' },
+  { key: '__CASE', no: 3, priority: 1, title: 'Hồ sơ / case lớn đang theo dõi' },
+  { key: AREA.DANHMUC, no: 4, priority: 1, title: 'Quản lý danh mục & giám sát nợ có vấn đề' },
+  { key: AREA.AI, no: 5, priority: 2, title: 'Chương trình AI của Trung tâm' },
+  { key: '__DEV', no: 6, priority: 2, title: 'Phát triển năng lực & bản thân' },
 ];
 
-function taskAreaSummary(key, tasks, target) {
+// Sức khỏe THỰC: kết hợp RAG team tự đánh giá với hạn thực tế (quá hạn/blocked kéo màu xuống).
+function realHealth(ragCounts, nOff, nActive) {
+  let base = areaRagFromCounts(ragCounts);              // từ RAG team tự tô
+  const ratio = nActive ? nOff / nActive : 0;
+  let byOff = 'Green';
+  if (ratio >= 0.3 || nOff >= 8) byOff = 'Red';
+  else if (nOff >= 1 || ratio >= 0.1) byOff = 'Amber';
+  const rank = { Green: 1, Amber: 2, Red: 3 };
+  return rank[base] >= rank[byOff] ? base : byOff;       // lấy màu XẤU hơn
+}
+const isOverdueTask = (r, today) => { const dl = parseVNDate(r[C.deadline]); return !!dl && dl < today && !isDone(r[C.status]); };
+
+function taskAreaSummary(key, tasks, target, today) {
   const mine = tasks.filter((r) => classifyTask(r) === key);
   const week = mine.filter((r) => isThisWeek(r, target));
   const thisWeek = week.slice(0, 8).map((r) => ({ name: r[C.name], pct: norm(r[C.pct]) || '—', team: norm(r[C.teamMain]), status: norm(r[C.status]), rag: ragKey(r[C.rag]), ketQua: norm(r[C.ketQua]) || norm(r[C.keHoach]) }));
+  const overdue = mine.filter((r) => isOverdueTask(r, today));
+  const overdueList = overdue.map((r) => ({ name: r[C.name], team: norm(r[C.teamMain]), deadline: fmtDMY(r[C.deadline]), pct: norm(r[C.pct]) || '—' }));
   const rag = { Green: 0, Amber: 0, Red: 0 }; mine.forEach((r) => rag[ragKey(r[C.rag])]++);
-  const areaRag = areaRagFromCounts(rag);
+  const areaRag = realHealth(rag, overdue.length, mine.length);
   const pcts = mine.map((r) => parseFloat(norm(r[C.pct]).replace('%', ''))).filter((x) => !isNaN(x));
   const pct = pcts.length ? Math.round(pcts.reduce((s, x) => s + x, 0) / pcts.length) : null;
   const bld = mine.filter((r) => yn(r[C.canBLD])).map((r) => ({ id: r[C.id], name: r[C.name], noiDung: norm(r[C.noiDungBLD]) || r[C.name], team: r[C.teamMain] }));
@@ -124,8 +139,8 @@ function taskAreaSummary(key, tasks, target) {
   // top teams tham gia
   const teamCount = {}; mine.forEach((r) => (teamCount[norm(r[C.teamMain]) || '—'] = (teamCount[norm(r[C.teamMain])] || 0) + 1));
   const teams = Object.entries(teamCount).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([t, n]) => `${t} (${n})`);
-  return { nActive: mine.length, nThisWeek: week.length, rag: areaRag, statusText: statusTextFromRag(areaRag), ragCounts: rag, pct,
-    needBLD: bld, blockers, highlights, thisWeek, teams };
+  return { nActive: mine.length, nThisWeek: week.length, nOverdue: overdue.length, rag: areaRag, statusText: statusTextFromRag(areaRag), ragCounts: rag, pct,
+    needBLD: bld, blockers, highlights, thisWeek, overdueList, teams };
 }
 
 // ── Mảng 3: Case lớn đang theo dõi ──
@@ -149,7 +164,9 @@ function caseSummary(cases) {
     return openCase && big;
   });
   const rag = { Green: 0, Amber: 0, Red: 0 }; tracked.forEach((r) => rag[ragKey(r[K.rag])]++);
-  const caseRag = areaRagFromCounts(rag);
+  const blocked = tracked.filter((r) => /tạm dừng|blocked/i.test(norm(r[K.stage])));
+  const blockedValue = Math.round(blocked.reduce((s, r) => s + parseValue(r[K.giaTri]), 0));
+  const caseRag = realHealth(rag, blocked.length, tracked.length);
   const byStage = {}; tracked.forEach((r) => (byStage[norm(r[K.stage]) || '—'] = (byStage[norm(r[K.stage])] || 0) + 1));
   const totalValue = tracked.reduce((s, r) => s + parseValue(r[K.giaTri]), 0);
   const bld = tracked.filter((r) => yn(r[K.canBLD])).map((r) => ({ khach: norm(r[K.khach]), dvkd: norm(r[K.dvkd]), loai: norm(r[K.loaiHinh]), giaTri: parseValue(r[K.giaTri]), stage: norm(r[K.stage]), vuong: norm(r[K.vuong]) }));
@@ -158,10 +175,29 @@ function caseSummary(cases) {
     .map((r) => ({ khach: norm(r[K.khach]), dvkd: norm(r[K.dvkd]), loai: norm(r[K.loaiHinh]), complexity: norm(r[K.complexity]), giaTri: parseValue(r[K.giaTri]), stage: norm(r[K.stage]), next: norm(r[K.nextStep]), rag: ragKey(r[K.rag]) }));
   const byTeam = {}; tracked.forEach((r) => (byTeam[norm(r[K.team]) || '—'] = (byTeam[norm(r[K.team])] || 0) + 1));
   return {
-    nActive: tracked.length, totalCases: cases.length, rag: caseRag, statusText: statusTextFromRag(caseRag),
+    nActive: tracked.length, totalCases: cases.length, nBlocked: blocked.length, blockedValue,
+    rag: caseRag, statusText: statusTextFromRag(caseRag),
     ragCounts: rag, byStage, totalValue: Math.round(totalValue), needBLD: bld, top,
     teams: Object.entries(byTeam).sort((a, b) => b[1] - a[1]).slice(0, 4).map(([t, n]) => `${t} (${n})`),
   };
+}
+
+// ── Ưu tiên 2: Phát triển năng lực & bản thân (Dev_Plan) ──
+const DV = { id: 0, noiDung: 1, ketQua: 2, pic: 3, phoiHop: 4, start: 5, end: 6, status: 7, pct: 8, note: 9, review: 10 };
+function devSummary(rows) {
+  const active = rows.filter((r) => !isDone(r[DV.status]));
+  const theme = (n) => /\bAI\b|genai|studio|prompt|chatgpt|gemini/i.test(n) ? 'AI/Công cụ số'
+    : /tiếng|hsk|ngoại ngữ|english|trung|nhật/i.test(n) ? 'Ngoại ngữ'
+      : /kỹ năng|thuyết trình|đào tạo|trình bày|giao tiếp|lãnh đạo|quản lý/i.test(n) ? 'Kỹ năng mềm' : 'Chuyên môn nghiệp vụ';
+  const byTheme = {}; active.forEach((r) => (byTheme[theme(norm(r[DV.noiDung]))] = (byTheme[theme(norm(r[DV.noiDung]))] || 0) + 1));
+  const byPic = {}; active.forEach((r) => (byPic[norm(r[DV.pic]) || '—'] = (byPic[norm(r[DV.pic]) || '—'] || 0) + 1));
+  const pcts = active.map((r) => parseFloat(norm(r[DV.pct]).replace('%', ''))).filter((x) => !isNaN(x));
+  const pct = pcts.length ? Math.round(pcts.reduce((s, x) => s + x, 0) / pcts.length) : null;
+  const top = active.slice().sort((a, b) => (parseFloat(b[DV.pct]) || 0) - (parseFloat(a[DV.pct]) || 0)).slice(0, 6)
+    .map((r) => ({ noiDung: norm(r[DV.noiDung]), pic: norm(r[DV.pic]), pct: norm(r[DV.pct]) || '—', status: norm(r[DV.status]) }));
+  return { nActive: active.length, nPeople: Object.keys(byPic).length, pct, byTheme,
+    byPic: Object.entries(byPic).sort((a, b) => b[1] - a[1]).slice(0, 6).map(([p, n]) => `${p} (${n})`), top,
+    rag: 'Green', statusText: 'Đang triển khai', ragCounts: { Green: active.length, Amber: 0, Red: 0 }, needBLD: [], nOverdue: 0, nThisWeek: 0 };
 }
 
 function main() {
@@ -169,37 +205,64 @@ function main() {
   const snap = JSON.parse(fs.readFileSync(CACHE, 'utf8'));
   const tasks = (snap.tasks || []).slice(1);
   const cases = (snap.cases || []).slice(1);
+  const inis = (snap.initiatives || []).slice(1);
+  const devRows = (snap.dev || []).slice(1);
   const today = new Date();
   const target = process.env.REPORT_WEEK && labelToParts(process.env.REPORT_WEEK.replace(/^(\d{4})-W(\d+)$/i, 'Tuần $2/$1'))
     ? labelToParts(process.env.REPORT_WEEK.replace(/^(\d{4})-W(\d+)$/i, 'Tuần $2/$1')) : isoWeekParts(today);
   const weekLabel = `Tuần ${target.w}/${target.y}`;
-
   const activeTasks = tasks.filter((r) => !isDone(r[C.status]));
 
   const areas = AREA_META.map((m) => {
-    if (m.key === '__CASE') { const cs = caseSummary(cases); return { no: m.no, title: m.title, kind: 'case', ...cs }; }
-    const s = taskAreaSummary(m.key, activeTasks, target); return { no: m.no, title: m.title, kind: 'task', ...s };
+    if (m.key === '__CASE') return { no: m.no, priority: m.priority, title: m.title, kind: 'case', ...caseSummary(cases) };
+    if (m.key === '__DEV') return { no: m.no, priority: m.priority, title: m.title, kind: 'dev', ...devSummary(devRows) };
+    return { no: m.no, priority: m.priority, title: m.title, kind: 'task', ...taskAreaSummary(m.key, activeTasks, target, today) };
   });
+  const shortT = (t) => t.replace(/^\d+\.\s*/, '').split('—')[0].split('&')[0].split('/')[0].trim();
+
+  // ── KHỐI ĐIỀU HÀNH ──
+  const caseArea = areas.find((a) => a.kind === 'case');
+  // 1) Quyết định cần BLĐ — hồ sơ (theo giá trị) trước, rồi task
+  const decisions = [];
+  caseArea.needBLD.slice().sort((a, b) => b.giaTri - a.giaTri).forEach((b) =>
+    decisions.push({ type: 'Hồ sơ', label: `${b.khach || b.dvkd}${b.dvkd ? ' (' + b.dvkd + ')' : ''}`, sub: `${b.loai} · ${b.stage}${b.vuong ? ' — ' + b.vuong : ''}`, value: b.giaTri }));
+  areas.filter((a) => a.kind === 'task').forEach((a) => a.needBLD.forEach((b) =>
+    decisions.push({ type: shortT(a.title), label: b.noiDung, sub: b.team || '', value: 0 })));
+  // 2) Cảnh báo
+  const nOverdue = areas.filter((a) => a.kind === 'task').reduce((s, a) => s + (a.nOverdue || 0), 0);
+  const overdueByArea = {}; areas.filter((a) => a.kind === 'task').forEach((a) => { if (a.nOverdue) overdueByArea[shortT(a.title)] = a.nOverdue; });
+  const redTasks = activeTasks.filter((r) => ragKey(r[C.rag]) === 'Red').map((r) => ({ name: norm(r[C.name]), team: norm(r[C.teamMain]) }));
+  const alerts = { nOverdue, overdueByArea, blockedCases: caseArea.nBlocked, blockedValue: caseArea.blockedValue, redItems: redTasks };
+  // 3) Thắng lợi — task Hoàn thành có deadline trong 14 ngày gần nhất
+  const back14 = new Date(today); back14.setUTCDate(today.getUTCDate() - 14);
+  const wins = tasks.filter((r) => isDone(r[C.status])).map((r) => ({ r, d: parseVNDate(r[C.deadline]) }))
+    .filter((x) => x.d && x.d >= back14 && x.d <= today)
+    .sort((a, b) => b.d - a.d).slice(0, 8).map((x) => ({ name: norm(x.r[C.name]), team: norm(x.r[C.teamMain]) }));
+  // 4) Milestone tới hạn ≤14 ngày
+  const fwd14 = new Date(today); fwd14.setUTCDate(today.getUTCDate() + 14);
+  const milestones = inis.filter((r) => /milestone/i.test(norm(r[I.type])) && !isDone(r[I.status]))
+    .map((r) => ({ name: norm(r[I.name]), init: norm(r[I.id]).replace(/-M\d+.*/, ''), d: parseVNDate(r[I.msDeadline] || r[I.deadline]) }))
+    .filter((x) => x.d && x.d >= today && x.d <= fwd14).sort((a, b) => a.d - b.d).slice(0, 8)
+    .map((x) => ({ name: x.name, init: x.init, deadline: fmtDMY(x.d.toISOString().slice(0, 10)) }));
 
   const out = {
     generatedAt: new Date().toISOString(), weekLabel,
-    scope: 'Trung tâm SP&GP Tín dụng — toàn bộ task đang chạy + case lớn theo dõi',
+    scope: 'Trung tâm SP&GP Tín dụng — toàn bộ task đang chạy + case lớn + Dev_Plan',
     source: { fetchedAt: snap.fetchedAt, serverTs: snap.serverTs },
-    totals: { tasksAll: tasks.length, tasksActive: activeTasks.length, casesAll: cases.length },
+    totals: { tasksAll: tasks.length, tasksActive: activeTasks.length, tasksOverdue: nOverdue, casesAll: cases.length, devActive: (areas.find((a) => a.kind === 'dev') || {}).nActive || 0 },
+    exec: { decisions: decisions.slice(0, 8), nDecisions: decisions.length, alerts, wins, milestones },
     areas,
   };
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2), 'utf8');
 
   // ── In tóm tắt ──
   console.log(`\n=== BÁO CÁO TRUNG TÂM ${weekLabel} · nguồn @ ${snap.fetchedAt} ===`);
-  console.log(`Task: ${tasks.length} tổng · ${activeTasks.length} đang chạy · Case: ${cases.length}\n`);
-  console.log('MẢNG'.padEnd(46), 'Sức khỏe'.padEnd(10), 'Active', 'BLĐ', 'RAG(G/A/R)');
+  console.log(`Task ${tasks.length} (đang chạy ${activeTasks.length}, QUÁ HẠN ${nOverdue}) · Case ${cases.length} · Dev ${out.totals.devActive}`);
+  console.log(`ĐIỀU HÀNH: ${decisions.length} cần quyết · ${nOverdue} quá hạn · ${alerts.blockedCases} hồ sơ blocked (~${alerts.blockedValue} tỷ) · ${wins.length} xong 14d · ${milestones.length} milestone ≤14d\n`);
+  console.log('MẢNG'.padEnd(42), 'ƯT', 'Health'.padEnd(12), 'Active', 'Quá hạn', 'BLĐ');
   areas.forEach((a) => console.log(
-    (a.no + '. ' + a.title).padEnd(46), a.statusText.padEnd(10),
-    String(a.nActive).padEnd(6), String(a.needBLD.length).padEnd(3),
-    `${a.ragCounts.Green}/${a.ragCounts.Amber}/${a.ragCounts.Red}` + (a.kind === 'case' ? `  ~${a.totalValue} tỷ` : '')));
-  const classified = areas.filter((a) => a.kind === 'task').reduce((s, a) => s + a.nActive, 0);
-  console.log(`\nĐã phân loại ${classified}/${activeTasks.length} task đang chạy vào 4 mảng task; case riêng.`);
+    (a.no + '. ' + a.title).padEnd(42), 'P' + a.priority, a.statusText.padEnd(12),
+    String(a.nActive).padEnd(6), String(a.nOverdue || 0).padEnd(7), String(a.needBLD.length)));
   console.log('→ report_data.json đã ghi.');
 }
 

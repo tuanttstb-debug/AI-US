@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-14 #2, Claude Code)
+**weekly-report v4 — điều hành-first.** Trang 1 đọc 60 giây (cần BLĐ/quá hạn/hồ sơ treo/thắng lợi/milestone); **Sức khỏe THỰC** đối chiếu deadline (W33: 75/272 quá hạn, ~7,8 nghìn tỷ hồ sơ blocked); tách **Ưu tiên 1 core** (SP · dự án · hồ sơ · danh mục-nợ) và **Ưu tiên 2** (AI + Dev_Plan, +domain `dev` 42 mục). Hiển thị tên KH (nội bộ). Bản chuẩn `RPT-2026-W33` (local-only).
+
 ## Delta (2026-08-14, Claude Code)
 **weekly-report chạy LIVE — báo cáo cấp Trung tâm** (TODO #1–2 xong). Skill v3: đọc GAS `auth-login`+`batch-read` (1178 task/439 initiative/293 case), gom **5 mảng nghiệp vụ** (1 Phát triển SP · 2 Line dự án/initiative lớn · 3 Hồ sơ/case lớn · 4 Danh mục & giám sát nợ · 5 Chương trình AI), xuất `RPT-2026-W33_bao-cao-tuan.docx`. Pipeline `fetch_gas → aggregate → make_charts (Node canvas) → build_report`, orchestrator `run.js`. Deps `docx`, `@napi-rs/canvas`.
 - **Data-boundary:** báo cáo hiển thị tên KH cho nội bộ, nhưng `.docx`/`report_data.json`/`cache`/`.gas-secret.json`/`node_modules` **gitignore** — không đẩy GitHub/cloud.

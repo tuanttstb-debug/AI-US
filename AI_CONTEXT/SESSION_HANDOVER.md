@@ -3,6 +3,14 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## Delta phiên (2026-08-14 #2 — nâng cấp ĐIỀU HÀNH-FIRST, Claude Code)
+- **Việc xong:** Sau phản biện góc Giám đốc, nâng weekly-report lên **v4 điều hành-first**: **Trang 1 đọc 60 giây** (5 ô KPI · ① Cần BLĐ xếp theo tiền · ② Cảnh báo quá hạn/blocked · ③ Thắng lợi 2 tuần · ④ Milestone ≤14 ngày) → **Ưu tiên 1 core** (4 mảng) → **Ưu tiên 2** (5 AI + 6 Dev_Plan) → Trọng tâm. Thêm **Sức khỏe THỰC** đối chiếu deadline (kỳ W33: team tô 267/272 xanh nhưng **75 quá hạn** → core "Rủi ro cao"; ~**7,8 nghìn tỷ** hồ sơ blocked). Fetch thêm domain **`dev`** (42 mục phát triển bản thân). Đặt v3/v4 làm bản chuẩn.
+- **File đổi (commit CODE+DOCS):** `aggregate.js` (khối exec, realHealth, dev, priority P1/P2, overdue), `make_charts.js` (donut Đúng hạn/Quá hạn), `build_report.js` (rewrite điều hành-first), `fetch_gas.js` (+domain dev), `SKILL.md` v4, 4 file AI_CONTEXT. Local-only: `RPT-2026-W33_bao-cao-tuan.docx`, `report_data.json`, cache.
+- **Quyết định:** (1) **Sức khỏe = realHealth** (suy từ hạn + đối chiếu RAG, lấy màu xấu hơn). (2) **Ưu tiên 2 = AI + Dev_Plan**. (3) Cấu trúc **exceptions-first**, core P1 nổi bật, AI/Dev P2 gọn. (4) Ngưỡng: hồ sơ lớn = Cao|Dự án|≥50 tỷ; quá hạn = deadline<hôm nay & chưa xong; milestone ≤14d; thắng lợi = xong có hạn trong 14d. (5) Hiển thị **tên KH** ở hồ sơ + quyết định (nội bộ), artifacts vẫn gitignore.
+- **Blocker:** không.
+- **Bước kế (phiên sau):** [TT] tiếp tục; đã đề xuất (chờ chốt) **quá hạn theo team** để quy trách nhiệm + **top hồ sơ treo lâu nhất**; [CC] lưu snapshot lịch sử để có **delta tuần-qua-tuần**; TD-WR-02 map cột theo header-name; xét ngưỡng cấu hình hoá.
+- **Rủi ro hồi quy:** Thấp–trung bình. Rewrite `build_report.js` lớn nhưng chỉ dựng docx, đọc-only. Rủi ro: `realHealth`/quá hạn phụ thuộc parse ngày (đã xử lý 3 định dạng; ngày lạ → không tính quá hạn → có thể sót); classifier heuristic (TD-WR-01). Đã rà tay kỳ W33.
+
 ## Delta phiên (2026-08-14, Claude Code)
 - **Việc xong:** TODO #1–2 DONE — weekly-report chạy **LIVE**, nâng cấp thành **báo cáo cấp Trung tâm 5 mảng nghiệp vụ**; xuất `05_Journal/reports/RPT-2026-W33_bao-cao-tuan.docx` (271 việc đang chạy · 117 hồ sơ lớn ~45,4 nghìn tỷ). Skill lên **v3**. Áp 5 điều chỉnh của [TT]: thêm cột **Khách hàng** bảng case; mục **"Phát sinh tuần này"** mỗi mảng; đổi tên mảng 2 → *"Các line dự án / initiative lớn đang chạy"*; **tách SP/xây quy trình khỏi QLDM** về mảng 1 (94 việc); mảng 4 chỉ còn giám sát nợ thực (53). Phân bố: SP 94 · Dự án 107 · Case 117 · QLDM 53 · AI 17.
 - **File đổi (đã commit — CODE + DOCS):** mới `03_Skills/weekly-report/{fetch_gas,aggregate,make_charts,run}.js`, `package.json`; sửa `03_Skills/weekly-report/{build_report.js, SKILL.md(v3)}`, `00_System/INDEX.md`, `06_Tools/connectors/gas.md` (auth+batch-read), `.gitignore`, 4 file `AI_CONTEXT`.

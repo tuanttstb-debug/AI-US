@@ -16,6 +16,15 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-14 #2, Claude Code)
+weekly-report nâng lên **v4 điều hành-first** (Trang 1 đọc 60 giây · Sức khỏe THỰC đối chiếu deadline · Ưu tiên 1 core vs Ưu tiên 2 AI+Dev_Plan · +domain `dev`). Ưu tiên tiếp theo:
+- [TT] Duyệt bản chuẩn `RPT-2026-W33` (v4); chạy thử vài kỳ để chốt classifier + ngưỡng hồ sơ lớn/quá hạn.
+- [CC] Lưu **snapshot lịch sử** mỗi kỳ để có **delta tuần-qua-tuần**.
+- [CC] **TD-WR-02** — map cột `aggregate.js` theo header-name thay index (chống vỡ khi Dashboard đổi cột).
+- [CC] (chờ [TT] chốt) **Quá hạn theo team** để quy trách nhiệm + **top hồ sơ treo lâu nhất**.
+- [CC] Xét đưa các ngưỡng (hồ sơ lớn ≥50 tỷ, milestone ≤14d, thắng lợi 14d) thành **cấu hình hoá** thay vì hardcode.
+- [CC] Log DEC "weekly-report v4 điều hành-first + realHealth".
+
 ## Delta (2026-08-14, Claude Code)
 #1–2 DONE (weekly-report LIVE, báo cáo Trung tâm 5 mảng, đã áp 5 điều chỉnh [TT]: cột KH bảng case, "phát sinh tuần này", đổi tên mảng 2, tách SP/quy trình khỏi QLDM). Ưu tiên mới:
 - [TT] Duyệt nội dung docx cuối; chạy thử vài kỳ để chốt classifier phân mảng.

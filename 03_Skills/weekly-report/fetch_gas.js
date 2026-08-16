@@ -48,8 +48,8 @@ async function login(secret) {
   return d.token;
 }
 
-// Trả về { fetchedAt, tasks, initiatives, cases, issues } — mỗi domain là mảng 2D [header, ...rows].
-async function fetchLive({ domains = ['tasks', 'initiatives', 'cases', 'issues'] } = {}) {
+// Trả về { fetchedAt, tasks, initiatives, cases, issues, dev } — mỗi domain là mảng 2D [header, ...rows].
+async function fetchLive({ domains = ['tasks', 'initiatives', 'cases', 'issues', 'dev'] } = {}) {
   const secret = loadSecret();
   const token = await login(secret);
   const d = await gasPost(secret.webAppUrl, { action: 'batch-read', token, domains });
@@ -63,6 +63,7 @@ async function fetchLive({ domains = ['tasks', 'initiatives', 'cases', 'issues']
     initiatives: pick('initiatives'),
     cases: pick('cases'),
     issues: pick('issues'),
+    dev: pick('dev'),
   };
 }
 
