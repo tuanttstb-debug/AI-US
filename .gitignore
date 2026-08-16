@@ -21,6 +21,7 @@ rag_donut.png
 # Sản phẩm sinh từ dữ liệu tác nghiệp (có thể chứa tên KH) — chỉ local, KHÔNG đẩy lên cloud/GitHub
 03_Skills/weekly-report/report_data.json
 05_Journal/reports/*.docx
+05_Journal/reports/*.html
 !05_Journal/reports/.gitkeep
 
 # Node

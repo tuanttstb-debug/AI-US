@@ -1,4 +1,4 @@
-// build_report.js — Dựng .docx BÁO CÁO TUẦN TRUNG TÂM (điều hành-first) từ report_data.json + 2 chart.
+// build_report.js — Dựng .docx BÁO CÁO TUẦN KHỐI (điều hành-first) từ report_data.json + 2 chart.
 // Cấu trúc: Trang điều hành (cần quyết / cảnh báo quá hạn / thắng lợi / milestone) → Ưu tiên 1 (core)
 // → Ưu tiên 2 (AI + phát triển năng lực) → Trọng tâm tuần tới. Data-driven, chỉ metadata (nội bộ).
 
@@ -192,8 +192,8 @@ const doc = new Document({
     children: [
       new Table({ columnWidths: [CW], width: { size: CW, type: WidthType.DXA }, borders: noBorder, rows: [new TableRow({ children: [
         new TableCell({ width: { size: CW, type: WidthType.DXA }, shading: { type: ShadingType.CLEAR, fill: PRIMARY, color: 'auto' }, margins: { top: 150, bottom: 150, left: 200, right: 200 }, children: [
-          p(t('BÁO CÁO TUẦN — TRUNG TÂM SẢN PHẨM & GIẢI PHÁP TÍN DỤNG', { b: true, c: 'FFFFFF', sz: 28 })),
-          p(t('Khối Khách hàng Doanh nghiệp · TPBank', { c: 'E9E4FB', sz: 18 }), { spacing: { before: 40 } }),
+          p(t('BÁO CÁO TUẦN — KHỐI NGÂN HÀNG DOANH NGHIỆP', { b: true, c: 'FFFFFF', sz: 28 })),
+          p(t('Trung tâm Sản phẩm & Giải pháp Tín dụng · TPBank', { c: 'E9E4FB', sz: 18 }), { spacing: { before: 40 } }),
         ] })] })] }),
       p([t('Kỳ: ', { b: true }), t(`${DATA.weekLabel} · số liệu LIVE đến ${fmtTs(DATA.source.fetchedAt)}    `), t('Nơi nhận: ', { b: true }), t('Giám đốc Trung tâm (cc: đầu mối liên quan)')], { spacing: { before: 140, after: 100 } }),
 

@@ -1,4 +1,4 @@
-// make_charts.js — 2 biểu đồ PNG cho báo cáo tuần TRUNG TÂM (Node canvas, không cần Python).
+// make_charts.js — 2 biểu đồ PNG cho báo cáo tuần KHỐI (Node canvas, không cần Python).
 //   prog_bars.png : số việc/hồ sơ ĐANG CHẠY theo 5 mảng, tô theo sức khỏe mảng.
 //   rag_donut.png : phân bố RAG của toàn bộ hạng mục đang chạy (task + case).
 // Dùng: require('./make_charts').makeCharts(reportData, outDir)

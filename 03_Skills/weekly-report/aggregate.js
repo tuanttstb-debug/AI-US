@@ -1,14 +1,14 @@
-// aggregate.js — Gom dữ liệu tác nghiệp (cache GAS) thành số liệu BÁO CÁO TRUNG TÂM theo 5 mảng nghiệp vụ.
+// aggregate.js — Gom dữ liệu tác nghiệp (cache GAS) thành số liệu BÁO CÁO KHỐI theo 5 mảng nghiệp vụ.
 // Nguồn: 00_System/cache/gas_snapshot.json (chạy fetch_gas.js trước). Ra: report_data.json.
 //
-// 5 MẢNG (duyệt PER-TTT 2026-08-14, cấp Trung tâm):
+// 5 MẢNG (duyệt PER-TTT 2026-08-14, cấp Khối):
 //   1 Phát triển sản phẩm mới
 //   2 Các line dự án chính đang chạy
 //   3 Hồ sơ / case lớn đang theo dõi           (từ Case_Pipeline — ẨN TÊN KH)
 //   4 Quản lý danh mục & giám sát nợ có vấn đề
-//   5 Chương trình AI của Trung tâm
+//   5 Chương trình AI của Khối
 //
-// Phạm vi = toàn bộ task ĐANG CHẠY (status ≠ Hoàn thành) của Trung tâm. Task phân vào 1 mảng bằng
+// Phạm vi = toàn bộ task ĐANG CHẠY (status ≠ Hoàn thành) của Khối. Task phân vào 1 mảng bằng
 // classifier ưu tiên (AI trước, rồi nợ/danh mục, sản phẩm, dự án). Case xử lý riêng từ bảng Case_Pipeline.
 // Chỉ metadata; TUYỆT ĐỐI không xuất tên khách hàng (Case_Pipeline cột "Khách hàng / Case").
 
@@ -102,7 +102,7 @@ const AREA_META = [
   { key: AREA.DUAN, no: 2, priority: 1, title: 'Các line dự án / initiative lớn đang chạy' },
   { key: '__CASE', no: 3, priority: 1, title: 'Hồ sơ / case lớn đang theo dõi' },
   { key: AREA.DANHMUC, no: 4, priority: 1, title: 'Quản lý danh mục & giám sát nợ có vấn đề' },
-  { key: AREA.AI, no: 5, priority: 2, title: 'Chương trình AI của Trung tâm' },
+  { key: AREA.AI, no: 5, priority: 2, title: 'Chương trình AI của Khối' },
   { key: '__DEV', no: 6, priority: 2, title: 'Phát triển năng lực & bản thân' },
 ];
 
@@ -247,7 +247,7 @@ function main() {
 
   const out = {
     generatedAt: new Date().toISOString(), weekLabel,
-    scope: 'Trung tâm SP&GP Tín dụng — toàn bộ task đang chạy + case lớn + Dev_Plan',
+    scope: 'Khối Ngân hàng Doanh nghiệp — toàn bộ task đang chạy + case lớn + Dev_Plan',
     source: { fetchedAt: snap.fetchedAt, serverTs: snap.serverTs },
     totals: { tasksAll: tasks.length, tasksActive: activeTasks.length, tasksOverdue: nOverdue, casesAll: cases.length, devActive: (areas.find((a) => a.kind === 'dev') || {}).nActive || 0 },
     exec: { decisions: decisions.slice(0, 8), nDecisions: decisions.length, alerts, wins, milestones },
@@ -256,7 +256,7 @@ function main() {
   fs.writeFileSync(OUT, JSON.stringify(out, null, 2), 'utf8');
 
   // ── In tóm tắt ──
-  console.log(`\n=== BÁO CÁO TRUNG TÂM ${weekLabel} · nguồn @ ${snap.fetchedAt} ===`);
+  console.log(`\n=== BÁO CÁO KHỐI ${weekLabel} · nguồn @ ${snap.fetchedAt} ===`);
   console.log(`Task ${tasks.length} (đang chạy ${activeTasks.length}, QUÁ HẠN ${nOverdue}) · Case ${cases.length} · Dev ${out.totals.devActive}`);
   console.log(`ĐIỀU HÀNH: ${decisions.length} cần quyết · ${nOverdue} quá hạn · ${alerts.blockedCases} hồ sơ blocked (~${alerts.blockedValue} tỷ) · ${wins.length} xong 14d · ${milestones.length} milestone ≤14d\n`);
   console.log('MẢNG'.padEnd(42), 'ƯT', 'Health'.padEnd(12), 'Active', 'Quá hạn', 'BLĐ');

@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-16, Claude Code)
+**Đổi định danh KHỐI + HTML email di động.** Đơn vị báo cáo đổi "Trung tâm SP&GP Tín dụng" → **"Khối Ngân hàng Doanh nghiệp"** (tiêu đề + code + tài liệu); nơi nhận giữ **Giám đốc Trung tâm**. weekly-report **v5**: thêm bản **HTML email responsive** (`build_email.js`) làm đầu ra chính (đọc trong email + điện thoại không vỡ: 1 cột, CSS inline, tiles tự xuống dòng, bảng hồ sơ → thẻ, chart bằng thanh CSS); giữ `.docx`. `.html` báo cáo gitignore (tên KH). Lưu ý: tài liệu cũ ghi "Khối Khách hàng Doanh nghiệp" — đã đổi theo tên [TT] đưa, chờ [TT] xác nhận không phải lỗi gõ.
+
 ## Delta (2026-08-14 #2, Claude Code)
 **weekly-report v4 — điều hành-first.** Trang 1 đọc 60 giây (cần BLĐ/quá hạn/hồ sơ treo/thắng lợi/milestone); **Sức khỏe THỰC** đối chiếu deadline (W33: 75/272 quá hạn, ~7,8 nghìn tỷ hồ sơ blocked); tách **Ưu tiên 1 core** (SP · dự án · hồ sơ · danh mục-nợ) và **Ưu tiên 2** (AI + Dev_Plan, +domain `dev` 42 mục). Hiển thị tên KH (nội bộ). Bản chuẩn `RPT-2026-W33` (local-only).
 

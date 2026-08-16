@@ -3,6 +3,15 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## Delta phiên (2026-08-16 — đổi định danh KHỐI + HTML email di động, Claude Code)
+- **Việc xong:** (1) **Đổi định danh** đơn vị báo cáo: "Trung tâm SP&GP Tín dụng" → **"Khối Ngân hàng Doanh nghiệp"** (tiêu đề báo cáo + code + tài liệu); **nơi nhận giữ "Giám đốc Trung tâm"** (theo chốt của [TT]). (2) **weekly-report v5**: thêm đầu ra **HTML email responsive** (`build_email.js`) làm **bản chính** — Giám đốc đọc thẳng trong email, xem trên điện thoại **không vỡ cấu trúc**; giữ `.docx` làm bản lưu trữ. Đã render thử ở khổ hẹp, bố cục 1 cột fluid OK.
+- **File đổi (commit CODE+DOCS):** **mới** `build_email.js`; sửa `aggregate.js` (scope + tên mảng 5 "của Khối" + banner), `build_report.js` (tiêu đề "KHỐI NGÂN HÀNG DOANH NGHIỆP", subtitle), `run.js` (+build_email), `SKILL.md` v5, `.gitignore` (+`*.html`), `00_System/INDEX.md`, `01_Soul/identity.md`, `04_Knowledge/people/PER-TTT.md`, 3 file AI_CONTEXT. Local-only mới: `RPT-2026-W33_bao-cao-tuan.html`.
+- **Quyết định:** (1) Tiêu đề = **Khối Ngân hàng Doanh nghiệp**, nơi nhận = **Giám đốc Trung tâm** (AskUserQuestion 2026-08-16). (2) Đầu ra chính = **HTML email**, giữ .docx. (3) Email-safe: 1 cột max-640, **CSS inline**, tiles inline-block tự xuống dòng, **bảng hồ sơ → thẻ**, **chart bằng thanh CSS** (không PNG vì mobile chặn ảnh). (4) `.html` báo cáo **gitignore** (chứa tên KH) như `.docx`.
+- **Cần [TT] xác nhận:** tài liệu cũ (`identity.md`/`PER-TTT.md`) ghi "Khối **Khách hàng** Doanh nghiệp"; đã đổi theo tên [TT] đưa là "Khối **Ngân hàng** Doanh nghiệp". Nếu là lỗi gõ → báo để revert về "Khách hàng".
+- **Blocker:** không.
+- **Bước kế:** [TT] gửi thử bản HTML qua email/điện thoại thật để nghiệm thu render trên client (Gmail/Outlook mobile). [CC] (tùy chọn) đọc nội dung HTML vào thân email tự động khi có kênh gửi; TD-WR-02 header-name; snapshot lịch sử.
+- **Rủi ro hồi quy:** Thấp. `build_email.js` độc lập, chỉ đọc `report_data.json`, không đụng .docx/aggregate logic. Rủi ro chính: render khác nhau giữa các email client (Outlook desktop bỏ inline-block → tiles xuống 1 cột, chấp nhận được). Chưa nghiệm thu trên client thật.
+
 ## Delta phiên (2026-08-14 #2 — nâng cấp ĐIỀU HÀNH-FIRST, Claude Code)
 - **Việc xong:** Sau phản biện góc Giám đốc, nâng weekly-report lên **v4 điều hành-first**: **Trang 1 đọc 60 giây** (5 ô KPI · ① Cần BLĐ xếp theo tiền · ② Cảnh báo quá hạn/blocked · ③ Thắng lợi 2 tuần · ④ Milestone ≤14 ngày) → **Ưu tiên 1 core** (4 mảng) → **Ưu tiên 2** (5 AI + 6 Dev_Plan) → Trọng tâm. Thêm **Sức khỏe THỰC** đối chiếu deadline (kỳ W33: team tô 267/272 xanh nhưng **75 quá hạn** → core "Rủi ro cao"; ~**7,8 nghìn tỷ** hồ sơ blocked). Fetch thêm domain **`dev`** (42 mục phát triển bản thân). Đặt v3/v4 làm bản chuẩn.
 - **File đổi (commit CODE+DOCS):** `aggregate.js` (khối exec, realHealth, dev, priority P1/P2, overdue), `make_charts.js` (donut Đúng hạn/Quá hạn), `build_report.js` (rewrite điều hành-first), `fetch_gas.js` (+domain dev), `SKILL.md` v4, 4 file AI_CONTEXT. Local-only: `RPT-2026-W33_bao-cao-tuan.docx`, `report_data.json`, cache.

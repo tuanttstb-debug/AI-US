@@ -1,4 +1,4 @@
-// run.js — Orchestrator weekly-report: fetch (LIVE GAS) → aggregate (5 mảng) → charts → build .docx.
+// run.js — Orchestrator weekly-report: fetch (LIVE GAS) → aggregate (5 mảng) → charts → build .docx + HTML email.
 // Dùng:
 //   node run.js              → chạy full pipeline, kỳ = tuần ISO hôm nay
 //   node run.js --cache      → bỏ qua fetch, dùng cache sẵn có (00_System/cache/gas_snapshot.json)
@@ -12,7 +12,8 @@ const useCache = process.argv.includes('--cache');
 try {
   if (!useCache) run('fetch_gas.js'); else console.log('↻ --cache: dùng snapshot sẵn có');
   run('aggregate.js');
-  run('build_report.js');
+  run('build_email.js');   // HTML email responsive (bản đọc chính trên email/di động)
+  run('build_report.js');  // .docx (bản lưu trữ/đính kèm)
   console.log('\n✅ Pipeline xong.');
 } catch (e) {
   console.error('\n❌ Pipeline lỗi ở bước trên. Xem log.');

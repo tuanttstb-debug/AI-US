@@ -16,7 +16,7 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 ## Skill
 | Tên | Mục đích | File |
 |---|---|---|
-| weekly-report | Báo cáo tuần Trung tâm (5 mảng) từ GAS live → .docx | `03_Skills/weekly-report/SKILL.md` |
+| weekly-report | Báo cáo tuần Khối (5 mảng) từ GAS live → HTML email (đọc di động) + .docx | `03_Skills/weekly-report/SKILL.md` |
 | deadline-brief | Nâng chất cảnh báo hạn | `03_Skills/deadline-brief/SKILL.md` |
 | decision-brief | Brief hỗ trợ quyết định nhanh | `03_Skills/decision-brief/SKILL.md` |
 | intake-triage | Thu thập & định tuyến việc đột xuất | `03_Skills/intake-triage/SKILL.md` |
@@ -40,6 +40,6 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 
 | ID | Kỳ | File (local-only) |
 |---|---|---|
-| RPT-2026-W33 | Tuần 33/2026 (báo cáo Trung tâm) | `05_Journal/reports/RPT-2026-W33_bao-cao-tuan.docx` |
+| RPT-2026-W33 | Tuần 33/2026 (báo cáo Khối) | `05_Journal/reports/RPT-2026-W33_bao-cao-tuan.{html,docx}` |
 
 > Quy ước ID & tên file: xem `02_Rules/naming-convention.md`.

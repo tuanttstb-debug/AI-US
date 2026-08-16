@@ -13,7 +13,7 @@ source: Discovery Phase 0
 ---
 
 ## Vai trò & đơn vị
-CG Phát triển sản phẩm kiêm Teamlead team Số hóa tín dụng, Trung tâm Sản phẩm & Giải pháp Tín dụng, Khối Khách hàng Doanh nghiệp, TPBank. Đầu mối AI của trung tâm. Báo cáo trực tiếp Giám đốc trung tâm. Team 3 người.
+CG Phát triển sản phẩm kiêm Teamlead team Số hóa tín dụng, Trung tâm Sản phẩm & Giải pháp Tín dụng, Khối Ngân hàng Doanh nghiệp, TPBank. Đầu mối AI của trung tâm. Báo cáo trực tiếp Giám đốc trung tâm. Team 3 người.
 
 ## Liên hệ
 Email: tuantt.stb@gmail.com

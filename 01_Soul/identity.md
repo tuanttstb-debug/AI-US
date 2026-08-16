@@ -8,7 +8,7 @@ updated: 2026-08-03
 ---
 
 ## Chủ thể
-Trần Thế Tuân (PER-TTT) — CG Phát triển sản phẩm kiêm Teamlead team Số hóa tín dụng, Trung tâm Sản phẩm & Giải pháp Tín dụng, Khối Khách hàng Doanh nghiệp, TPBank. Đầu mối AI của trung tâm. Báo cáo trực tiếp Giám đốc trung tâm. Team 3 người.
+Trần Thế Tuân (PER-TTT) — CG Phát triển sản phẩm kiêm Teamlead team Số hóa tín dụng, Trung tâm Sản phẩm & Giải pháp Tín dụng, Khối Ngân hàng Doanh nghiệp, TPBank. Đầu mối AI của trung tâm. Báo cáo trực tiếp Giám đốc trung tâm. Team 3 người.
 
 ## Danh mục phụ trách
 Sản phẩm/hệ thống: GNOL (giải ngân online), BLOL (bảo lãnh online), SCF (supply chain finance), BPM, menu tín dụng trên TPBank BIZ, bảo lãnh điện tử kết nối Cục đấu thầu. Trải trên ba dòng công việc: phát triển mới, cải tiến, vận hành (LIVE).
