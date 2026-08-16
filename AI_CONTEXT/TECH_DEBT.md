@@ -2,6 +2,15 @@
 
 Nợ kỹ thuật & hiện tượng lặp lại. Mới nhất trên cùng.
 
+## TD-WR-06 — Trùng lặp logic dựng báo cáo giữa build_email.js và build_report.js (2026-08-16)
+Hai builder (`build_email.js` → HTML, `build_report.js` → .docx) tự dựng lại `areaBlock`/format (helper `fmtTy`, `short`, `shortT`, note theo `kind`) từ cùng `report_data.json` theo 2 cách khác nhau. Sửa nội dung/thứ tự 1 mảng phải sửa **2 nơi** → dễ lệch giữa 2 bản. **Hướng:** tách helper/format & "shape" mảng thành module chung (vd `report_shape.js`) để 2 builder dùng chung, mỗi builder chỉ lo phần render. Ưu tiên thấp–trung bình.
+
+## TD-WR-05 — HTML email chưa nghiệm thu trên email client thật (2026-08-16)
+`build_email.js` dùng KPI tiles `inline-block` + media query `≤480px`. Đã render OK trên trình duyệt khổ hẹp, **chưa test client thật** (Gmail app, Outlook mobile/desktop, Apple Mail). Rủi ro đã biết: Outlook desktop (Word engine) bỏ `inline-block/min-width` → tiles rơi 1 cột (chấp nhận được); vài client lọc `<style>` → mất media query nhưng base layout vẫn 1 cột fluid. **Hướng:** gửi thử vài client, tinh chỉnh nếu vỡ; cân nhắc bố cục tiles bằng bảng 2 cột cho chắc trên Outlook. Trung bình tới khi nghiệm thu.
+
+## TD-WR-04 — .docx bị khoá file khi đang mở trên Windows (EBUSY) (2026-08-16)
+`build_report.js` ghi đè trực tiếp file `.docx`; nếu file đang mở trong Word/preview → `EBUSY: resource busy or locked`, pipeline lỗi ở bước build_report (build_email đã xong nên **HTML vẫn ra**). **Xử lý tạm:** đóng file rồi `node run.js --cache`. **Hướng trả nợ:** ghi ra file tạm rồi `rename` (atomic), hoặc bắt EBUSY và báo thân thiện "đóng .docx rồi chạy lại". Ưu tiên thấp.
+
 ## TD-WR-03 — Report artifacts không có lịch sử trên Git (2026-08-14)
 `.docx` báo cáo + `report_data.json` chứa tên KH → gitignore, chỉ local. Hệ quả: không có lịch sử báo cáo các kỳ trên GitHub; máy khác phải dựng lại từ live. Nếu cần lưu vết → cân nhắc repo private riêng cho reports, hoặc bản redact tên KH để commit. Ưu tiên thấp.
 

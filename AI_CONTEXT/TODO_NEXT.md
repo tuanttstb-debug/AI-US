@@ -20,7 +20,8 @@ Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-ru
 Đổi định danh **Khối Ngân hàng Doanh nghiệp** (nơi nhận giữ Giám đốc Trung tâm) + weekly-report **v5** thêm **HTML email responsive** (bản chính, đọc di động không vỡ). Ưu tiên tiếp:
 - [TT] Gửi thử bản `.html` qua email + mở trên điện thoại thật (Gmail/Outlook mobile) để **nghiệm thu render trên client**.
 - [TT] Xác nhận tên Khối: đã đổi thành "Khối **Ngân hàng** Doanh nghiệp"; tài liệu cũ ghi "**Khách hàng** Doanh nghiệp" — báo nếu cần giữ nguyên.
-- [CC] (tùy chọn) tự động đưa nội dung HTML vào thân email khi có kênh gửi (GAS/SMTP); TD-WR-02 header-name; snapshot lịch sử → delta tuần-qua-tuần.
+- [TT] Đóng Word rồi `node run.js --cache` để làm mới bản `.docx` theo tên Khối (HTML đã đúng; xem TD-WR-04).
+- [CC] (tùy chọn) tự động đưa nội dung HTML vào thân email khi có kênh gửi (GAS/SMTP); gộp helper build_email/build_report (TD-WR-06); TD-WR-02 header-name; snapshot lịch sử → delta tuần-qua-tuần.
 
 ## Delta (2026-08-14 #2, Claude Code)
 weekly-report nâng lên **v4 điều hành-first** (Trang 1 đọc 60 giây · Sức khỏe THỰC đối chiếu deadline · Ưu tiên 1 core vs Ưu tiên 2 AI+Dev_Plan · +domain `dev`). Ưu tiên tiếp theo:
