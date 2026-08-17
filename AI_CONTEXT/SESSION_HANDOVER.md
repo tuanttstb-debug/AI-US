@@ -3,6 +3,14 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## Delta phiên (2026-08-17 #6 — onboard dự án PRJ-SG Smart Guarantee, Claude Code)
+- **Task completed:** Onboard dự án mới **Smart Guarantee** (`D:\Workspace\Production\Smart Guarantee`) bằng skill `init-project` (lần dùng thật đầu tiên): `git init` (main) + scaffold `AI_CONTEXT/` + `CLAUDE.md`; làm giàu OVERVIEW/STATE/TODO/HANDOVER với nội dung khởi điểm; tạo **`DESIGN_SYSTEM.md` kế thừa UI/UX SHTD** (token tím `#7B2CBF`, radius/shadow, kiến trúc CSS, breakpoints 1440/1280/1024/768/480 — theo yêu cầu [TT]). Đăng ký registry (thẻ PRJ-SG + PORTFOLIO + INDEX + projects.json). Commit đầu repo SG `3f66e13`. Digest cập nhật: 5/5 dự án.
+- **Files changed:** *repo SG:* `AI_CONTEXT/*` (6 file) + `CLAUDE.md`. *AIOS:* `04_Knowledge/projects/PRJ-SG.md`, `00_System/{PORTFOLIO.md,INDEX.md,PORTFOLIO_DIGEST.md}`, `03_Skills/portfolio-digest/projects.json`, AI_CONTEXT.
+- **Decision made:** SG kế thừa UI/UX từ SHTD; nghiệp vụ tham chiếu `SYS-BLOL`; **stack + phạm vi nghiệp vụ để phiên 1 chốt** (không bịa). Copy `variables.css` SHTD làm nền FE.
+- **Blocker:** repo SG **chưa có GitHub remote** (mới local); phạm vi nghiệp vụ [CHỜ XÁC NHẬN].
+- **Next step:** [TT] bắt đầu **phiên 1 trên Smart Guarantee** — chốt phạm vi/stack (TODO_NEXT), tạo remote; [CC] dựng scaffold FE theo DESIGN_SYSTEM. **init-project đã kiểm chứng end-to-end.**
+- **Regression risk:** không — dự án mới độc lập; AIOS chỉ thêm 1 dòng danh mục + digest.
+
 ## Delta phiên (2026-08-17 #5 — cơ chế onboard dự án mới, Claude Code)
 - **Task completed:** Dựng cơ chế "khai báo" để phiên mới tự lấy đúng kiến trúc/quy trình: (1) **`00_System/templates/CLAUDE.md`** — bootstrap auto-load (thứ tự đọc `AI_CONTEXT/` + quy tắc commit/handover 6 trường/data-boundary); phát hiện **chưa repo nào có CLAUDE.md** → đây là mắt xích thiếu. (2) **Skill `03_Skills/init-project/`** (`init.js`+`SKILL.md`): 1 lệnh scaffold repo mới (`AI_CONTEXT/` 5 file + `CLAUDE.md`) **và** đăng ký AIOS (thẻ PRJ + chèn PORTFOLIO/INDEX tại anchor + `projects.json`). No-overwrite, không tự commit, có `--dry`. Đã test dry + thật (scratchpad) → dọn sạch.
 - **Files changed:** mới `00_System/templates/CLAUDE.md`, `03_Skills/init-project/{init.js,SKILL.md}`; sửa `00_System/PORTFOLIO.md` + `INDEX.md` (thêm **anchor** chèn dòng + row skill), `02_Rules/naming-convention.md`, `00_System/templates/AI_CONTEXT_TEMPLATE/README.md`, `03_Skills/portfolio-digest/projects.json` (format mở rộng), AI_CONTEXT.

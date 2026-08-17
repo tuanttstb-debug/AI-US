@@ -25,6 +25,12 @@
       "name": "NOXH",
       "folder": "NOXH",
       "role": "Legal Knowledge Graph NOXH (sản phẩm)"
+    },
+    {
+      "id": "PRJ-SG",
+      "name": "Smart Guarantee",
+      "folder": "Smart Guarantee",
+      "role": "Số hoá phát hành & quản lý bảo lãnh"
     }
   ]
 }

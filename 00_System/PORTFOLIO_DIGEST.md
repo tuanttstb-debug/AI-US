@@ -2,7 +2,7 @@
 
 > ⚙️ **File tự sinh bởi `03_Skills/portfolio-digest/digest.js` — KHÔNG sửa tay.** Điểm vào & phần quy hoạch curated: `00_System/PORTFOLIO.md`.
 >
-> Sinh lúc: 2026-08-17T07:24:40.645Z · Nguồn: `AI_CONTEXT/SESSION_HANDOVER.md` + git mỗi repo (đọc-only).
+> Sinh lúc: 2026-08-17T08:35:04.306Z · Nguồn: `AI_CONTEXT/SESSION_HANDOVER.md` + git mỗi repo (đọc-only).
 
 ## Bảng nhanh
 
@@ -12,6 +12,7 @@
 | PRJ-AIUS · ai-usecase-platform | docs/v3.15.0-deployed | 2026-08-17 `e377098` @ docs: đổi thư mục ai_context/ -> AI_CONTEXT/ (chuẩn khung AI OS registry) | 12 file | Session: 2026-08-02 |
 | PRJ-LOG · Logistics-Dashboard | main | 2026-08-07 `ff8be68` feat(overhead): khoản CHƯA map vẫn phân loại Overhead (safety-net) + chốt baseline $45.061,40 | sạch | 2026-08-07 (CHỐT PHIÊN) — Tổng kết phiên (3 việc; chi tiết ở 3 block dưới) |
 | PRJ-NOXH · NOXH | main | 2026-08-17 `bf81743` @ docs(AI_CONTEXT): thêm PROJECT_STATE.md (chuẩn khung AI OS registry) | 1 file | 🔴 HANDOVER HIỆN TẠI (2026-07-31, phiên 3 — nối backend LIVE + push git) |
+| PRJ-SG · Smart Guarantee | main | 2026-08-17 `3f66e13` @ chore: khởi tạo dự án Smart Guarantee (khung AI_CONTEXT + CLAUDE.md) | sạch | Delta phiên (2026-08-17 — khởi tạo dự án) |
 
 ## Chi tiết delta mới nhất mỗi dự án
 
@@ -55,3 +56,14 @@
 - `QaService.answer` đúng shape (`vaiTro`/`noiDung`/`citations.nhan`/`canhBaoThieuCanCu`);
 - `StatsService` gộp `tong-quan` 4 call → 1 (kèm KPI); đồng bộ field `trichDan`/`dieuKhoanLienQuan`.
 - `SeedData.gs` (sinh từ `seed-data.js`) + `Setup.gs::setupSheets()` tạo 8 sheet + đổ seed (thay import
+
+### PRJ-SG — Smart Guarantee
+*Số hoá phát hành & quản lý bảo lãnh*
+
+**Delta phiên (2026-08-17 — khởi tạo dự án)**
+- **Việc xong:** Khởi tạo dự án qua skill AIOS `init-project`: `git init` (nhánh `main`), scaffold `AI_CONTEXT/` (OVERVIEW/STATE/TODO/HANDOVER/TECH_DEBT) + `CLAUDE.md` bootstrap; tạo **`DESIGN_SYSTEM.md` kế thừa UI/UX từ PRJ-SHTD** ("TPBank BIZ" — tím-first, card-driven, token-based, breakpoints 1440/1280/1024/768/480); điền OVERVIEW/STATE/TODO khởi điểm (đánh dấu [CHỜ XÁC NHẬN] các mục nghiệp vụ). Đăng ký AIOS registry (thẻ PRJ-SG, PORTFOLIO, INDEX, portfolio-digest).
+- **File đổi:** `AI_CONTEXT/*` (5 khung + DESIGN_SYSTEM), `CLAUDE.md`; (AIOS) thẻ + PORTFOLIO/INDEX/projects.json.
+- **Quyết định:** UI/UX **kế thừa SHTD**; nghiệp vụ tham chiếu `SYS-BLOL`; stack/phạm vi **chưa chốt** (để phiên 1).
+- **Blocker:** chưa có GitHub remote (chỉ local); phạm vi nghiệp vụ chưa xác nhận.
+- **Bước kế:** [TT] chốt phạm vi + stack + tạo remote (TODO_NEXT mục Cao); [CC] dựng scaffold FE theo `DESIGN_SYSTEM.md`.
+- **Rủi ro hồi quy:** không (dự án mới, chưa có code).

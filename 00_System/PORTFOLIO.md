@@ -14,6 +14,7 @@
 | [PRJ-AIUS](../04_Knowledge/projects/PRJ-AIUS.md) | ai-usecase-platform | Quản trị AI use-case (SPTD) | active | `ai-usecase-platform` | `AI_CONTEXT/` | ✅ đạt (nhánh docs/v3.15.0) |
 | [PRJ-LOG](../04_Knowledge/projects/PRJ-LOG.md) | Logistics-Dashboard | Báo cáo chi phí logistics (CEO) | active | `Logistics-Dashboard` | `AI_CONTEXT/` + `context/` | ✅ đạt (2 tầng cố ý) |
 | [PRJ-NOXH](../04_Knowledge/projects/PRJ-NOXH.md) | NOXH | Legal Knowledge Graph NOXH (sản phẩm) | active | `NOXH` | `AI_CONTEXT/` | ✅ đạt (ROADMAP≈TODO) |
+| [PRJ-SG](../04_Knowledge/projects/PRJ-SG.md) | Smart Guarantee | Số hoá phát hành & quản lý bảo lãnh | active | `Smart Guarantee` | `AI_CONTEXT/` | ✅ đạt |
 <!-- init-project:portfolio-active (script chèn dòng dự án mới NGAY TRÊN dòng này) -->
 
 **Chú giải chuẩn hoá:** ✅ đạt khung · ⚠ gap nhỏ additive · ⏸ hoãn (repo đang làm dở).
