@@ -3,6 +3,13 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## Delta phiên (2026-08-17 #3 — P2 dedup + P3 chuẩn hoá, Claude Code)
+- **Việc xong:** **P2 dedup** — [TT] loại **LG Dashboard** (bản cũ của Logistics-Dashboard) + **NOXH Hackathon** (bản dự thi, đã sản phẩm hoá thành NOXH) sang `D:\Workspace\Dự án lỗi`; registry archive 2 thẻ (`status: superseded`), PORTFOLIO/INDEX tách active 4 / đã loại 2. **P3 chuẩn hoá** sau khảo sát 3 repo còn lệch — điều chỉnh phạm vi đúng thực tế: (1) **LOG** `context/` là **kho tri thức 2 tầng CỐ Ý** (15 file, 10 tham chiếu chéo) → KHÔNG gộp, đánh dấu ✅; (2) **NOXH** thêm `AI_CONTEXT/PROJECT_STATE.md` (commit NOXH `bf81743`, chỉ add file mới, không đụng SESSION_HANDOVER user đang sửa) → ✅ đạt; (3) **AIUS** rename `ai_context`→`AI_CONTEXT` an toàn về code (grep 0 tham chiếu) nhưng **HOÃN** vì repo đang làm dở (nhánh `docs/v3.15.0`, 12 png dirty + `H2/`).
+- **File đổi (AIOS):** PORTFOLIO, INDEX, 4 thẻ PRJ (LGD/NOXHHACK archive, LOG/NOXH/AIUS tinh chỉnh), 3 file AI_CONTEXT. **File đổi (repo NOXH):** +`AI_CONTEXT/PROJECT_STATE.md`.
+- **Quyết định:** "chuẩn hoá" ≠ gộp cơ học — mở rộng khung hợp lệ (LOG 2 tầng, NOXH ROADMAP≈TODO) được chấp nhận. Chỉ đụng repo khác khi [TT] đồng ý từng lần.
+- **Blocker:** không. **Bước kế:** [TT] khi rảnh gom xong việc dở AIUS → [CC] đổi hoa thư mục `AI_CONTEXT` cho AIUS (việc P3 duy nhất còn lại). (tuỳ chọn) P4 skill "portfolio digest".
+- **Rủi ro hồi quy:** Không — AIOS chỉ thêm tài liệu; NOXH chỉ thêm 1 file mới (additive), không sửa code/logic.
+
 ## Delta phiên (2026-08-17 #2 — quy hoạch tri thức đa dự án: Registry Hub-and-Spoke, Claude Code)
 - **Việc xong:** Khảo sát `D:\Workspace\Production` (6 repo: SHTD-Dashboard, ai-usecase-platform, Logistics-Dashboard, LG Dashboard, NOXH, NOXH Hackathon) + AIOS. Phát hiện phân mảnh: tên thư mục context không thống nhất (`AI_CONTEXT/` vs `ai_context/`), bộ file mỗi repo tự phát minh, context rải rác, **không có tầng danh mục trung tâm**. Chốt mô hình **Hub-and-Spoke** (AskUserQuestion): context sống trong repo mỗi dự án; AIOS làm **Registry + Portfolio** (thẻ mỏng trỏ về, không copy → một nguồn sự thật). Dựng **khung trung tâm P1**.
 - **File mới (AIOS):** `00_System/PORTFOLIO.md` (bảng danh mục 6 dự án + quan hệ + việc chuẩn hoá treo); `04_Knowledge/projects/PRJ-{SHTD,AIUS,LOG,LGD,NOXH,NOXHHACK}.md` (6 thẻ); `00_System/templates/AI_CONTEXT_TEMPLATE/` (README + 5 file khung mẫu). **Sửa:** `02_Rules/naming-convention.md` (+ID `PRJ-` + mục thẻ dự án/registry), `00_System/INDEX.md` (+mục Project + trỏ PORTFOLIO).

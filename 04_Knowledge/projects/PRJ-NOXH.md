@@ -28,4 +28,4 @@ Static + Google Apps Script + Google Sheets + Gemini.
 
 ## Chuẩn hoá
 - ✅ Thư mục `AI_CONTEXT/` đúng chuẩn.
-- ⚠ Khung tối thiểu: có OVERVIEW/SESSION_HANDOVER/TECH_DEBT; **dùng `ROADMAP.md` thay `TODO_NEXT.md`** (biến thể chấp nhận được) và **chưa có `PROJECT_STATE.md`**. Bổ sung `PROJECT_STATE.md` khi có phiên chạm repo (additive, rủi ro thấp).
+- ✅ Khung tối thiểu đủ (2026-08-17): OVERVIEW/SESSION_HANDOVER/TECH_DEBT + **`PROJECT_STATE.md` đã thêm** (commit NOXH `bf81743`). Dùng `ROADMAP.md` thay `TODO_NEXT.md` — biến thể chấp nhận được.

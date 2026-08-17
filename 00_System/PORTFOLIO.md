@@ -11,7 +11,7 @@
 | [PRJ-SHTD](../04_Knowledge/projects/PRJ-SHTD.md) | SHTD-Dashboard | Hệ tác nghiệp Khối KHDN (AIOS đọc từ đây) | active | `SHTD-Dashboard` | `AI_CONTEXT/` | ✅ đạt |
 | [PRJ-AIUS](../04_Knowledge/projects/PRJ-AIUS.md) | ai-usecase-platform | Quản trị AI use-case (SPTD) | active | `ai-usecase-platform` | `ai_context/` | ⏸ đổi hoa (repo đang làm dở) |
 | [PRJ-LOG](../04_Knowledge/projects/PRJ-LOG.md) | Logistics-Dashboard | Báo cáo chi phí logistics (CEO) | active | `Logistics-Dashboard` | `AI_CONTEXT/` + `context/` | ✅ đạt (2 tầng cố ý) |
-| [PRJ-NOXH](../04_Knowledge/projects/PRJ-NOXH.md) | NOXH | Legal Knowledge Graph NOXH (sản phẩm) | active | `NOXH` | `AI_CONTEXT/` | ⚠ +PROJECT_STATE (ROADMAP≈TODO) |
+| [PRJ-NOXH](../04_Knowledge/projects/PRJ-NOXH.md) | NOXH | Legal Knowledge Graph NOXH (sản phẩm) | active | `NOXH` | `AI_CONTEXT/` | ✅ đạt (ROADMAP≈TODO) |
 
 **Chú giải chuẩn hoá:** ✅ đạt khung · ⚠ gap nhỏ additive · ⏸ hoãn (repo đang làm dở).
 
@@ -30,8 +30,8 @@
 > P2 dedup: ✅ XONG (2026-08-17) — [TT] loại LG Dashboard & NOXH Hackathon sang `Dự án lỗi`.
 > Khảo sát P3 (2026-08-17) đã điều chỉnh phạm vi: LOG là 2 tầng **cố ý** (không gộp); NOXH dùng ROADMAP≈TODO (chỉ thiếu STATE); AIUS đang làm dở.
 
-- **PRJ-AIUS** — đổi `ai_context/`→`AI_CONTEXT/` (an toàn về code). **Hoãn** tới khi [TT] gom xong việc dở trên nhánh `docs/v3.15.0-deployed` (12 png dirty + `H2/`), tránh trộn commit.
-- **PRJ-NOXH** — thêm `AI_CONTEXT/PROJECT_STATE.md` (additive, rủi ro thấp) khi có phiên chạm repo.
+- **PRJ-AIUS** — đổi `ai_context/`→`AI_CONTEXT/` (an toàn về code). **Hoãn** tới khi [TT] gom xong việc dở trên nhánh `docs/v3.15.0-deployed` (12 png dirty + `H2/`), tránh trộn commit. **(việc P3 duy nhất còn lại)**
+- **PRJ-NOXH** — ✅ XONG (2026-08-17): thêm `AI_CONTEXT/PROJECT_STATE.md` (commit NOXH `bf81743`).
 - **PRJ-LOG / PRJ-SHTD** — ✅ đạt, không cần làm.
 - **P4 (tuỳ chọn):** skill AIOS gom "portfolio digest" — đọc delta mới nhất `SESSION_HANDOVER` từng repo → cập nhật bảng này tự động.
 
