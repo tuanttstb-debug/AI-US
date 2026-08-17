@@ -30,6 +30,10 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## ▣ CHỐT PHIÊN (2026-08-17, Claude Code)
+**Cả phiên (8 commit `dd1b000`→`31a3c29`):** (1) xác nhận đổi tên folder `AI-US`→`AIOS` không vỡ (code path tương đối); (2) **TD-WR-02** giải quyết — `aggregate.js` map cột theo header-name; (3) **quy hoạch tri thức đa dự án** trọn 4 pha — AIOS nay là **registry Hub-and-Spoke** cho **4 dự án active** (PRJ-SHTD/AIUS/LOG/NOXH, đều `AI_CONTEXT/` đồng nhất) + 2 đã loại (PRJ-LGD/NOXHHACK → `Dự án lỗi`); có `PORTFOLIO.md` (điểm vào), thẻ `PRJ-*`, template khung, ID `PRJ-`, và skill **`portfolio-digest`** tự gom trạng thái (`PORTFOLIO_DIGEST.md`). Tri thức dự án: **tập trung · thống nhất · đồng bộ**.
+- **Blocker:** không. **Regression risk:** thấp (tài liệu + code mới độc lập; aggregate giữ fallback; repo khác chỉ rename/thêm file).
+
 ## Delta (2026-08-17 #2, Claude Code)
 **Registry đa dự án — Hub-and-Spoke.** AIOS nay là **danh mục trung tâm** cho 6 repo ở `D:\Workspace\Production` (PRJ-SHTD/AIUS/LOG/LGD/NOXH/NOXHHACK). Context vẫn sống trong repo mỗi dự án (`AI_CONTEXT/`); AIOS giữ thẻ mỏng `04_Knowledge/projects/PRJ-*.md` + `00_System/PORTFOLIO.md` (điểm vào) + template khung chuẩn + ID `PRJ-`. Không copy nội dung. Chuẩn hoá từng repo (đổi hoa `AI_CONTEXT/`, gom context, dedup LG↔Logistics & NOXH↔Hackathon) làm dần — xem PORTFOLIO "việc treo". Không đụng repo Production.
 

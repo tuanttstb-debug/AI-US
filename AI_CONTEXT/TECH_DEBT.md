@@ -2,6 +2,11 @@
 
 Nợ kỹ thuật & hiện tượng lặp lại. Mới nhất trên cùng.
 
+> **Delta phiên 2026-08-17:** ✅ **TD-WR-02 GIẢI QUYẾT** (map cột `aggregate.js` theo header-name — xem mục dưới). Nợ mới nhẹ: **TD-PD-01** (portfolio-digest chạy tay + heuristic).
+
+## TD-PD-01 — portfolio-digest chạy thủ công + tách delta bằng heuristic (2026-08-17)
+Skill `03_Skills/portfolio-digest/digest.js` (Phase 4) sinh `PORTFOLIO_DIGEST.md` **chỉ khi chạy tay** `node digest.js` → bảng có thể cũ nếu quên chạy. Việc tách "delta mới nhất" dùng heuristic "heading cấp ≥2 đầu tiên + ≤6 dòng"; mỗi repo viết handover khác nhau nên đôi khi tách chưa gọn (vd AIUS chỉ ra "Session: 2026-08-02"). **Hướng:** (a) lên lịch/hook chạy định kỳ; (b) chuẩn hoá 1 dòng "delta mới nhất" đầu handover để tách chính xác. Ưu tiên thấp — bản digest chấp nhận được.
+
 ## TD-WR-06 — Trùng lặp logic dựng báo cáo giữa build_email.js và build_report.js (2026-08-16)
 Hai builder (`build_email.js` → HTML, `build_report.js` → .docx) tự dựng lại `areaBlock`/format (helper `fmtTy`, `short`, `shortT`, note theo `kind`) từ cùng `report_data.json` theo 2 cách khác nhau. Sửa nội dung/thứ tự 1 mảng phải sửa **2 nơi** → dễ lệch giữa 2 bản. **Hướng:** tách helper/format & "shape" mảng thành module chung (vd `report_shape.js`) để 2 builder dùng chung, mỗi builder chỉ lo phần render. Ưu tiên thấp–trung bình.
 

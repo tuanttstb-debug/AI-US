@@ -16,6 +16,12 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## ▣ CHỐT PHIÊN (2026-08-17, Claude Code) — ưu tiên cho phiên sau
+Phiên này XONG: rà đổi tên folder · TD-WR-02 · quy hoạch đa dự án P1–P4 (registry + dedup + chuẩn hoá 4/4 + digest). Ưu tiên tiếp:
+- [TT] Xử lý conflict/merge nhánh AIUS `docs/v3.15.0-deployed` → `main` (thay đổi rename `AI_CONTEXT/` đang nằm ở nhánh này).
+- [TT] Các việc cũ còn treo: nghiệm thu HTML email trên client thật (TD-WR-05); bổ sung data "Đào tạo AI"; chạy thử scheduled task weekly-report.
+- [CC] (tuỳ chọn) lên lịch chạy `portfolio-digest` định kỳ; gom ~20 `.md` root AIUS về `AI_CONTEXT/docs/`; snapshot lịch sử weekly-report (delta tuần-qua-tuần); gộp helper build_email/build_report (TD-WR-06).
+
 ## Delta (2026-08-17 #4, Claude Code) — AIUS xong + Phase 4
 - ✅ **P3 HOÀN TẤT:** AIUS đổi `ai_context`→`AI_CONTEXT` (commit AIUS `e377098`). Cả 4 repo active đồng nhất.
 - ✅ **P4 XONG:** skill `portfolio-digest` — `node 03_Skills/portfolio-digest/digest.js` → tự sinh `00_System/PORTFOLIO_DIGEST.md` (đọc-only, 4/4 repo OK).

@@ -3,6 +3,19 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## ▣ CHỐT PHIÊN (2026-08-17, Claude Code) — tổng hợp cả phiên
+> Chi tiết từng bước ở các delta #1–#4 bên dưới. Đây là bản cuộn tóm cấp phiên.
+
+- **Task completed:**
+  1. Rà soát sau đổi tên folder `D:\Workspace\AI-US`→`AIOS` (code path tương đối, không vỡ; verify chạy).
+  2. **TD-WR-02** — `aggregate.js` map cột theo **header-name** (`buildCols`+`*_SPEC`, fallback index + cảnh báo).
+  3. **Quy hoạch tri thức đa dự án** trọn 4 pha: **P1** registry Hub-and-Spoke (PORTFOLIO + 6 thẻ PRJ + template + naming) · **P2** dedup (loại LG Dashboard, NOXH Hackathon sang `Dự án lỗi`) · **P3** chuẩn hoá 4/4 repo active về `AI_CONTEXT/` (NOXH +PROJECT_STATE; AIUS đổi `ai_context`→`AI_CONTEXT`; LOG giữ 2 tầng cố ý; SHTD sẵn đạt) · **P4** skill `portfolio-digest` tự gom trạng thái.
+- **Files changed:** *AIOS (8 commit `dd1b000`→`31a3c29`):* `03_Skills/weekly-report/{aggregate.js,SKILL.md}`, `03_Skills/portfolio-digest/{digest.js,projects.json,SKILL.md}`, `00_System/{PORTFOLIO.md,PORTFOLIO_DIGEST.md,INDEX.md}`, `04_Knowledge/projects/PRJ-*.md` (6), `00_System/templates/AI_CONTEXT_TEMPLATE/` (7), `02_Rules/naming-convention.md`, 4 file `AI_CONTEXT`. *Repo NOXH:* +`AI_CONTEXT/PROJECT_STATE.md` (`bf81743`). *Repo AIUS:* rename `ai_context/`→`AI_CONTEXT/` + `TECH_DEBT.md` (`e377098`, nhánh `docs/v3.15.0-deployed`).
+- **Decision made:** (1) Mô hình **Hub-and-Spoke** — context sống trong repo, AIOS làm registry (không copy → 1 nguồn sự thật). (2) Khung tối thiểu = `AI_CONTEXT/` (hoa) + 5 file; mở rộng hợp lệ được chấp nhận (LOG 2 tầng, NOXH ROADMAP≈TODO). (3) "Chuẩn hoá" ≠ gộp cơ học. (4) TD-WR-02 giữ **fallback index** = hành vi cũ. (5) Digest ghi file **tự sinh riêng**, đọc-only repo Production.
+- **Blocker:** Không.
+- **Next step:** [TT] xử lý conflict/merge nhánh AIUS `docs/v3.15.0-deployed` vào `main` khi cần. [CC] (tuỳ chọn) lên lịch chạy `digest.js` định kỳ; gom ~20 `.md` root AIUS về `AI_CONTEXT/docs/` (ưu tiên thấp); snapshot lịch sử weekly-report → delta tuần-qua-tuần.
+- **Regression risk:** **Thấp.** AIOS toàn tài liệu + code mới độc lập. `aggregate.js` giữ fallback (verify output không đổi kỳ W34). AIUS chỉ rename R100 (giữ lịch sử) + sửa 2 con trỏ, không đụng việc dở của [TT]. NOXH chỉ +1 file. `portfolio-digest` đọc-only.
+
 ## Delta phiên (2026-08-17 #4 — AIUS chuẩn hoá xong + Phase 4 portfolio-digest, Claude Code)
 - **Việc xong:** (1) **AIUS** đổi `ai_context/`→`AI_CONTEXT/` (commit AIUS `e377098`, nhánh `docs/v3.15.0-deployed`): `git mv` 2 bước (Windows case-insensitive, rename thuần R100 giữ lịch sử) + sửa 2 con trỏ active trong `TECH_DEBT.md` gốc; **không đụng** 12 png `evd/` + `H2/` [TT] đang làm dở; bảng lịch sử trong handover giữ nguyên. → **P3 hoàn tất: cả 4 repo active dùng `AI_CONTEXT/` đồng nhất.** (2) **Phase 4** — dựng skill **`03_Skills/portfolio-digest/`** (`digest.js` + `projects.json` + `SKILL.md`): đọc-**only** delta `SESSION_HANDOVER` mới nhất + `git log/branch/status` từng repo → tự sinh `00_System/PORTFOLIO_DIGEST.md`. Chạy thử: 4/4 repo đọc OK.
 - **File mới (AIOS):** `03_Skills/portfolio-digest/{digest.js,projects.json,SKILL.md}`, `00_System/PORTFOLIO_DIGEST.md` (tự sinh). **Sửa:** PORTFOLIO (link digest + P4 xong), INDEX (+skill), thẻ PRJ-AIUS, 3 file AI_CONTEXT. **Repo AIUS:** rename thư mục + TECH_DEBT.md.
