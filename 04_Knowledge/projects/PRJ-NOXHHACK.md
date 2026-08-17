@@ -1,30 +1,27 @@
 ---
 id: PRJ-NOXHHACK
 type: project-card
-title: NOXH Hackathon — Bản dự thi AI Innovation Challenge 2026
-status: active
+title: NOXH Hackathon — Bản dự thi AI Challenge 2026 (ĐÃ LOẠI)
+status: superseded
+superseded_by: PRJ-NOXH
 owner: PER-TTT
-tags: [knowledge-graph, legal, noxh, hackathon, competition]
+tags: [knowledge-graph, legal, noxh, hackathon, archived]
 related: [PRJ-NOXH, PER-TTT]
 created: 2026-08-17
 updated: 2026-08-17
-version: 1
+version: 2
 source: https://github.com/tuanttstb-debug/NOXH-Hackathon.git
 ---
 
+> ⛔ **ĐÃ LOẠI (2026-08-17):** [TT] chốt → chuyển sang `D:\Workspace\Dự án lỗi`. Hướng phát triển tiếp tục ở **PRJ-NOXH** (sản phẩm hoá). Giữ thẻ để tra cứu lịch sử.
+
 ## Một dòng
-Bản dự thi **VIETNAM AI INNOVATION CHALLENGE 2026** cho đề "Legal knowledge graph — tracking regulations & public discourse", thu hẹp vào NOXH.
+Bản dự thi **VIETNAM AI INNOVATION CHALLENGE 2026** cho đề "Legal knowledge graph — tracking regulations & public discourse", thu hẹp vào NOXH. Tiền thân của PRJ-NOXH.
 
-## Con trỏ (nguồn sự thật nằm ở repo)
-- **Local:** `D:\Workspace\Production\NOXH Hackathon`
-- **Context:** `ai_context/` *(cần đổi → `AI_CONTEXT/`)* **+ `docs/` (đánh số 00–07) + `knowledge/`** — PROJECT_MEMORY, TONG_QUAN, KIEN_TRUC_AI_AGENT, KNOWLEDGE_GRAPH…
-- **Nhánh/last:** `main` · 2026-07-19 `Bàn giao phiên: cập nhật context`.
+## Con trỏ (đã archive)
+- **Local (đã chuyển):** `D:\Workspace\Dự án lỗi\NOXH Hackathon`
+- **Nhánh/last:** `main` · 2026-07-19.
+- **Stack:** `web/` + docs (00–07) + knowledge base.
 
-## Stack
-`web/` + docs + knowledge base.
-
-## Quan hệ
-- Tiền thân/song sinh của **PRJ-NOXH** (sản phẩm). [TT] chốt: giữ cả hai (thi vs sản phẩm) hay hợp nhất.
-
-## Mở
-- Context 3 chỗ (`ai_context/`, `docs/`, `knowledge/`) → xác định 1 nơi chuẩn khi chuẩn hoá.
+## Ghi chú kế thừa
+- Tri thức KG/agent trong `docs/` & `knowledge/` là nguồn tham khảo cho PRJ-NOXH nếu cần đối chiếu.

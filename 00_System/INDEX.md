@@ -12,9 +12,9 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 | PRJ-SHTD | SHTD-Dashboard (hệ tác nghiệp Khối KHDN) | active | `04_Knowledge/projects/PRJ-SHTD.md` |
 | PRJ-AIUS | ai-usecase-platform | active | `04_Knowledge/projects/PRJ-AIUS.md` |
 | PRJ-LOG | Logistics-Dashboard | active | `04_Knowledge/projects/PRJ-LOG.md` |
-| PRJ-LGD | LG Dashboard (nghi bản cũ) | draft | `04_Knowledge/projects/PRJ-LGD.md` |
 | PRJ-NOXH | NOXH.AI (sản phẩm) | active | `04_Knowledge/projects/PRJ-NOXH.md` |
-| PRJ-NOXHHACK | NOXH Hackathon (bản dự thi) | active | `04_Knowledge/projects/PRJ-NOXHHACK.md` |
+| PRJ-LGD | LG Dashboard | superseded → PRJ-LOG | `04_Knowledge/projects/PRJ-LGD.md` |
+| PRJ-NOXHHACK | NOXH Hackathon | superseded → PRJ-NOXH | `04_Knowledge/projects/PRJ-NOXHHACK.md` |
 
 ## Product / System (SYS)
 | ID | Tên | File |
