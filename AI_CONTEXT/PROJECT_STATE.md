@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-17, Claude Code)
+**Đổi tên folder local `D:\Workspace\AI-US` → `D:\Workspace\AIOS`.** Rà soát toàn bộ local + git: code JS dùng path tương đối nên **không vỡ**; git/worktree OK; không scheduled task nào trỏ path cũ. Đã verify `aggregate.js` chạy resolve đúng path mới. Remote GitHub giữ nguyên `AI-US` (tên repo, khác tên folder). Không sửa code/config — chỉ ghi nhận context. Không rủi ro hồi quy.
+
 ## Delta (2026-08-16, Claude Code)
 **Đổi định danh KHỐI + HTML email di động.** Đơn vị báo cáo đổi "Trung tâm SP&GP Tín dụng" → **"Khối Ngân hàng Doanh nghiệp"** (tiêu đề + code + tài liệu); nơi nhận giữ **Giám đốc Trung tâm**. weekly-report **v5**: thêm bản **HTML email responsive** (`build_email.js`) làm đầu ra chính (đọc trong email + điện thoại không vỡ: 1 cột, CSS inline, tiles tự xuống dòng, bảng hồ sơ → thẻ, chart bằng thanh CSS); giữ `.docx`. `.html` báo cáo gitignore (tên KH). Lưu ý: tài liệu cũ ghi "Khối Khách hàng Doanh nghiệp" — đã đổi theo tên [TT] đưa, chờ [TT] xác nhận không phải lỗi gõ. Commit + push `d5d8b0b`. Nợ mới: **TD-WR-04** (.docx EBUSY khi mở Word), **TD-WR-05** (chưa nghiệm thu email client thật), **TD-WR-06** (trùng logic build_email/build_report).
 

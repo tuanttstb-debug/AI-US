@@ -3,6 +3,12 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## Delta phiên (2026-08-17 — đổi tên folder local `AI-US`→`AIOS`, Claude Code)
+- **Việc xong:** [TT] đã đổi tên thư mục làm việc `D:\Workspace\AI-US` → **`D:\Workspace\AIOS`**. Rà soát toàn bộ **local + git**: (1) toàn bộ code JS dùng đường dẫn **tương đối** (`__dirname`/`path.resolve(__dirname,'..','..')`) → **không vỡ**; (2) git hoạt động bình thường, worktree không bind đường dẫn tuyệt đối; (3) **không** scheduled task Windows nào trỏ đường dẫn cũ; (4) `.claude/settings.local.json` chỉ chứa permissions, không có path. Đã **kiểm chứng chạy** `aggregate.js` → REPO resolve đúng `D:\Workspace\AIOS`, dựng lại `report_data.json` OK (kỳ W34: 272 active, 89 quá hạn).
+- **KHÔNG cần sửa:** remote GitHub vẫn là `github.com/tuanttstb-debug/**AI-US**` — đó là **tên repo trên GitHub** (không liên quan tên folder local), giữ nguyên. Các reference "AI-US" trong `CHANGELOG.md`/`PROJECT_STATE.md` là URL repo, đúng.
+- **Dấu vết định danh cũ (vô hại, không sửa file):** (a) project key Claude Code cũ `C:\Users\LENOVO\.claude\projects\D--Workspace-AI-US\` chứa transcript các phiên trước (giữ lại làm lịch sử); phiên mới key `D--Workspace-AIOS`. (b) memory dir rỗng ở cả 2 key → không có gì migrate.
+- **Blocker:** không. **Rủi ro hồi quy:** Không — chỉ đổi tên thư mục, code tương đối, đã verify chạy.
+
 ## Delta phiên (2026-08-16 — đổi định danh KHỐI + HTML email di động, Claude Code)
 - **Việc xong:** (1) **Đổi định danh** đơn vị báo cáo: "Trung tâm SP&GP Tín dụng" → **"Khối Ngân hàng Doanh nghiệp"** (tiêu đề báo cáo + code + tài liệu); **nơi nhận giữ "Giám đốc Trung tâm"** (theo chốt của [TT]). (2) **weekly-report v5**: thêm đầu ra **HTML email responsive** (`build_email.js`) làm **bản chính** — Giám đốc đọc thẳng trong email, xem trên điện thoại **không vỡ cấu trúc**; giữ `.docx` làm bản lưu trữ. Đã render thử ở khổ hẹp, bố cục 1 cột fluid OK.
 - **File đổi (commit CODE+DOCS):** **mới** `build_email.js`; sửa `aggregate.js` (scope + tên mảng 5 "của Khối" + banner), `build_report.js` (tiêu đề "KHỐI NGÂN HÀNG DOANH NGHIỆP", subtitle), `run.js` (+build_email), `SKILL.md` v5, `.gitignore` (+`*.html`), `00_System/INDEX.md`, `01_Soul/identity.md`, `04_Knowledge/people/PER-TTT.md`, 3 file AI_CONTEXT. Local-only mới: `RPT-2026-W33_bao-cao-tuan.html`.
@@ -51,6 +57,7 @@ Làm weekly-report chạy live với GAS — chi tiết trong `AI_CONTEXT/TODO_N
 4. Làm việc nhỏ → commit nhỏ → cập nhật 3 file AI_CONTEXT → `git push`.
 
 ## Gotchas
+- **Đường dẫn làm việc: `D:\Workspace\AIOS`** (đã đổi tên từ `AI-US`, 2026-08-17). Code dùng path tương đối nên không phụ thuộc tên folder. Remote GitHub vẫn tên `AI-US` (không đổi).
 - Commit từ sandbox Cowork có thể vướng `.git/index.lock` (ổ Windows). Xử lý: `del .git\index.lock` rồi commit. Commit từ Claude Code/máy không gặp.
 - Sandbox Cowork không POST được URL ngoài → tích hợp GAS live phải chạy ở Claude Code/máy.
 - Chạy `build_report.js`: cần Node; nếu thiếu module docx, đặt `NODE_PATH` tới node_modules global hoặc `npm i docx`.
