@@ -1,0 +1,19 @@
+# SESSION HANDOVER — <Dự án>
+
+**Từ phiên:** <ngày/công cụ> · **Cho:** phiên kế tiếp
+
+## Delta phiên (<YYYY-MM-DD>)
+- **Việc xong:** …
+- **File đổi:** …
+- **Quyết định:** …
+- **Blocker:** …
+- **Bước kế:** …
+- **Rủi ro hồi quy:** …
+
+## Cách bắt đầu một phiên (bắt buộc)
+1. `git pull`.
+2. Đọc `AI_CONTEXT/PROJECT_STATE.md` + `TODO_NEXT.md` + file này.
+3. Làm việc nhỏ → commit nhỏ → cập nhật context → `git push`.
+
+## Gotchas
+- <bẫy môi trường/thao tác đã gặp>

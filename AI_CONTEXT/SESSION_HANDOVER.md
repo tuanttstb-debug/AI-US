@@ -3,6 +3,14 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## Delta phiên (2026-08-17 #2 — quy hoạch tri thức đa dự án: Registry Hub-and-Spoke, Claude Code)
+- **Việc xong:** Khảo sát `D:\Workspace\Production` (6 repo: SHTD-Dashboard, ai-usecase-platform, Logistics-Dashboard, LG Dashboard, NOXH, NOXH Hackathon) + AIOS. Phát hiện phân mảnh: tên thư mục context không thống nhất (`AI_CONTEXT/` vs `ai_context/`), bộ file mỗi repo tự phát minh, context rải rác, **không có tầng danh mục trung tâm**. Chốt mô hình **Hub-and-Spoke** (AskUserQuestion): context sống trong repo mỗi dự án; AIOS làm **Registry + Portfolio** (thẻ mỏng trỏ về, không copy → một nguồn sự thật). Dựng **khung trung tâm P1**.
+- **File mới (AIOS):** `00_System/PORTFOLIO.md` (bảng danh mục 6 dự án + quan hệ + việc chuẩn hoá treo); `04_Knowledge/projects/PRJ-{SHTD,AIUS,LOG,LGD,NOXH,NOXHHACK}.md` (6 thẻ); `00_System/templates/AI_CONTEXT_TEMPLATE/` (README + 5 file khung mẫu). **Sửa:** `02_Rules/naming-convention.md` (+ID `PRJ-` + mục thẻ dự án/registry), `00_System/INDEX.md` (+mục Project + trỏ PORTFOLIO).
+- **Quyết định:** (1) Khung tối thiểu mọi repo = thư mục **`AI_CONTEXT/`** (in hoa) + 5 file: PROJECT_OVERVIEW/SESSION_HANDOVER/PROJECT_STATE/TODO_NEXT/TECH_DEBT; file chuyên biệt là mở rộng cùng chỗ. (2) AIOS **không** ôm bản copy; chỉ thẻ `PRJ-<MÃ>` + PORTFOLIO. (3) Chuẩn hoá từng repo làm **dần khi chạm repo**, không ép một lượt.
+- **Cần [TT] chốt (dedup):** PRJ-LGD (LG Dashboard) có phải bản cũ của PRJ-LOG (Logistics-Dashboard)? · PRJ-NOXHHACK vs PRJ-NOXH giữ cả hai (thi vs sản phẩm) hay hợp nhất? → archive/gộp.
+- **Blocker:** không. **Rủi ro hồi quy:** Không — chỉ thêm tài liệu trong AIOS, KHÔNG đụng 6 repo Production.
+- **Bước kế:** [TT] chốt dedup (P2); [CC] chuẩn hoá `ai_context`→`AI_CONTEXT` + gom context rải rác khi có phiên chạm PRJ-AIUS/LOG/NOXHHACK (P3); (tuỳ chọn) skill "portfolio digest" gom delta handover các repo → PORTFOLIO tự động (P4).
+
 ## Delta phiên (2026-08-17 — đổi tên folder local `AI-US`→`AIOS`, Claude Code)
 - **Việc xong:** [TT] đã đổi tên thư mục làm việc `D:\Workspace\AI-US` → **`D:\Workspace\AIOS`**. Rà soát toàn bộ **local + git**: (1) toàn bộ code JS dùng đường dẫn **tương đối** (`__dirname`/`path.resolve(__dirname,'..','..')`) → **không vỡ**; (2) git hoạt động bình thường, worktree không bind đường dẫn tuyệt đối; (3) **không** scheduled task Windows nào trỏ đường dẫn cũ; (4) `.claude/settings.local.json` chỉ chứa permissions, không có path. Đã **kiểm chứng chạy** `aggregate.js` → REPO resolve đúng `D:\Workspace\AIOS`, dựng lại `report_data.json` OK (kỳ W34: 272 active, 89 quá hạn).
 - **KHÔNG cần sửa:** remote GitHub vẫn là `github.com/tuanttstb-debug/**AI-US**` — đó là **tên repo trên GitHub** (không liên quan tên folder local), giữ nguyên. Các reference "AI-US" trong `CHANGELOG.md`/`PROJECT_STATE.md` là URL repo, đúng.

@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-17 #2, Claude Code)
+**Registry đa dự án — Hub-and-Spoke.** AIOS nay là **danh mục trung tâm** cho 6 repo ở `D:\Workspace\Production` (PRJ-SHTD/AIUS/LOG/LGD/NOXH/NOXHHACK). Context vẫn sống trong repo mỗi dự án (`AI_CONTEXT/`); AIOS giữ thẻ mỏng `04_Knowledge/projects/PRJ-*.md` + `00_System/PORTFOLIO.md` (điểm vào) + template khung chuẩn + ID `PRJ-`. Không copy nội dung. Chuẩn hoá từng repo (đổi hoa `AI_CONTEXT/`, gom context, dedup LG↔Logistics & NOXH↔Hackathon) làm dần — xem PORTFOLIO "việc treo". Không đụng repo Production.
+
 ## Delta (2026-08-17, Claude Code)
 **Đổi tên folder local `D:\Workspace\AI-US` → `D:\Workspace\AIOS`.** Rà soát toàn bộ local + git: code JS dùng path tương đối nên **không vỡ**; git/worktree OK; không scheduled task nào trỏ path cũ. Đã verify `aggregate.js` chạy resolve đúng path mới. Remote GitHub giữ nguyên `AI-US` (tên repo, khác tên folder). Không sửa code/config — chỉ ghi nhận context. Không rủi ro hồi quy.
 

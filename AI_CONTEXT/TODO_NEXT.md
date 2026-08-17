@@ -16,6 +16,12 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-17 #2, Claude Code) — Registry đa dự án
+Dựng khung trung tâm P1 (PORTFOLIO + 6 thẻ PRJ + template + naming). Ưu tiên tiếp:
+- [TT] **Chốt dedup (P2):** PRJ-LGD (LG Dashboard) vs PRJ-LOG (Logistics-Dashboard) — bản cũ? · PRJ-NOXHHACK vs PRJ-NOXH — giữ cả hai hay hợp nhất? → archive/gộp, cập nhật `status` thẻ.
+- [CC] **Chuẩn hoá repo (P3, làm khi chạm repo):** đổi `ai_context/`→`AI_CONTEXT/` (PRJ-AIUS/LGD/NOXHHACK); gom context rải rác (PRJ-AIUS root .md · PRJ-LOG 2 nơi · PRJ-NOXHHACK 3 nơi); bổ sung file khung thiếu (PRJ-NOXH: STATE/TODO).
+- [CC] **(P4 tuỳ chọn)** skill "portfolio digest": gom delta `SESSION_HANDOVER` mới nhất từng repo → cập nhật `PORTFOLIO.md` tự động (mô hình giống weekly-report).
+
 ## Delta (2026-08-16, Claude Code)
 Đổi định danh **Khối Ngân hàng Doanh nghiệp** (nơi nhận giữ Giám đốc Trung tâm) + weekly-report **v5** thêm **HTML email responsive** (bản chính, đọc di động không vỡ). Ưu tiên tiếp:
 - [TT] Gửi thử bản `.html` qua email + mở trên điện thoại thật (Gmail/Outlook mobile) để **nghiệm thu render trên client**.

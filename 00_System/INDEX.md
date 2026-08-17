@@ -2,6 +2,20 @@
 
 Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi thêm file mới.
 
+> 📁 **Danh mục dự án (Portfolio):** điểm vào trung tâm cho toàn bộ dự án coding → `00_System/PORTFOLIO.md`.
+
+## Project (PRJ) — Registry Hub-and-Spoke
+> Thẻ mỏng trỏ về `AI_CONTEXT/` của repo mỗi dự án (không copy nội dung). Bảng đầy đủ: `00_System/PORTFOLIO.md`.
+
+| ID | Dự án | Trạng thái | File |
+|---|---|---|---|
+| PRJ-SHTD | SHTD-Dashboard (hệ tác nghiệp Khối KHDN) | active | `04_Knowledge/projects/PRJ-SHTD.md` |
+| PRJ-AIUS | ai-usecase-platform | active | `04_Knowledge/projects/PRJ-AIUS.md` |
+| PRJ-LOG | Logistics-Dashboard | active | `04_Knowledge/projects/PRJ-LOG.md` |
+| PRJ-LGD | LG Dashboard (nghi bản cũ) | draft | `04_Knowledge/projects/PRJ-LGD.md` |
+| PRJ-NOXH | NOXH.AI (sản phẩm) | active | `04_Knowledge/projects/PRJ-NOXH.md` |
+| PRJ-NOXHHACK | NOXH Hackathon (bản dự thi) | active | `04_Knowledge/projects/PRJ-NOXHHACK.md` |
+
 ## Product / System (SYS)
 | ID | Tên | File |
 |---|---|---|
