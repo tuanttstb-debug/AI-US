@@ -6,7 +6,7 @@
 >
 > 🔄 **Trạng thái mới nhất mỗi dự án (tự sinh):** `00_System/PORTFOLIO_DIGEST.md` — chạy `node 03_Skills/portfolio-digest/digest.js` để làm mới (đọc handover + git mỗi repo).
 
-## Bảng danh mục (đang hoạt động — 4)
+## Bảng danh mục (đang hoạt động — 5)
 
 | ID | Dự án | Vai trò | Trạng thái | Local (`D:\Workspace\Production\…`) | Context | Chuẩn hoá |
 |---|---|---|---|---|---|---|
