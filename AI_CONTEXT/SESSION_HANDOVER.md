@@ -3,6 +3,13 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## Delta phiên (2026-08-17 #4 — AIUS chuẩn hoá xong + Phase 4 portfolio-digest, Claude Code)
+- **Việc xong:** (1) **AIUS** đổi `ai_context/`→`AI_CONTEXT/` (commit AIUS `e377098`, nhánh `docs/v3.15.0-deployed`): `git mv` 2 bước (Windows case-insensitive, rename thuần R100 giữ lịch sử) + sửa 2 con trỏ active trong `TECH_DEBT.md` gốc; **không đụng** 12 png `evd/` + `H2/` [TT] đang làm dở; bảng lịch sử trong handover giữ nguyên. → **P3 hoàn tất: cả 4 repo active dùng `AI_CONTEXT/` đồng nhất.** (2) **Phase 4** — dựng skill **`03_Skills/portfolio-digest/`** (`digest.js` + `projects.json` + `SKILL.md`): đọc-**only** delta `SESSION_HANDOVER` mới nhất + `git log/branch/status` từng repo → tự sinh `00_System/PORTFOLIO_DIGEST.md`. Chạy thử: 4/4 repo đọc OK.
+- **File mới (AIOS):** `03_Skills/portfolio-digest/{digest.js,projects.json,SKILL.md}`, `00_System/PORTFOLIO_DIGEST.md` (tự sinh). **Sửa:** PORTFOLIO (link digest + P4 xong), INDEX (+skill), thẻ PRJ-AIUS, 3 file AI_CONTEXT. **Repo AIUS:** rename thư mục + TECH_DEBT.md.
+- **Quyết định:** digest ghi ra **file riêng tự sinh** (`PORTFOLIO_DIGEST.md`), tách khỏi PORTFOLIO curated → không rủi ro clobber. Skill tuyệt đối đọc-only trên repo Production.
+- **Blocker:** không. **Rủi ro hồi quy:** Không — AIUS chỉ rename (R100) + sửa 2 con trỏ; digest read-only, chỉ ghi 1 file trong AIOS.
+- **Bước kế:** [TT] xử lý conflict AIUS nếu có (nhánh docs/v3.15.0 chưa merge main). (tuỳ chọn) lên lịch chạy digest định kỳ; gom ~20 .md root AIUS về `AI_CONTEXT/docs/` (ưu tiên thấp).
+
 ## Delta phiên (2026-08-17 #3 — P2 dedup + P3 chuẩn hoá, Claude Code)
 - **Việc xong:** **P2 dedup** — [TT] loại **LG Dashboard** (bản cũ của Logistics-Dashboard) + **NOXH Hackathon** (bản dự thi, đã sản phẩm hoá thành NOXH) sang `D:\Workspace\Dự án lỗi`; registry archive 2 thẻ (`status: superseded`), PORTFOLIO/INDEX tách active 4 / đã loại 2. **P3 chuẩn hoá** sau khảo sát 3 repo còn lệch — điều chỉnh phạm vi đúng thực tế: (1) **LOG** `context/` là **kho tri thức 2 tầng CỐ Ý** (15 file, 10 tham chiếu chéo) → KHÔNG gộp, đánh dấu ✅; (2) **NOXH** thêm `AI_CONTEXT/PROJECT_STATE.md` (commit NOXH `bf81743`, chỉ add file mới, không đụng SESSION_HANDOVER user đang sửa) → ✅ đạt; (3) **AIUS** rename `ai_context`→`AI_CONTEXT` an toàn về code (grep 0 tham chiếu) nhưng **HOÃN** vì repo đang làm dở (nhánh `docs/v3.15.0`, 12 png dirty + `H2/`).
 - **File đổi (AIOS):** PORTFOLIO, INDEX, 4 thẻ PRJ (LGD/NOXHHACK archive, LOG/NOXH/AIUS tinh chỉnh), 3 file AI_CONTEXT. **File đổi (repo NOXH):** +`AI_CONTEXT/PROJECT_STATE.md`.

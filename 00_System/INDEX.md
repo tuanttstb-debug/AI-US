@@ -31,6 +31,7 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 | Tên | Mục đích | File |
 |---|---|---|
 | weekly-report | Báo cáo tuần Khối (5 mảng) từ GAS live → HTML email (đọc di động) + .docx | `03_Skills/weekly-report/SKILL.md` |
+| portfolio-digest | Gom trạng thái mới nhất các dự án (handover+git) → `PORTFOLIO_DIGEST.md` | `03_Skills/portfolio-digest/SKILL.md` |
 | deadline-brief | Nâng chất cảnh báo hạn | `03_Skills/deadline-brief/SKILL.md` |
 | decision-brief | Brief hỗ trợ quyết định nhanh | `03_Skills/decision-brief/SKILL.md` |
 | intake-triage | Thu thập & định tuyến việc đột xuất | `03_Skills/intake-triage/SKILL.md` |

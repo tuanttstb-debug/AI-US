@@ -1,0 +1,10 @@
+{
+  "_note": "Registry nguồn cho portfolio-digest. Đường dẫn repo = <Workspace>/Production/<folder>. handover mặc định AI_CONTEXT/SESSION_HANDOVER.md (đồng nhất sau chuẩn hoá 2026-08-17).",
+  "productionDir": "Production",
+  "projects": [
+    { "id": "PRJ-SHTD", "name": "SHTD-Dashboard", "folder": "SHTD-Dashboard", "role": "Hệ tác nghiệp Khối KHDN (AIOS đọc từ đây)" },
+    { "id": "PRJ-AIUS", "name": "ai-usecase-platform", "folder": "ai-usecase-platform", "role": "Quản trị AI use-case (SPTD)" },
+    { "id": "PRJ-LOG", "name": "Logistics-Dashboard", "folder": "Logistics-Dashboard", "role": "Báo cáo chi phí logistics (CEO)" },
+    { "id": "PRJ-NOXH", "name": "NOXH", "folder": "NOXH", "role": "Legal Knowledge Graph NOXH (sản phẩm)" }
+  ]
+}

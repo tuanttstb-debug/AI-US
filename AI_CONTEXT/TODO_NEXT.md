@@ -16,6 +16,11 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-17 #4, Claude Code) — AIUS xong + Phase 4
+- ✅ **P3 HOÀN TẤT:** AIUS đổi `ai_context`→`AI_CONTEXT` (commit AIUS `e377098`). Cả 4 repo active đồng nhất.
+- ✅ **P4 XONG:** skill `portfolio-digest` — `node 03_Skills/portfolio-digest/digest.js` → tự sinh `00_System/PORTFOLIO_DIGEST.md` (đọc-only, 4/4 repo OK).
+- Ưu tiên tiếp: [TT] xử lý conflict/merge nhánh AIUS `docs/v3.15.0` nếu cần. (tuỳ chọn) lên lịch digest định kỳ; gom .md root AIUS (ưu tiên thấp).
+
 ## Delta (2026-08-17 #3, Claude Code) — P2 dedup + P3 chuẩn hoá
 - ✅ **P2 dedup XONG:** [TT] loại LG Dashboard + NOXH Hackathon sang `Dự án lỗi`; registry archive 2 thẻ. Danh mục active còn 4.
 - ✅ **P3 phần lớn XONG:** LOG (2 tầng cố ý, giữ) · NOXH (+PROJECT_STATE, commit `bf81743`) · SHTD (sẵn đạt).
