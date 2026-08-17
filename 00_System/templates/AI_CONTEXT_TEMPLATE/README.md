@@ -14,5 +14,8 @@ Sao thư mục này thành `AI_CONTEXT/` ở gốc mỗi repo dự án. **5 file
 
 ## Quy ước
 - Thư mục **in hoa `AI_CONTEXT/`** (thống nhất toàn danh mục).
-- Sau khi tạo, đăng ký dự án vào AIOS: thêm thẻ `04_Knowledge/projects/PRJ-<MÃ>.md` + 1 dòng trong `00_System/PORTFOLIO.md`.
+- Kèm **`CLAUDE.md`** ở gốc repo (mẫu `00_System/templates/CLAUDE.md`) — để Claude Code tự nạp chuẩn mỗi phiên.
 - Front-matter theo `02_Rules/naming-convention.md`.
+
+## Cách nhanh nhất
+Đừng copy tay — chạy **`03_Skills/init-project/`** để tự scaffold khung + `CLAUDE.md` **và** đăng ký vào registry (thẻ PRJ + PORTFOLIO + INDEX + projects.json) trong 1 lệnh.

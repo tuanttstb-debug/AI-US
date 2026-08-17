@@ -35,7 +35,7 @@ Tri thức của mỗi dự án coding **sống trong repo của nó** tại th�
 - **Danh mục** `00_System/PORTFOLIO.md` — bảng toàn bộ dự án (điểm vào duy nhất).
 - Đăng ký vào `00_System/INDEX.md` mục **Project (PRJ)**.
 
-Khi thêm dự án mới: (1) tạo `AI_CONTEXT/` trong repo từ template; (2) tạo thẻ `PRJ-<MÃ>.md`; (3) thêm 1 dòng vào PORTFOLIO + INDEX.
+Khi thêm dự án mới: chạy **`03_Skills/init-project/`** — 1 lệnh tự (1) scaffold `AI_CONTEXT/` + **`CLAUDE.md`** bootstrap trong repo; (2) tạo thẻ `PRJ-<MÃ>.md`; (3) chèn dòng PORTFOLIO + INDEX; (4) thêm mục `portfolio-digest/projects.json`. `CLAUDE.md` ở gốc repo là cơ chế để Claude Code **tự nạp** chuẩn (thứ tự đọc + quy tắc). Mẫu bootstrap: `00_System/templates/CLAUDE.md`.
 
 ## Ngày tháng
 Định dạng `YYYY-MM-DD` trong front-matter. (Dashboard lưu `DD-MMM-YY` — convert ở biên khi đọc/ghi.)

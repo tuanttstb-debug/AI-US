@@ -3,6 +3,14 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## Delta phiên (2026-08-17 #5 — cơ chế onboard dự án mới, Claude Code)
+- **Task completed:** Dựng cơ chế "khai báo" để phiên mới tự lấy đúng kiến trúc/quy trình: (1) **`00_System/templates/CLAUDE.md`** — bootstrap auto-load (thứ tự đọc `AI_CONTEXT/` + quy tắc commit/handover 6 trường/data-boundary); phát hiện **chưa repo nào có CLAUDE.md** → đây là mắt xích thiếu. (2) **Skill `03_Skills/init-project/`** (`init.js`+`SKILL.md`): 1 lệnh scaffold repo mới (`AI_CONTEXT/` 5 file + `CLAUDE.md`) **và** đăng ký AIOS (thẻ PRJ + chèn PORTFOLIO/INDEX tại anchor + `projects.json`). No-overwrite, không tự commit, có `--dry`. Đã test dry + thật (scratchpad) → dọn sạch.
+- **Files changed:** mới `00_System/templates/CLAUDE.md`, `03_Skills/init-project/{init.js,SKILL.md}`; sửa `00_System/PORTFOLIO.md` + `INDEX.md` (thêm **anchor** chèn dòng + row skill), `02_Rules/naming-convention.md`, `00_System/templates/AI_CONTEXT_TEMPLATE/README.md`, `03_Skills/portfolio-digest/projects.json` (format mở rộng), AI_CONTEXT.
+- **Decision made:** "Khai báo" 2 tầng — (repo) `CLAUDE.md` auto-load + `AI_CONTEXT/`; (AIOS) thẻ PRJ + PORTFOLIO/INDEX/projects.json. Tự động hoá bằng `init-project` để không sót bước. Script chèn dòng qua **anchor comment** (bền hơn parse bảng).
+- **Blocker:** không.
+- **Next step:** khi [TT] tạo dự án mới → `node 03_Skills/init-project/init.js --id PRJ-<MÃ> --name .. --folder .. --role ..` rồi điền OVERVIEW + commit 2 repo. (tuỳ chọn) backfill `CLAUDE.md` cho 4 repo hiện có.
+- **Regression risk:** không — toàn file mới + anchor/tài liệu trong AIOS; script no-overwrite, không tự commit, không đụng dự án đang chạy.
+
 ## ▣ CHỐT PHIÊN (2026-08-17, Claude Code) — tổng hợp cả phiên
 > Chi tiết từng bước ở các delta #1–#4 bên dưới. Đây là bản cuộn tóm cấp phiên.
 

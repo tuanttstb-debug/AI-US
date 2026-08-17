@@ -13,6 +13,7 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 | PRJ-AIUS | ai-usecase-platform | active | `04_Knowledge/projects/PRJ-AIUS.md` |
 | PRJ-LOG | Logistics-Dashboard | active | `04_Knowledge/projects/PRJ-LOG.md` |
 | PRJ-NOXH | NOXH.AI (sản phẩm) | active | `04_Knowledge/projects/PRJ-NOXH.md` |
+<!-- init-project:index-prj (script chèn dòng dự án mới NGAY TRÊN dòng này) -->
 | PRJ-LGD | LG Dashboard | superseded → PRJ-LOG | `04_Knowledge/projects/PRJ-LGD.md` |
 | PRJ-NOXHHACK | NOXH Hackathon | superseded → PRJ-NOXH | `04_Knowledge/projects/PRJ-NOXHHACK.md` |
 
@@ -32,6 +33,7 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 |---|---|---|
 | weekly-report | Báo cáo tuần Khối (5 mảng) từ GAS live → HTML email (đọc di động) + .docx | `03_Skills/weekly-report/SKILL.md` |
 | portfolio-digest | Gom trạng thái mới nhất các dự án (handover+git) → `PORTFOLIO_DIGEST.md` | `03_Skills/portfolio-digest/SKILL.md` |
+| init-project | Onboard dự án mới (scaffold AI_CONTEXT+CLAUDE.md + đăng ký registry) bằng 1 lệnh | `03_Skills/init-project/SKILL.md` |
 | deadline-brief | Nâng chất cảnh báo hạn | `03_Skills/deadline-brief/SKILL.md` |
 | decision-brief | Brief hỗ trợ quyết định nhanh | `03_Skills/decision-brief/SKILL.md` |
 | intake-triage | Thu thập & định tuyến việc đột xuất | `03_Skills/intake-triage/SKILL.md` |
