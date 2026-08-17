@@ -14,8 +14,8 @@ Hai builder (`build_email.js` → HTML, `build_report.js` → .docx) tự dựng
 ## TD-WR-03 — Report artifacts không có lịch sử trên Git (2026-08-14)
 `.docx` báo cáo + `report_data.json` chứa tên KH → gitignore, chỉ local. Hệ quả: không có lịch sử báo cáo các kỳ trên GitHub; máy khác phải dựng lại từ live. Nếu cần lưu vết → cân nhắc repo private riêng cho reports, hoặc bản redact tên KH để commit. Ưu tiên thấp.
 
-## TD-WR-02 — aggregate.js hardcode index cột theo schema (2026-08-14)
-`aggregate.js` map cột Task/Initiative/Case bằng CHỈ SỐ (C/I/K) theo schema Dashboard hiện tại (Task 25 cột, Initiative 15, Case 20). Nếu Dashboard chèn/đổi cột → parse lệch. **Nên map theo tên header** (đọc row 0) thay vì index cố định. Trung bình.
+## ✅ TD-WR-02 — aggregate.js hardcode index cột theo schema (2026-08-14 → GIẢI QUYẾT 2026-08-17)
+~~`aggregate.js` map cột Task/Initiative/Case bằng CHỈ SỐ (C/I/K) theo schema Dashboard hiện tại.~~ **Đã sửa (2026-08-17):** thêm `buildCols(header, spec, fallback, label)` dò index cột theo **regex trên header row** cho cả Task/Initiative/Case/Dev (`*_SPEC`), gán C/I/K/DV trong `main()` từ header cache. Không khớp → **fallback index mặc định** (`*_DEFAULT`, = bản cứng cũ nên không bao giờ tệ hơn) + `console.warn`. Verify: chạy lại ra đúng số kỳ W34, 0 cảnh báo; giả lập chèn cột giữa → resolver remap đúng (index cứng cũ lệch +1). Còn lại: cột rác `[25]` timestamp trong Task_Master vẫn bị bỏ qua tự nhiên (không map tới).
 
 ## TD-WR-01 — Classifier phân 5 mảng bằng heuristic (2026-08-14)
 Phân task vào 5 mảng bằng regex keyword + team + category (`classifyTask` trong `aggregate.js`), vì nguồn không có trường "mảng báo cáo" chuẩn. Rủi ro xếp nhầm task biên khi tên/category thay đổi. **Hướng trả nợ:** chốt taxonomy chuẩn tại Dashboard (thêm cột phân loại mảng, hoặc chuẩn hoá Category/Initiative) để phân loại xác định thay vì đoán. Đã rà tay kỳ W33; chấp nhận tạm. Trung bình.

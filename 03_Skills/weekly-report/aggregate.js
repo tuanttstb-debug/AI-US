@@ -19,15 +19,47 @@ const REPO = path.resolve(__dirname, '..', '..');
 const CACHE = path.join(REPO, '00_System', 'cache', 'gas_snapshot.json');
 const OUT = path.join(__dirname, 'report_data.json');
 
-// ── Cột Task_Master ──
-const C = { id: 0, tuanBC: 1, initId: 2, category: 3, teamMain: 4, teamCo: 5, loai: 6, name: 7,
+// ── Map cột theo TÊN HEADER (TD-WR-02) ──
+// Chống vỡ khi Dashboard chèn/xoá/đổi thứ tự cột: mỗi cột dò theo regex trên header row.
+// Nếu không khớp → dùng index MẶC ĐỊNH bên dưới (không tệ hơn bản index cứng cũ) + cảnh báo.
+// C/I/K/DV được gán trong main() từ header row của cache; giữ `let` để các hàm đọc qua closure.
+const C_DEFAULT = { id: 0, tuanBC: 1, initId: 2, category: 3, teamMain: 4, teamCo: 5, loai: 6, name: 7,
   picAcc: 8, picResp: 9, picSup: 10, start: 11, deadline: 12, pct: 13, status: 14, milestone: 15,
   ketQua: 16, keHoach: 17, vuongMac: 18, canBLD: 19, noiDungBLD: 20, crossTeam: 21, highlight: 22, ykienBLD: 23, rag: 24 };
-// ── Cột Initiative_Master ──
-const I = { id: 0, name: 1, cat: 2, acc: 3, start: 4, deadline: 5, pct: 6, msTrack: 7, msDeadline: 8, status: 9, type: 14 };
-// ── Cột Case_Pipeline ──
-const K = { id: 0, tuanBC: 1, team: 2, pic: 3, dvkd: 4, khach: 5, loaiHinh: 6, complexity: 7, phuongAn: 8,
+const I_DEFAULT = { id: 0, name: 1, cat: 2, acc: 3, start: 4, deadline: 5, pct: 6, msTrack: 7, msDeadline: 8, status: 9, type: 14 };
+const K_DEFAULT = { id: 0, tuanBC: 1, team: 2, pic: 3, dvkd: 4, khach: 5, loaiHinh: 6, complexity: 7, phuongAn: 8,
   giaTri: 9, stage: 10, vuong: 11, nextStep: 12, start: 13, deadline: 14, rag: 15, canBLD: 16, highlight: 17 };
+const DV_DEFAULT = { id: 0, noiDung: 1, ketQua: 2, pic: 3, phoiHop: 4, start: 5, end: 6, status: 7, pct: 8, note: 9, review: 10 };
+
+// Regex khớp header (đã lowercase + gom khoảng trắng). Thứ tự key không quan trọng; mỗi key dò độc lập.
+const C_SPEC = { id: /^id$/, tuanBC: /tuần bc/, initId: /initiative id/, category: /^category$/, teamMain: /team chính/,
+  teamCo: /team phối hợp/, loai: /^loại/, name: /deliverable/, picAcc: /pic accountable/, picResp: /pic responsible/,
+  picSup: /pic support/, start: /start date/, deadline: /^deadline$/, pct: /%\s*ht/, status: /trạng thái/,
+  milestone: /milestone hiện tại/, ketQua: /kết quả tuần/, keHoach: /kế hoạch tuần/, vuongMac: /vướng mắc/,
+  canBLD: /^cần blđ/, noiDungBLD: /nội dung cần blđ/, crossTeam: /cross-?team/, highlight: /highlight/, ykienBLD: /ý kiến blđ/, rag: /^rag$/ };
+const I_SPEC = { id: /^id$/, name: /tên initiative/, cat: /^category$/, acc: /accountable/, start: /start date/,
+  deadline: /deadline.*target/, pct: /%\s*ht/, msTrack: /milestone đang track/, msDeadline: /deadline milestone/, status: /trạng thái/, type: /^type$/ };
+const K_SPEC = { id: /^id$/, tuanBC: /tuần bc/, team: /^team$/, pic: /^pic$/, dvkd: /đvkd/, khach: /khách hàng/,
+  loaiHinh: /loại hình/, complexity: /phức tạp/, phuongAn: /phương án/, giaTri: /giá trị/, stage: /^stage$/,
+  vuong: /vướng mắc/, nextStep: /next step/, start: /start date/, deadline: /^deadline$/, rag: /^rag$/, canBLD: /cần blđ/, highlight: /highlight/ };
+const DV_SPEC = { id: /^id$/, noiDung: /nội dung công việc/, ketQua: /kết quả mục tiêu|sản phẩm.*kết quả/, pic: /^pic$/,
+  phoiHop: /phối hợp|phụ thuộc/, start: /bắt đầu/, end: /kết thúc/, status: /trạng thái/, pct: /tỷ lệ hoàn thành/, note: /ghi chú/, review: /review cuối/ };
+
+// Dò index cột theo header-name; thiếu → fallback index mặc định + gom cảnh báo.
+function buildCols(header, spec, fallback, label) {
+  const H = (header || []).map((h) => String(h == null ? '' : h).toLowerCase().replace(/\s+/g, ' ').trim());
+  const cols = {}, missing = [];
+  for (const [key, re] of Object.entries(spec)) {
+    let idx = H.findIndex((h) => re.test(h));
+    if (idx < 0) { idx = fallback[key]; missing.push(key); }
+    cols[key] = idx;
+  }
+  if (missing.length) console.warn(`[aggregate] ${label}: header không khớp [${missing.join(', ')}] → dùng index mặc định (Dashboard đổi cột?).`);
+  return cols;
+}
+
+// Gán trong main() từ header row của cache. Mặc định = index cứng (an toàn nếu chạy trực tiếp trước khi gán).
+let C = C_DEFAULT, I = I_DEFAULT, K = K_DEFAULT;
 
 const norm = (s) => String(s == null ? '' : s).trim();
 const DONE_RE = /hoàn thành$|^hoàn thành|done|xong/i;
@@ -183,7 +215,7 @@ function caseSummary(cases) {
 }
 
 // ── Ưu tiên 2: Phát triển năng lực & bản thân (Dev_Plan) ──
-const DV = { id: 0, noiDung: 1, ketQua: 2, pic: 3, phoiHop: 4, start: 5, end: 6, status: 7, pct: 8, note: 9, review: 10 };
+let DV = DV_DEFAULT; // gán trong main() từ header row
 function devSummary(rows) {
   const active = rows.filter((r) => !isDone(r[DV.status]));
   const theme = (n) => /\bAI\b|genai|studio|prompt|chatgpt|gemini/i.test(n) ? 'AI/Công cụ số'
@@ -203,6 +235,11 @@ function devSummary(rows) {
 function main() {
   if (!fs.existsSync(CACHE)) { console.error('Chưa có cache. Chạy: node fetch_gas.js'); process.exit(1); }
   const snap = JSON.parse(fs.readFileSync(CACHE, 'utf8'));
+  // TD-WR-02: map cột theo header-name (fallback index mặc định nếu không khớp).
+  C = buildCols((snap.tasks || [])[0], C_SPEC, C_DEFAULT, 'Task_Master');
+  I = buildCols((snap.initiatives || [])[0], I_SPEC, I_DEFAULT, 'Initiative_Master');
+  K = buildCols((snap.cases || [])[0], K_SPEC, K_DEFAULT, 'Case_Pipeline');
+  DV = buildCols((snap.dev || [])[0], DV_SPEC, DV_DEFAULT, 'Dev_Plan');
   const tasks = (snap.tasks || []).slice(1);
   const cases = (snap.cases || []).slice(1);
   const inis = (snap.initiatives || []).slice(1);

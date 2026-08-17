@@ -34,7 +34,7 @@ Rút thời gian dựng báo cáo tuần Khối từ 2–3 giờ xuống dưới
 | File | Vai trò |
 |---|---|
 | `fetch_gas.js` | login → `batch-read` (tasks/initiatives/cases/issues/dev) → cache `00_System/cache/gas_snapshot.json` |
-| `aggregate.js` | phân 6 mảng (P1 core + P2 AI/Dev), **realHealth** theo hạn, khối điều hành (cần BLĐ/quá hạn/thắng lợi/milestone) → `report_data.json` |
+| `aggregate.js` | phân 6 mảng (P1 core + P2 AI/Dev), **realHealth** theo hạn, khối điều hành (cần BLĐ/quá hạn/thắng lợi/milestone) → `report_data.json`. Map cột theo **tên header** (`buildCols` + `*_SPEC`, TD-WR-02) — tự lành khi Dashboard chèn/đổi cột; không khớp → fallback index mặc định + cảnh báo |
 | `make_charts.js` | 2 chart PNG (Node `@napi-rs/canvas`): bars khối lượng/mảng + donut Đúng hạn/Quá hạn — **chỉ cho bản .docx** |
 | `build_email.js` | **bản chính** — dựng `HTML email` responsive từ `report_data.json` → `RPT-YYYY-Wnn_bao-cao-tuan.html` (1 cột, CSS inline, tiles tự xuống dòng, bảng hồ sơ → thẻ, chart bằng thanh CSS — mobile không chặn ảnh) |
 | `build_report.js` | dựng `.docx` (bản lưu trữ/đính kèm) từ `report_data.json` → `RPT-YYYY-Wnn_bao-cao-tuan.docx` |
