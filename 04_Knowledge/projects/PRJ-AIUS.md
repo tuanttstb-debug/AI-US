@@ -27,6 +27,6 @@ FE tĩnh (nhiều .html: dashboard/leaderboard/login/manager-review) + Google Ap
 - Cùng chủ đề **quản trị AI** với AIOS → ứng viên chia sẻ chuẩn/tri thức AI governance.
 
 ## Chuẩn hoá
-- ⚠ **Đổi tên thư mục** `ai_context/` → `AI_CONTEXT/`. An toàn về code (grep: **không nơi nào tham chiếu** `ai_context`), nhưng lưu ý rename chỉ-khác-hoa trên Windows (case-insensitive) cần làm qua `git mv` 2 bước.
-- ⏸ **Đang làm dở:** repo ở nhánh `docs/v3.15.0-deployed` (không phải main), 12 file ảnh `evd/weekly-update/*.png` dirty + `H2/` chưa track → **hoãn** chuẩn hoá tới khi [TT] gom xong việc dở, tránh trộn commit.
-- (tuỳ chọn, không bắt buộc) ~20 file .md ở root (DESIGN_SYSTEM, MODULE_DEPENDENCY, AI_GOVERNANCE_ARCHITECTURE…) có thể gom về `AI_CONTEXT/docs/`; đây là tài liệu kỹ thuật của sản phẩm, không thuộc khung tối thiểu → ưu tiên thấp.
+- ✅ **Đổi tên thư mục `ai_context/` → `AI_CONTEXT/`** XONG (2026-08-17, commit AIUS `e377098` trên nhánh `docs/v3.15.0-deployed`). `git mv` 2 bước (rename thuần R100, giữ lịch sử); cập nhật 2 con trỏ active trong `TECH_DEBT.md` gốc; không đụng 12 png `evd/` + `H2/` đang làm dở. Bảng lịch sử trong `SESSION_HANDOVER.md` giữ nguyên (ghi nhận quá khứ).
+- **Lưu ý nhánh:** thay đổi nằm trên `docs/v3.15.0-deployed` (nhánh [TT] đang làm), chưa merge `main`.
+- (tuỳ chọn, ưu tiên thấp) ~20 file .md ở root (DESIGN_SYSTEM, MODULE_DEPENDENCY, AI_GOVERNANCE_ARCHITECTURE…) có thể gom về `AI_CONTEXT/docs/`; là tài liệu kỹ thuật sản phẩm, không thuộc khung tối thiểu.
