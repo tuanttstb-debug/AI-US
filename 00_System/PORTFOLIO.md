@@ -9,11 +9,11 @@
 | ID | Dự án | Vai trò | Trạng thái | Local (`D:\Workspace\Production\…`) | Context | Chuẩn hoá |
 |---|---|---|---|---|---|---|
 | [PRJ-SHTD](../04_Knowledge/projects/PRJ-SHTD.md) | SHTD-Dashboard | Hệ tác nghiệp Khối KHDN (AIOS đọc từ đây) | active | `SHTD-Dashboard` | `AI_CONTEXT/` | ✅ đạt |
-| [PRJ-AIUS](../04_Knowledge/projects/PRJ-AIUS.md) | ai-usecase-platform | Quản trị AI use-case (SPTD) | active | `ai-usecase-platform` | `ai_context/` | ⚠ đổi hoa + gom root .md |
-| [PRJ-LOG](../04_Knowledge/projects/PRJ-LOG.md) | Logistics-Dashboard | Báo cáo chi phí logistics (CEO) | active | `Logistics-Dashboard` | `AI_CONTEXT/` + `context/` | ⚠ gom 2 nơi |
-| [PRJ-NOXH](../04_Knowledge/projects/PRJ-NOXH.md) | NOXH | Legal Knowledge Graph NOXH (sản phẩm) | active | `NOXH` | `AI_CONTEXT/` | ⚠ thiếu STATE/TODO |
+| [PRJ-AIUS](../04_Knowledge/projects/PRJ-AIUS.md) | ai-usecase-platform | Quản trị AI use-case (SPTD) | active | `ai-usecase-platform` | `ai_context/` | ⏸ đổi hoa (repo đang làm dở) |
+| [PRJ-LOG](../04_Knowledge/projects/PRJ-LOG.md) | Logistics-Dashboard | Báo cáo chi phí logistics (CEO) | active | `Logistics-Dashboard` | `AI_CONTEXT/` + `context/` | ✅ đạt (2 tầng cố ý) |
+| [PRJ-NOXH](../04_Knowledge/projects/PRJ-NOXH.md) | NOXH | Legal Knowledge Graph NOXH (sản phẩm) | active | `NOXH` | `AI_CONTEXT/` | ⚠ +PROJECT_STATE (ROADMAP≈TODO) |
 
-**Chú giải chuẩn hoá:** ✅ đạt khung · ⚠ cần chuẩn hoá (làm dần khi chạm repo).
+**Chú giải chuẩn hoá:** ✅ đạt khung · ⚠ gap nhỏ additive · ⏸ hoãn (repo đang làm dở).
 
 ## Đã loại — `D:\Workspace\Dự án lỗi` (2026-08-17)
 | ID | Dự án | Lý do | Thay thế bởi |
@@ -28,11 +28,11 @@
 
 ## Việc chuẩn hoá còn treo (P3)
 > P2 dedup: ✅ XONG (2026-08-17) — [TT] loại LG Dashboard & NOXH Hackathon sang `Dự án lỗi`.
+> Khảo sát P3 (2026-08-17) đã điều chỉnh phạm vi: LOG là 2 tầng **cố ý** (không gộp); NOXH dùng ROADMAP≈TODO (chỉ thiếu STATE); AIUS đang làm dở.
 
-- **P3 chuẩn hoá từng repo còn sống** (làm khi có phiên chạm repo đó):
-  - `ai_context/` → `AI_CONTEXT/`: **PRJ-AIUS**.
-  - Gom context rải rác: PRJ-AIUS (root .md), PRJ-LOG (`AI_CONTEXT/` + `context/`).
-  - Bổ sung file khung tối thiểu còn thiếu: PRJ-NOXH (PROJECT_STATE/TODO_NEXT).
+- **PRJ-AIUS** — đổi `ai_context/`→`AI_CONTEXT/` (an toàn về code). **Hoãn** tới khi [TT] gom xong việc dở trên nhánh `docs/v3.15.0-deployed` (12 png dirty + `H2/`), tránh trộn commit.
+- **PRJ-NOXH** — thêm `AI_CONTEXT/PROJECT_STATE.md` (additive, rủi ro thấp) khi có phiên chạm repo.
+- **PRJ-LOG / PRJ-SHTD** — ✅ đạt, không cần làm.
 - **P4 (tuỳ chọn):** skill AIOS gom "portfolio digest" — đọc delta mới nhất `SESSION_HANDOVER` từng repo → cập nhật bảng này tự động.
 
 ## Khung tối thiểu (mọi dự án)

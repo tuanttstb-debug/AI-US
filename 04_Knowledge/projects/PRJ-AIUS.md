@@ -26,6 +26,7 @@ FE tĩnh (nhiều .html: dashboard/leaderboard/login/manager-review) + Google Ap
 ## Quan hệ
 - Cùng chủ đề **quản trị AI** với AIOS → ứng viên chia sẻ chuẩn/tri thức AI governance.
 
-## Mở
-- **Context rải rác:** ~20 file .md ở root repo (DESIGN_SYSTEM, MODULE_DEPENDENCY, AI_GOVERNANCE_ARCHITECTURE…) chưa gom về `AI_CONTEXT/`.
-- 12 file thay đổi chưa commit; nhánh làm việc là `docs/v3.15.0-deployed` (không phải main).
+## Chuẩn hoá
+- ⚠ **Đổi tên thư mục** `ai_context/` → `AI_CONTEXT/`. An toàn về code (grep: **không nơi nào tham chiếu** `ai_context`), nhưng lưu ý rename chỉ-khác-hoa trên Windows (case-insensitive) cần làm qua `git mv` 2 bước.
+- ⏸ **Đang làm dở:** repo ở nhánh `docs/v3.15.0-deployed` (không phải main), 12 file ảnh `evd/weekly-update/*.png` dirty + `H2/` chưa track → **hoãn** chuẩn hoá tới khi [TT] gom xong việc dở, tránh trộn commit.
+- (tuỳ chọn, không bắt buộc) ~20 file .md ở root (DESIGN_SYSTEM, MODULE_DEPENDENCY, AI_GOVERNANCE_ARCHITECTURE…) có thể gom về `AI_CONTEXT/docs/`; đây là tài liệu kỹ thuật của sản phẩm, không thuộc khung tối thiểu → ưu tiên thấp.

@@ -24,7 +24,8 @@ source: https://github.com/tuanttstb-debug/NOXH.git
 Static + Google Apps Script + Google Sheets + Gemini.
 
 ## Quan hệ
-- **PRJ-NOXHHACK** là bản dự thi (Hackathon) — NOXH này là hướng **sản phẩm hoá**. Chờ [TT] xác nhận quan hệ tiền thân/kế thừa.
+- Sản phẩm hoá từ **PRJ-NOXHHACK** (bản dự thi, đã loại 2026-08-17).
 
-## Mở
-- Thiếu `PROJECT_STATE.md`/`TODO_NEXT.md` theo khung tối thiểu (dùng ROADMAP thay TODO) → cân nhắc bổ sung khi chuẩn hoá.
+## Chuẩn hoá
+- ✅ Thư mục `AI_CONTEXT/` đúng chuẩn.
+- ⚠ Khung tối thiểu: có OVERVIEW/SESSION_HANDOVER/TECH_DEBT; **dùng `ROADMAP.md` thay `TODO_NEXT.md`** (biến thể chấp nhận được) và **chưa có `PROJECT_STATE.md`**. Bổ sung `PROJECT_STATE.md` khi có phiên chạm repo (additive, rủi ro thấp).
