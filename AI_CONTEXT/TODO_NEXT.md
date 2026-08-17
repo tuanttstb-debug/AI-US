@@ -16,6 +16,12 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## ▣ CHỐT PHIÊN #2 (2026-08-17, Claude Code) — ưu tiên cho phiên sau
+Phiên này XONG: cơ chế **init-project** (onboard 1 lệnh + `CLAUDE.md` bootstrap) · onboard **PRJ-SG Smart Guarantee** (UI/UX kế thừa SHTD). Ưu tiên tiếp:
+- [TT] **Phiên 1 trên Smart Guarantee:** chốt phạm vi nghiệp vụ + stack (mục [CHỜ XÁC NHẬN] trong `Production/Smart Guarantee/AI_CONTEXT/PROJECT_OVERVIEW.md`); tạo GitHub remote `Smart-Guarantee` → `git remote add origin … && git push -u origin main`.
+- [CC] Dựng scaffold FE cho SG theo `DESIGN_SYSTEM.md` (copy `variables.css` + shell từ SHTD).
+- [CC] (tuỳ chọn) backfill `CLAUDE.md` cho 4 repo cũ (SHTD/AIUS/LOG/NOXH); lên lịch chạy `portfolio-digest` định kỳ.
+
 ## ▣ CHỐT PHIÊN (2026-08-17, Claude Code) — ưu tiên cho phiên sau
 Phiên này XONG: rà đổi tên folder · TD-WR-02 · quy hoạch đa dự án P1–P4 (registry + dedup + chuẩn hoá 4/4 + digest). Ưu tiên tiếp:
 - [TT] Xử lý conflict/merge nhánh AIUS `docs/v3.15.0-deployed` → `main` (thay đổi rename `AI_CONTEXT/` đang nằm ở nhánh này).

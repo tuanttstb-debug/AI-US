@@ -3,6 +3,16 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## ▣ CHỐT PHIÊN #2 (2026-08-17, Claude Code) — cơ chế onboard + dự án mới
+> Nối tiếp CHỐT PHIÊN #1 (bên dưới). Chi tiết từng bước: delta #5–#6.
+
+- **Task completed:** (1) **Cơ chế onboard dự án mới** — `00_System/templates/CLAUDE.md` (bootstrap auto-load, mắt xích còn thiếu) + skill **`03_Skills/init-project/`** (1 lệnh: scaffold repo `AI_CONTEXT/`+`CLAUDE.md` **và** đăng ký AIOS qua anchor; no-overwrite, không tự commit, có `--dry`). (2) **Onboard dự án thật đầu tiên — Smart Guarantee** (`PRJ-SG`): `git init`, khung context đầy đủ, **`DESIGN_SYSTEM.md` kế thừa UI/UX SHTD** (tím `#7B2CBF`, breakpoints 1440/1280/1024/768/480), đăng ký registry; digest 5/5 repo.
+- **Files changed:** *AIOS (commit `84cd110`→`a97c165`):* `00_System/templates/{CLAUDE.md,AI_CONTEXT_TEMPLATE/README.md}`, `03_Skills/init-project/{init.js,SKILL.md}`, `00_System/{PORTFOLIO.md,INDEX.md,PORTFOLIO_DIGEST.md}` (+anchor), `02_Rules/naming-convention.md`, `03_Skills/portfolio-digest/projects.json`, `04_Knowledge/projects/PRJ-SG.md`, AI_CONTEXT. *Repo SG (`3f66e13`, local):* `AI_CONTEXT/*` (6) + `CLAUDE.md`.
+- **Decision made:** "Khai báo" dự án = 2 tầng (repo: `CLAUDE.md`+`AI_CONTEXT/`; AIOS: thẻ PRJ+PORTFOLIO/INDEX/projects.json), tự động hoá bằng `init-project`; chèn dòng qua **anchor comment**. SG kế thừa UI/UX SHTD; nghiệp vụ tham chiếu `SYS-BLOL`; **stack/phạm vi SG để phiên 1 chốt** (không bịa).
+- **Blocker:** repo SG **chưa có GitHub remote** (mới local); phạm vi nghiệp vụ SG [CHỜ XÁC NHẬN].
+- **Next step:** [TT] bắt đầu **phiên 1 trên Smart Guarantee** (chốt phạm vi/stack, tạo remote); [CC] scaffold FE theo DESIGN_SYSTEM. (tuỳ chọn) backfill `CLAUDE.md` cho 4 repo cũ.
+- **Regression risk:** không — toàn file/skill mới độc lập trong AIOS; `init-project` no-overwrite + không tự commit; SG là dự án mới chưa có code.
+
 ## Delta phiên (2026-08-17 #6 — onboard dự án PRJ-SG Smart Guarantee, Claude Code)
 - **Task completed:** Onboard dự án mới **Smart Guarantee** (`D:\Workspace\Production\Smart Guarantee`) bằng skill `init-project` (lần dùng thật đầu tiên): `git init` (main) + scaffold `AI_CONTEXT/` + `CLAUDE.md`; làm giàu OVERVIEW/STATE/TODO/HANDOVER với nội dung khởi điểm; tạo **`DESIGN_SYSTEM.md` kế thừa UI/UX SHTD** (token tím `#7B2CBF`, radius/shadow, kiến trúc CSS, breakpoints 1440/1280/1024/768/480 — theo yêu cầu [TT]). Đăng ký registry (thẻ PRJ-SG + PORTFOLIO + INDEX + projects.json). Commit đầu repo SG `3f66e13`. Digest cập nhật: 5/5 dự án.
 - **Files changed:** *repo SG:* `AI_CONTEXT/*` (6 file) + `CLAUDE.md`. *AIOS:* `04_Knowledge/projects/PRJ-SG.md`, `00_System/{PORTFOLIO.md,INDEX.md,PORTFOLIO_DIGEST.md}`, `03_Skills/portfolio-digest/projects.json`, AI_CONTEXT.

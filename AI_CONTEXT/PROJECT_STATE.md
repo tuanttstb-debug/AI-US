@@ -30,6 +30,10 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## ▣ CHỐT PHIÊN #2 (2026-08-17, Claude Code)
+**Cơ chế onboard + dự án mới (commit `84cd110`→`a97c165`).** AIOS nay có **luồng khai báo dự án 1 lệnh**: skill `03_Skills/init-project/` + `CLAUDE.md` bootstrap template → scaffold repo mới (`AI_CONTEXT/`+`CLAUDE.md`) và đăng ký registry (thẻ PRJ + PORTFOLIO/INDEX/projects.json) qua anchor. Đã onboard dự án thật đầu tiên **PRJ-SG (Smart Guarantee)** — UI/UX kế thừa SHTD, nghiệp vụ tham chiếu `SYS-BLOL`, chờ chốt phạm vi/stack phiên 1. **Danh mục active: 5** (SHTD/AIUS/LOG/NOXH/SG); digest gom 5/5. Skill AIOS: weekly-report · portfolio-digest · init-project.
+- **Blocker:** repo SG chưa có remote. **Regression risk:** không (file/skill mới độc lập; no-overwrite).
+
 ## ▣ CHỐT PHIÊN (2026-08-17, Claude Code)
 **Cả phiên (8 commit `dd1b000`→`31a3c29`):** (1) xác nhận đổi tên folder `AI-US`→`AIOS` không vỡ (code path tương đối); (2) **TD-WR-02** giải quyết — `aggregate.js` map cột theo header-name; (3) **quy hoạch tri thức đa dự án** trọn 4 pha — AIOS nay là **registry Hub-and-Spoke** cho **4 dự án active** (PRJ-SHTD/AIUS/LOG/NOXH, đều `AI_CONTEXT/` đồng nhất) + 2 đã loại (PRJ-LGD/NOXHHACK → `Dự án lỗi`); có `PORTFOLIO.md` (điểm vào), thẻ `PRJ-*`, template khung, ID `PRJ-`, và skill **`portfolio-digest`** tự gom trạng thái (`PORTFOLIO_DIGEST.md`). Tri thức dự án: **tập trung · thống nhất · đồng bộ**.
 - **Blocker:** không. **Regression risk:** thấp (tài liệu + code mới độc lập; aggregate giữ fallback; repo khác chỉ rename/thêm file).
