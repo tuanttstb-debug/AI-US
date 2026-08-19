@@ -16,6 +16,12 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-19, Claude Code) — tri thức TPBank dùng chung
+Đã tạo `SYS-TPBANK.md` + `REF-TPBANK-DELIVERY.md` (04_Knowledge), đăng ký INDEX + naming `REF-`. Ưu tiên tiếp:
+- [TT] Bổ sung **đầu mối IT/OP thực (PER-*)** cho SYS-TPBANK khi có; xác nhận các mục [OPEN] (auth API, môi trường, go-live authority) theo dự án cụ thể.
+- [CC] Khi vào **dự án TPBank mới** → chạy **pre-flight checklist** trong `REF-TPBANK-DELIVERY.md §8`; cập nhật SYS-TPBANK/REF khi phát hiện hệ thống/quy trình mới (nguồn sự thật, không chỉ ghi memory).
+- [CC] (tuỳ chọn) làm giàu SYS-GNOL/SYS-BLOL (hiện còn "chờ bổ sung") bằng tri thức đã có.
+
 ## ▣ CHỐT PHIÊN #2 (2026-08-17, Claude Code) — ưu tiên cho phiên sau
 Phiên này XONG: cơ chế **init-project** (onboard 1 lệnh + `CLAUDE.md` bootstrap) · onboard **PRJ-SG Smart Guarantee** (UI/UX kế thừa SHTD). Ưu tiên tiếp:
 - [TT] **Phiên 1 trên Smart Guarantee:** chốt phạm vi nghiệp vụ + stack (mục [CHỜ XÁC NHẬN] trong `Production/Smart Guarantee/AI_CONTEXT/PROJECT_OVERVIEW.md`); tạo GitHub remote `Smart-Guarantee` → `git remote add origin … && git push -u origin main`.

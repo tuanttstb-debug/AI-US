@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-19, Claude Code)
+**Tri thức TPBank tái dùng đa dự án.** Từ dự án tham khảo SCF + so sánh với PRJ-SG, AIOS nay có 2 tri thức dùng chung: `04_Knowledge/products/SYS-TPBANK.md` (landscape hệ thống/kiến trúc/phụ thuộc) và `04_Knowledge/references/REF-TPBANK-DELIVERY.md` (mô hình triển khai/governance/blocker/checklist). Thêm loại entity `REF-` vào naming-convention + mục Reference trong INDEX. Sẵn sàng cho dự án phối hợp phòng ban khác. **Ràng buộc:** không lưu nguyên tắc nghiệp vụ SCF — chỉ tri thức hệ thống/tổ chức.
+
 ## ▣ CHỐT PHIÊN #2 (2026-08-17, Claude Code)
 **Cơ chế onboard + dự án mới (commit `84cd110`→`a97c165`).** AIOS nay có **luồng khai báo dự án 1 lệnh**: skill `03_Skills/init-project/` + `CLAUDE.md` bootstrap template → scaffold repo mới (`AI_CONTEXT/`+`CLAUDE.md`) và đăng ký registry (thẻ PRJ + PORTFOLIO/INDEX/projects.json) qua anchor. Đã onboard dự án thật đầu tiên **PRJ-SG (Smart Guarantee)** — UI/UX kế thừa SHTD, nghiệp vụ tham chiếu `SYS-BLOL`, chờ chốt phạm vi/stack phiên 1. **Danh mục active: 5** (SHTD/AIUS/LOG/NOXH/SG); digest gom 5/5. Skill AIOS: weekly-report · portfolio-digest · init-project.
 - **Blocker:** repo SG chưa có remote. **Regression risk:** không (file/skill mới độc lập; no-overwrite).

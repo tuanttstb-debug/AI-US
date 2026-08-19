@@ -2,7 +2,11 @@
 
 Nợ kỹ thuật & hiện tượng lặp lại. Mới nhất trên cùng.
 
+> **Delta phiên 2026-08-19:** Không phát sinh nợ kỹ thuật mới (phiên thuần tài liệu/tri thức). Nợ tài liệu nhẹ: **TD-KB-01** — tri thức TPBank có mục **[OPEN]** chờ dữ liệu thực; SYS-GNOL/SYS-BLOL còn "chờ bổ sung".
 > **Delta phiên 2026-08-17:** ✅ **TD-WR-02 GIẢI QUYẾT** (map cột `aggregate.js` theo header-name). Nợ mới nhẹ: **TD-PD-01** (portfolio-digest chạy tay + heuristic) · **TD-IP-01** (init-project không tự tạo git/remote & không auto-commit — chủ ý an toàn, thao tác thủ công còn lại).
+
+## TD-KB-01 — Tri thức TPBank còn mục [OPEN] + SYS-GNOL/BLOL chưa đầy đủ (2026-08-19)
+`04_Knowledge/products/SYS-TPBANK.md` + `references/REF-TPBANK-DELIVERY.md` mới lập, còn nhiều **[OPEN]** chờ dữ liệu thực: đầu mối IT/OP (PER-*), cơ chế auth API, chiến lược môi trường/DR, go-live authority. Thẻ `SYS-GNOL`/`SYS-BLOL` vẫn phần lớn "chờ bổ sung" dù đã có tri thức nghiệp vụ dùng được. **Hướng:** làm giàu dần khi chạm dự án TPBank thật (dùng pre-flight checklist `REF-TPBANK-DELIVERY §8` để đóng [OPEN]); backfill SYS-GNOL/BLOL từ tri thức đã có. Ưu tiên thấp — không chặn việc.
 
 ## TD-IP-01 — init-project để lại git init/remote/commit cho thủ công (2026-08-17)
 Skill `03_Skills/init-project/` scaffold file + đăng ký registry nhưng **không** `git init` repo đích, **không** tạo GitHub remote, **không** tự commit (chủ ý: an toàn, người dùng review). Hệ quả: onboard xong vẫn cần vài thao tác tay (git init nếu chưa; tạo remote; commit 2 repo). VD PRJ-SG hiện chỉ local, chưa remote. **Hướng (tuỳ chọn):** cờ `--git-init`/`--gh-create` để tự lo phần git khi [TT] muốn. Ưu tiên thấp — thủ công hiện chấp nhận được.

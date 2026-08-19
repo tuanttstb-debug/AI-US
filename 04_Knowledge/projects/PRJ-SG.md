@@ -5,7 +5,7 @@ title: Smart Guarantee — Nền tảng AI xử lý & sinh thư bảo lãnh (PoC
 status: active
 owner: PER-TTT
 tags: [guarantee, bao-lanh, ai, dify, document-understanding, poc, gas]
-related: [SYS-BLOL, PRJ-SHTD, PER-TTT]
+related: [SYS-BLOL, SYS-TPBANK, REF-TPBANK-DELIVERY, PRJ-SHTD, PER-TTT]
 created: 2026-08-17
 updated: 2026-08-17
 version: 4

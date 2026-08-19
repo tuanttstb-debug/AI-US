@@ -14,6 +14,7 @@ updated: 2026-08-03
 | Meeting | `MTG-YYYYMMDD-nn` | MTG-20260803-01 |
 | Report | `RPT-YYYY-Wnn` | RPT-2026-W32 |
 | Product/System | `SYS-<MÃ>` | SYS-GNOL |
+| Reference (tri thức tham chiếu) | `REF-<MÃ>` | REF-TPBANK-DELIVERY |
 | Person | `PER-<VIẾT-TẮT>` | PER-TTT |
 | Project (thẻ registry) | `PRJ-<MÃ>` | PRJ-SHTD |
 

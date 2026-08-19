@@ -21,8 +21,14 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 ## Product / System (SYS)
 | ID | Tên | File |
 |---|---|---|
+| SYS-TPBANK | TPBank — landscape hệ thống, kiến trúc & phụ thuộc tích hợp | `04_Knowledge/products/SYS-TPBANK.md` |
 | SYS-GNOL | Giải ngân online | `04_Knowledge/products/SYS-GNOL.md` |
 | SYS-BLOL | Bảo lãnh online | `04_Knowledge/products/SYS-BLOL.md` |
+
+## Reference (REF)
+| ID | Tên | File |
+|---|---|---|
+| REF-TPBANK-DELIVERY | TPBank — mô hình triển khai dự án, governance & bài học | `04_Knowledge/references/REF-TPBANK-DELIVERY.md` |
 
 ## Person (PER)
 | ID | Tên | File |

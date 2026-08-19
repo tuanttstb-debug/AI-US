@@ -3,6 +3,13 @@
 **Từ phiên:** 2026-08-03 (Cowork — Sprint 1→5)
 **Cho:** phiên/công cụ kế tiếp (Cowork hoặc Claude Code)
 
+## Delta phiên (2026-08-19 — tri thức TPBank tái dùng đa dự án, Claude Code)
+- **Task completed:** Scan dự án **tham khảo SCF** (`D:\Workspace\SCF`) → rút concept/kiến trúc/vai trò hệ thống/vướng mắc; **so sánh SCF ↔ PRJ-SG** rút bài học (heavy self-build vs lean PoC). Chốt lại thành **tri thức TPBank dùng chung**: tạo mới **`04_Knowledge/products/SYS-TPBANK.md`** (landscape hệ thống + pattern kiến trúc + phụ thuộc/SPOF + chữ ký số/ECM + data-boundary) và **`04_Knowledge/references/REF-TPBANK-DELIVERY.md`** (org actors, thẩm quyền, vòng đời triển khai, maker-checker BPM, blocker phổ biến, 2 archetype, pre-flight checklist). Mục tiêu: sẵn sàng cho dự án phối hợp phòng ban khác, không chỉ SG.
+- **Files changed (AIOS):** mới `04_Knowledge/products/SYS-TPBANK.md`, `04_Knowledge/references/REF-TPBANK-DELIVERY.md`; sửa `00_System/INDEX.md` (+SYS-TPBANK, +mục **Reference (REF)**), `02_Rules/naming-convention.md` (+ID `REF-<MÃ>`), `04_Knowledge/projects/PRJ-SG.md` (`related` +SYS-TPBANK/REF-TPBANK-DELIVERY). Memory AIOS: `tpbank-system-landscape` + `scf-reference-project` (reference, trỏ canonical trong 04_Knowledge).
+- **Decision made:** (1) Tri thức hạ tầng/quy trình TPBank = **dùng chung**, tách khỏi thẻ dự án → đặt ở `04_Knowledge/{products,references}`. (2) **KHÔNG lưu nguyên tắc nghiệp vụ SCF** (theo yêu cầu [TT]) — chỉ lấy tri thức hệ thống/tổ chức, có ghi rõ ràng buộc trong cả doc lẫn memory. (3) Thêm loại entity **REF-** vào naming-convention.
+- **Blocker:** không. **Next step:** [TT] bổ sung đầu mối IT/OP thực (PER-*) cho SYS-TPBANK khi có; [CC] khi vào dự án TPBank mới → chạy pre-flight checklist trong REF-TPBANK-DELIVERY.
+- **Regression risk:** không — toàn file tri thức mới + đăng ký registry; không đụng code/skill/dự án đang chạy. Chưa commit (chờ [TT]).
+
 ## ▣ CHỐT PHIÊN #2 (2026-08-17, Claude Code) — cơ chế onboard + dự án mới
 > Nối tiếp CHỐT PHIÊN #1 (bên dưới). Chi tiết từng bước: delta #5–#6.
 
