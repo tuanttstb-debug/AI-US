@@ -16,6 +16,14 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-19 #2, Claude Code) — gửi báo cáo tuần qua email (SHTD)
+Feature XONG (code + test): action GAS `send-report` (SHTD) + `send_email.js`/`run.js --send` (AIOS). Còn để chạy thật:
+- [TT] **Redeploy GAS SHTD** — merge `backend/ReportEmailService.gs` + route `send-report` vào Apps Script đã deploy rồi redeploy (link không đổi). Trước redeploy `--send` báo `action không hợp lệ`.
+- [TT] **Điền Email `User_Master`** cho `CuongVM1` + các user `Teamlead` (nợ cũ S74 — feature phụ thuộc trực tiếp).
+- [TT] `node send_email.js --dry` soi To/Cc thật → `node run.js --send` chạy thử 1 kỳ.
+- [TT] Đổi lệnh scheduled task chiều thứ 6 sang `node run.js --send` (tự động gửi định kỳ).
+- [CC] (tuỳ chọn) đưa `REPORT_TO_USERNAME`/`REPORT_CC_ROLE` thành cấu hình sheet thay vì hardcode; ẩn tên KH bản email nếu [TT] muốn.
+
 ## Delta (2026-08-19, Claude Code) — tri thức TPBank dùng chung
 Đã tạo `SYS-TPBANK.md` + `REF-TPBANK-DELIVERY.md` (04_Knowledge), đăng ký INDEX + naming `REF-`. Ưu tiên tiếp:
 - [TT] Bổ sung **đầu mối IT/OP thực (PER-*)** cho SYS-TPBANK khi có; xác nhận các mục [OPEN] (auth API, môi trường, go-live authority) theo dự án cụ thể.

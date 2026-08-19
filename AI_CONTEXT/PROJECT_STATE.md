@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-19 #2, Claude Code)
+**Tính năng gửi báo cáo tuần qua email (SHTD).** weekly-report nay có đường **GỬI định kỳ**: AIOS dựng HTML (template đã duyệt) → POST action GAS `send-report` (SHTD backend) → `MailApp` gửi. To=`CuongVM1`, Cc=`Teamlead` active (dedup), phân giải server-side từ `User_Master`. `run.js --send` (opt-in) cho lịch thứ 6; `send_email.js --dry` soi người nhận. skill v6. **Chặn triển khai:** SHTD phải **redeploy GAS** + điền **Email User_Master**. Verify `verify_send_report.mjs` 7/7 (hàm GAS thật). Commits: SHTD `ce56c8c`, AIOS `fdac8d0`.
+
 ## Delta (2026-08-19, Claude Code)
 **Tri thức TPBank tái dùng đa dự án.** Từ dự án tham khảo SCF + so sánh với PRJ-SG, AIOS nay có 2 tri thức dùng chung: `04_Knowledge/products/SYS-TPBANK.md` (landscape hệ thống/kiến trúc/phụ thuộc) và `04_Knowledge/references/REF-TPBANK-DELIVERY.md` (mô hình triển khai/governance/blocker/checklist). Thêm loại entity `REF-` vào naming-convention + mục Reference trong INDEX. Sẵn sàng cho dự án phối hợp phòng ban khác. **Ràng buộc:** không lưu nguyên tắc nghiệp vụ SCF — chỉ tri thức hệ thống/tổ chức.
 
