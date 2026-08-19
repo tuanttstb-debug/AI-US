@@ -15,6 +15,7 @@
 | [PRJ-LOG](../04_Knowledge/projects/PRJ-LOG.md) | Logistics-Dashboard | Báo cáo chi phí logistics (CEO) | active | `Logistics-Dashboard` | `AI_CONTEXT/` + `context/` | ✅ đạt (2 tầng cố ý) |
 | [PRJ-NOXH](../04_Knowledge/projects/PRJ-NOXH.md) | NOXH | Legal Knowledge Graph NOXH (sản phẩm) | active | `NOXH` | `AI_CONTEXT/` | ✅ đạt (ROADMAP≈TODO) |
 | [PRJ-SG](../04_Knowledge/projects/PRJ-SG.md) | Smart Guarantee | PoC AI xử lý & sinh thư bảo lãnh (TPBank) | active | `Smart Guarantee` | `AI_CONTEXT/` | ✅ đạt |
+| [PRJ-BM](../04_Knowledge/projects/PRJ-BM.md) | BeneMatch | API xác minh tên pháp nhân bên thụ hưởng trước giải ngân (PoC/Demo TPBank) | active | `BeneMatch` | `AI_CONTEXT/` | ✅ đạt |
 <!-- init-project:portfolio-active (script chèn dòng dự án mới NGAY TRÊN dòng này) -->
 
 **Chú giải chuẩn hoá:** ✅ đạt khung · ⚠ gap nhỏ additive · ⏸ hoãn (repo đang làm dở).

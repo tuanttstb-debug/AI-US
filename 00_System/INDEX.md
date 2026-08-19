@@ -14,6 +14,7 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 | PRJ-LOG | Logistics-Dashboard | active | `04_Knowledge/projects/PRJ-LOG.md` |
 | PRJ-NOXH | NOXH.AI (sản phẩm) | active | `04_Knowledge/projects/PRJ-NOXH.md` |
 | PRJ-SG | Smart Guarantee | active | `04_Knowledge/projects/PRJ-SG.md` |
+| PRJ-BM | BeneMatch | active | `04_Knowledge/projects/PRJ-BM.md` |
 <!-- init-project:index-prj (script chèn dòng dự án mới NGAY TRÊN dòng này) -->
 | PRJ-LGD | LG Dashboard | superseded → PRJ-LOG | `04_Knowledge/projects/PRJ-LGD.md` |
 | PRJ-NOXHHACK | NOXH Hackathon | superseded → PRJ-NOXH | `04_Knowledge/projects/PRJ-NOXHHACK.md` |

@@ -31,6 +31,12 @@
       "name": "Smart Guarantee",
       "folder": "Smart Guarantee",
       "role": "PoC AI xử lý & sinh thư bảo lãnh (TPBank)"
+    },
+    {
+      "id": "PRJ-BM",
+      "name": "BeneMatch",
+      "folder": "BeneMatch",
+      "role": "API xác minh tên pháp nhân bên thụ hưởng trước giải ngân (PoC/Demo TPBank)"
     }
   ]
 }
