@@ -1,7 +1,8 @@
-// run.js — Orchestrator weekly-report: fetch (LIVE GAS) → aggregate (5 mảng) → charts → build .docx + HTML email.
+// run.js — Orchestrator weekly-report: fetch (LIVE GAS) → aggregate (5 mảng) → charts → build .docx + HTML email → (tùy chọn) GỬI email.
 // Dùng:
-//   node run.js              → chạy full pipeline, kỳ = tuần ISO hôm nay
+//   node run.js              → chạy full pipeline, kỳ = tuần ISO hôm nay (KHÔNG gửi email)
 //   node run.js --cache      → bỏ qua fetch, dùng cache sẵn có (00_System/cache/gas_snapshot.json)
+//   node run.js --send       → chạy pipeline RỒI gửi email báo cáo (To=CuongVM1, Cc=Teamlead) — dùng cho lịch thứ 6
 //   REPORT_WEEK=2026-W33 node run.js   → chốt kỳ báo cáo cụ thể
 const { execFileSync } = require('child_process');
 const path = require('path');
@@ -9,11 +10,13 @@ const D = __dirname;
 const run = (f) => { console.log(`\n▶ ${f}`); execFileSync(process.execPath, [path.join(D, f)], { stdio: 'inherit', env: process.env }); };
 
 const useCache = process.argv.includes('--cache');
+const doSend = process.argv.includes('--send');
 try {
   if (!useCache) run('fetch_gas.js'); else console.log('↻ --cache: dùng snapshot sẵn có');
   run('aggregate.js');
   run('build_email.js');   // HTML email responsive (bản đọc chính trên email/di động)
   run('build_report.js');  // .docx (bản lưu trữ/đính kèm)
+  if (doSend) run('send_email.js');   // gửi email báo cáo (To=CuongVM1, Cc=Teamlead) — CHỈ khi --send
   console.log('\n✅ Pipeline xong.');
 } catch (e) {
   console.error('\n❌ Pipeline lỗi ở bước trên. Xem log.');

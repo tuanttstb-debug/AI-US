@@ -38,6 +38,10 @@ Trừ `auth-login`, mọi action đều cần `token`. Luồng:
 
 > ⚠️ KHÔNG dùng connector Google Drive `read_file_content` để đọc spreadsheet này cho pipeline: nó làm phẳng & trộn lẫn các sheet, có thể cắt bớt file lớn (lossy). Dùng `batch-read`.
 
+## Action gửi báo cáo (weekly-report)
+- `send-report` `{ token, html, subject, dryRun? }` → `{ report:{ to, toName, cc:[], count, sent, warnings } }`. **Admin-only.** GAS tự phân giải người nhận từ `User_Master` (To=`CuongVM1`, Cc=`Role=Teamlead` active có email, dedup) rồi `MailApp.sendEmail`. `dryRun:true` → trả người nhận, **không gửi**.
+- Định nghĩa ở SHTD `backend/ReportEmailService.gs` + route `Code.gs`; **phải redeploy** GAS Web App mới có action (nếu không → `action không hợp lệ`).
+
 ## Nguyên tắc dùng
 - AI OS **chỉ đọc** cho mục đích tổng hợp/phân tích; hạn chế ghi, ưu tiên để Dashboard là nơi ghi tác nghiệp.
 - Chỉ metadata công việc (xem RULE-data-boundary).

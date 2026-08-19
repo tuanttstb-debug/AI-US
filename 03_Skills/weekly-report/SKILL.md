@@ -3,8 +3,8 @@ name: weekly-report
 type: skill
 description: Dựng báo cáo tuần cấp KHỐI (Ngân hàng Doanh nghiệp) dưới dạng HTML email responsive (đọc tốt trong email + trên điện thoại không vỡ cấu trúc) kèm .docx lưu trữ, từ dữ liệu LIVE (GAS/Google Sheets). Điều hành-first: Trang 1 đọc 60 giây (cần quyết / quá hạn / hồ sơ treo / thắng lợi / milestone), Sức khỏe THỰC đối chiếu deadline, Ưu tiên 1 core + Ưu tiên 2 (AI & phát triển năng lực). Kích hoạt khi Tuân yêu cầu "báo cáo tuần" hoặc chạy định kỳ chiều thứ 6.
 owner: PER-TTT
-version: 5
-updated: 2026-08-16
+version: 6
+updated: 2026-08-19
 ---
 
 ## Mục tiêu
@@ -38,16 +38,27 @@ Rút thời gian dựng báo cáo tuần Khối từ 2–3 giờ xuống dưới
 | `make_charts.js` | 2 chart PNG (Node `@napi-rs/canvas`): bars khối lượng/mảng + donut Đúng hạn/Quá hạn — **chỉ cho bản .docx** |
 | `build_email.js` | **bản chính** — dựng `HTML email` responsive từ `report_data.json` → `RPT-YYYY-Wnn_bao-cao-tuan.html` (1 cột, CSS inline, tiles tự xuống dòng, bảng hồ sơ → thẻ, chart bằng thanh CSS — mobile không chặn ảnh) |
 | `build_report.js` | dựng `.docx` (bản lưu trữ/đính kèm) từ `report_data.json` → `RPT-YYYY-Wnn_bao-cao-tuan.docx` |
-| `run.js` | chạy cả pipeline: `node run.js` (hoặc `--cache` bỏ qua fetch) → xuất cả HTML + .docx |
+| `send_email.js` | **gửi định kỳ** — đọc HTML đã dựng → POST action GAS `send-report`; GAS tự phân giải người nhận (To=CuongVM1, Cc=Teamlead active) rồi `MailApp` gửi. `--dry` chỉ soi người nhận, không gửi |
+| `run.js` | chạy cả pipeline: `node run.js` (hoặc `--cache` bỏ qua fetch; `--send` để gửi email) → xuất cả HTML + .docx |
 
 ## Cách chạy
 ```
 cd 03_Skills/weekly-report
-node run.js                     # full: fetch → aggregate → charts → build (kỳ = tuần ISO hôm nay)
+node run.js                     # full: fetch → aggregate → charts → build (KHÔNG gửi)
 node run.js --cache             # dựng lại từ snapshot sẵn có (không gọi GAS)
+node run.js --send              # dựng RỒI gửi email (lịch thứ 6 dùng cái này)
 REPORT_WEEK=2026-W33 node run.js   # chốt kỳ báo cáo cụ thể
+node send_email.js --dry        # soi người nhận (To/Cc) mà KHÔNG gửi
+node send_email.js              # gửi bản HTML kỳ hiện tại (OUT_HTML=<path> để chỉ định file)
 ```
-Phụ thuộc Node (đã cài trong repo): `docx`, `@napi-rs/canvas`.
+Phụ thuộc Node (đã cài trong repo): `docx`, `@napi-rs/canvas`. Gửi email cần credential `.gas-secret.json` (như fetch).
+
+## Gửi email định kỳ (feature dự án SHTD)
+- **Kiến trúc:** AIOS DỰNG HTML (template đã duyệt), **GAS GỬI**. Người nhận là nguồn sự thật server-side (`User_Master`), GAS phân giải — AIOS chỉ đưa `{html, subject}`.
+- **To** = user `CuongVM1`. **Cc** = mọi user `Role=Teamlead`, `Active≠false`, có Email; loại trùng địa chỉ To. Cấu hình ở `backend/ReportEmailService.gs` (`REPORT_TO_USERNAME`/`REPORT_CC_ROLE`).
+- **Định kỳ:** chạy `node run.js --send` từ scheduled task chiều thứ 6 (sau khi data cập nhật).
+- **Phụ thuộc triển khai:** action `send-report` nằm ở `backend/*.gs` của SHTD — **phải merge + redeploy** GAS Web App thì `--send` mới sống (trước redeploy sẽ báo `action không hợp lệ`). Và `User_Master` phải có Email cho CuongVM1 + các teamlead.
+- **Data-boundary:** HTML báo cáo chứa tên KH (nội bộ) — gửi tới email nội bộ qua GAS của chính ngân hàng (cùng miền tin cậy với Google Sheets nguồn); KHÔNG lên cloud ngoài. Artifacts vẫn gitignore.
 
 ## Đầu ra
 Ở `05_Journal/reports/` (đều **local-only**, gitignore — chứa tên KH):

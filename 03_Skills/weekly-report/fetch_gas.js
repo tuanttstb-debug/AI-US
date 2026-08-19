@@ -78,7 +78,7 @@ function readCache() {
   return JSON.parse(fs.readFileSync(CACHE_FILE, 'utf8'));
 }
 
-module.exports = { fetchLive, writeCache, readCache, CACHE_FILE };
+module.exports = { fetchLive, writeCache, readCache, CACHE_FILE, loadSecret, login, gasPost };
 
 if (require.main === module) {
   fetchLive()
