@@ -16,6 +16,14 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-20, Claude Code) — sheet cấu hình người nhận + debug teamlead
+XONG: người nhận chuyển sang sheet `Report_Config` (bỏ hardcode, fallback an toàn) + `setupReportConfig()`; verify 10/10; nghiệm thu `--dry` LIVE. Còn để đủ người nhận + gửi thật:
+- [TT] **Điền Email** cho `MaiTTT7` + `QuynhNNY` trong `User_Master` (đã Teamlead active, chỉ thiếu email).
+- [TT] **Thêm `TuanTT4@tpb.com.vn` vào `Cc_Extra`** của sheet `Report_Config` (giữ Admin, không đổi role): `SPTDDN.CB@tpb.com.vn, TuanTT4@tpb.com.vn`.
+- [TT] Báo [CC] chạy lại `node send_email.js --dry` → xác nhận **To + 6 Cc** → `node run.js --send` gửi thử kỳ W34.
+- [TT] Đổi scheduled task chiều thứ 6 sang `node run.js --send`.
+- [CC] (tuỳ chọn) đưa `Cc_Role`/`Cc_Extra` mặc định vào tài liệu skill; ẩn tên KH bản email nếu [TT] muốn.
+
 ## Delta (2026-08-19 #2, Claude Code) — gửi báo cáo tuần qua email (SHTD)
 Feature XONG (code + test): action GAS `send-report` (SHTD) + `send_email.js`/`run.js --send` (AIOS). Còn để chạy thật:
 - [TT] **Redeploy GAS SHTD** — merge `backend/ReportEmailService.gs` + route `send-report` vào Apps Script đã deploy rồi redeploy (link không đổi). Trước redeploy `--send` báo `action không hợp lệ`.
