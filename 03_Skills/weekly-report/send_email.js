@@ -39,6 +39,10 @@ async function main() {
   const r = d.report || {};
   const head = dry ? '🔎 DRY-RUN (chưa gửi)' : (r.sent ? '✅ ĐÃ GỬI' : '⚠ CHƯA GỬI');
   console.log(`${head} — báo cáo ${DATA.weekLabel}`);
+  if (r.fromSheet !== undefined) {
+    console.log('  Cấu hình   :', r.fromSheet ? 'Report_Config (sheet)' : 'mặc định (hardcode)',
+      '· Enabled =', r.enabled === false ? 'false ⛔ (gửi thật bị chặn)' : 'true');
+  }
   console.log('  Nguồn HTML :', p);
   console.log('  To :', (r.to || '(trống)') + (r.toName ? `  [${r.toName}]` : ''));
   console.log('  Cc :', (r.count || 0) + ' teamlead' + (r.cc && r.cc.length ? ' — ' + r.cc.join(', ') : ''));
