@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-21, Claude Code)
+**Bộ đào tạo 3 trụ + skill dựng PPTX TPBank + lệnh phiên (commit `d1921b8`).** AIOS nay có: (1) **`training-program/`** — chương trình đào tạo Team Số hóa Tín dụng gồm **Design Thinking (M1) · Agile (M2) · Growth (M3) · Capstone (M4)** + followup, nối 3 trụ bằng ngôn ngữ chung (Options=Ideate=Prioritization · Harvest=Test-learning=Retro); bộ Growth cũ nằm ở `03_growth`. (2) Skill **`tpbank-deck`** — dựng PPTX chuẩn nhận diện TPBank bằng python-pptx (6 layout, asset brand thật trích từ pptx tham khảo SCF), verify render qua PowerPoint COM. (3) **Lệnh phiên riêng repo hub:** `.claude/commands/{start,handover}.md` (`/start` nạp context theo cấu trúc hub, `/handover` ghi delta 4 file + push). Danh mục skill: weekly-report · portfolio-digest · init-project · deadline/decision-brief · intake-triage · **tpbank-deck**. **Blocker:** không.
+
 ## Delta (2026-08-20, Claude Code)
 **Người nhận báo cáo email = sheet cấu hình `Report_Config` (bỏ hardcode).** `ReportEmailService.gs` (SHTD) nay đọc người nhận động từ sheet `Report_Config` (Enabled/To_Username/Cc_Role/Cc_Extra/From_Name) qua `_reportConfig_()`, fallback hằng số nếu sheet vắng; `setupReportConfig()` tạo sheet 1 lần từ editor. Cc hỗ trợ nhiều role + Cc_Extra + gate Enabled. Nghiệm thu **LIVE** `--dry`: đọc đúng sheet, To/Cc thật. Debug thiếu teamlead: MaiTTT7/QuynhNNY thiếu Email, TuanTT4=Admin (dùng Cc_Extra), SPTDDN.CB là Cc_Extra chủ đích. verify 10/10 (hàm GAS thật). Commits: SHTD `d38de2f`, AIOS `8470f86` (đã push). **Chặn:** điền Email MaiTTT7/QuynhNNY + thêm TuanTT4 vào Cc_Extra (chỉnh sheet, không redeploy).
 

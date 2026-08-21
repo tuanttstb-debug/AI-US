@@ -2,10 +2,14 @@
 
 Nợ kỹ thuật & hiện tượng lặp lại. Mới nhất trên cùng.
 
+> **Delta phiên 2026-08-21:** Nợ mới nhẹ **TD-TR-01** (deck M3 Growth chưa đồng bộ nhận diện TPBank — teal, trong khi M1/M2/M4 đã chuẩn TPBank qua skill `tpbank-deck`). Skill tpbank-deck **chưa gói bộ icon** (template gốc không nhúng icon raster). Không nợ code ở phần chạy (thư viện thuần dựng file, verify render 6/6 layout). Bản in member/summary còn ở dạng HTML (chưa PDF).
 > **Delta phiên 2026-08-20:** ✅ **TD-WR-07 (phần người nhận hardcode) GIẢI QUYẾT** — chuyển sang sheet cấu hình `Report_Config` (đọc động, fallback hằng số), đổi người nhận không cần deploy. Còn lại của TD-WR-07: chỉ phần **định kỳ dựa scheduled task local** (chưa always-on cloud). Không nợ code mới (verify 10/10 hàm GAS thật). Nợ **dữ liệu** (không phải code): User_Master thiếu Email cho vài teamlead — xem SESSION_HANDOVER.
 > **Delta phiên 2026-08-19 #2:** Feature gửi báo cáo email (SHTD) — nợ mới nhẹ **TD-WR-07** (định kỳ dựa vào scheduled task local, chưa always-on server-side; cấu hình người nhận hardcode trong `ReportEmailService.gs`). Không nợ ở phần code (verify 7/7 hàm GAS thật).
 > **Delta phiên 2026-08-19:** Không phát sinh nợ kỹ thuật mới (phiên thuần tài liệu/tri thức). Nợ tài liệu nhẹ: **TD-KB-01** — tri thức TPBank có mục **[OPEN]** chờ dữ liệu thực; SYS-GNOL/SYS-BLOL còn "chờ bổ sung".
 > **Delta phiên 2026-08-17:** ✅ **TD-WR-02 GIẢI QUYẾT** (map cột `aggregate.js` theo header-name). Nợ mới nhẹ: **TD-PD-01** (portfolio-digest chạy tay + heuristic) · **TD-IP-01** (init-project không tự tạo git/remote & không auto-commit — chủ ý an toàn, thao tác thủ công còn lại).
+
+## TD-TR-01 — Deck Growth lệch nhận diện + tpbank-deck thiếu icon (2026-08-21)
+Chương trình `training-program/`: deck **M1/M2/M4** đã dựng chuẩn TPBank qua skill `tpbank-deck`, nhưng **deck M3 Growth** (`03_growth/06_slides/GROWTH-Mindset-Workshop.pptx`) vẫn màu **teal** cũ → lệch nhận diện khi trình chiếu cả chương trình. Skill `tpbank-deck` **chưa gói bộ icon** (template gốc chỉ dùng shape vector/SmartArt, không nhúng icon raster). Bản in member + tóm tắt còn ở **HTML** (chưa PDF sẵn). **Hướng (tuỳ chọn):** rebrand deck Growth bằng `tpbank-deck`; thêm bộ icon (shape/emoji/vector) vào skill; export PDF bản in. Ưu tiên thấp — không chặn việc dạy.
 
 ## TD-WR-07 — Gửi báo cáo email: định kỳ dựa scheduled task local (2026-08-19 → phần người nhận GIẢI QUYẾT 2026-08-20)
 Tính năng `send-report` gửi qua GAS `MailApp` (server-side), nhưng **kích hoạt định kỳ** lại dựa vào **Windows scheduled task trên máy [TT]** chạy `run.js --send` (build HTML ở AIOS/Node) → không "always-on" như trigger GAS: máy tắt/không chạy task thì không gửi. **Hướng (tuỳ chọn):** nếu cần always-on cloud → port build sang GAS + `ScriptApp` time-trigger (đánh đổi: nhân đôi logic aggregate, xem quyết định phiên 2026-08-19 #2). Ưu tiên thấp — cadence thứ 6 hiện đủ dùng.

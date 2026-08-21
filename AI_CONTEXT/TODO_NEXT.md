@@ -16,6 +16,13 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-21, Claude Code) — bộ đào tạo 3 trụ + skill tpbank-deck + lệnh phiên
+XONG (commit `d1921b8`): ✅ chương trình `training-program/` (DT·Agile·Growth·Capstone + followup) · ✅ skill `tpbank-deck` (PPTX chuẩn TPBank) · ✅ 3 deck slide M1/M2/M4 · ✅ lệnh `/start` + `/handover`. Ưu tiên tiếp:
+- [TT] Duyệt nội dung 3 module; chạy thử **1 workshop** (M1 Design Thinking hoặc M3 Growth) với team ≤8. Dùng **`/start`** đầu phiên, **`/handover`** cuối phiên từ nay.
+- [CC] (tuỳ chọn) **Rebrand deck M3 Growth** sang chuẩn TPBank bằng `tpbank-deck` (đang teal — TD-TR-01, lệch nhận diện với M1/M2/M4).
+- [CC] (tuỳ chọn) Dựng **M0** (buổi khởi động 30') thành slide/tài liệu; **export PDF** bản in member + tóm tắt 1–2 trang (hiện là HTML).
+- [CC] (tuỳ chọn) Bổ sung **bộ icon** cho skill tpbank-deck (template gốc không nhúng icon raster).
+
 ## Delta (2026-08-20, Claude Code) — sheet cấu hình người nhận + debug teamlead
 XONG: người nhận chuyển sang sheet `Report_Config` (bỏ hardcode, fallback an toàn) + `setupReportConfig()`; verify 10/10; nghiệm thu `--dry` LIVE. Còn để đủ người nhận + gửi thật:
 - [TT] **Điền Email** cho `MaiTTT7` + `QuynhNNY` trong `User_Master` (đã Teamlead active, chỉ thiếu email).
