@@ -1,0 +1,139 @@
+<meta charset="utf-8">
+<title>GROWTH — Bộ in cho member</title>
+<style>
+  :root{ --ink:#1a222e; --accent:#0e7c86; --gray:#8a939e; --light:#f2f5f7; --amber:#c97a0e; --border:#dde2e6; }
+  *{ box-sizing:border-box; }
+  body{ font-family:"Segoe UI",system-ui,sans-serif; color:var(--ink); margin:0; background:#fff; line-height:1.4; }
+  .page{ width:210mm; min-height:297mm; padding:16mm 15mm; margin:0 auto; page-break-after:always; }
+  .page:last-child{ page-break-after:auto; }
+  h1{ font-size:22pt; margin:0 0 2mm; }
+  h2{ font-size:14pt; color:var(--accent); margin:7mm 0 2mm; border-bottom:2px solid var(--accent); padding-bottom:1mm; }
+  h3{ font-size:11pt; margin:4mm 0 1mm; }
+  p,li,td{ font-size:10.5pt; }
+  .kicker{ color:var(--accent); font-weight:700; letter-spacing:.08em; font-size:9pt; text-transform:uppercase; }
+  .muted{ color:var(--gray); }
+  .cards{ display:flex; gap:8mm; margin-top:6mm; }
+  .card{ flex:1; border:1.5px solid var(--ink); border-radius:4mm; padding:6mm; }
+  .card .side{ font-size:8pt; color:var(--gray); text-transform:uppercase; letter-spacing:.05em; }
+  .grow{ color:var(--accent); font-weight:700; }
+  .row{ margin:2.5mm 0; }
+  .row b{ color:var(--accent); }
+  .fill{ border-bottom:1px solid var(--border); min-height:8mm; margin:2mm 0; }
+  .fill.tall{ min-height:14mm; }
+  table{ width:100%; border-collapse:collapse; margin-top:3mm; }
+  td,th{ border:1px solid var(--border); padding:2.5mm; vertical-align:top; text-align:left; }
+  th{ background:var(--accent); color:#fff; font-size:9.5pt; }
+  .step{ display:flex; gap:4mm; align-items:flex-start; margin:2mm 0; }
+  .badge{ background:var(--accent); color:#fff; font-weight:700; width:9mm; height:9mm; border-radius:2mm;
+          display:flex; align-items:center; justify-content:center; flex:0 0 9mm; font-size:12pt; }
+  .warn{ color:var(--amber); font-weight:600; }
+  .note{ background:var(--light); padding:4mm; border-radius:2mm; font-size:9.5pt; margin-top:3mm; }
+  @media print{ .page{ margin:0; } @page{ size:A4; margin:0; } }
+  @media screen{ body{ background:#e9edf0; padding:10mm 0; } .page{ background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.15); margin-bottom:10mm; } }
+</style>
+
+<!-- ============ TRANG 1: GROWTH CARD (cắt ra, gập đôi) ============ -->
+<div class="page">
+  <div class="kicker">In · cắt theo khung · gập đôi để bỏ túi</div>
+  <h1>GROWTH Card</h1>
+  <p class="muted">Mở ra mỗi khi gặp một vấn đề khó — trước khi phản ứng.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="side">Mặt trước — 6 bước</div>
+      <p style="margin:3mm 0 4mm"><b class="grow" style="font-size:12pt">Dừng lại trước khi phản ứng.</b></p>
+      <div class="row"><b>G</b> · Outcome thật là gì?<br><span class="muted">(không phải “task nào cần xong”)</span></div>
+      <div class="row"><b>R</b> · Fact là gì? <span class="muted">(tách assumption & cảm xúc)</span></div>
+      <div class="row"><b>O</b> · 3 options + đề xuất của tôi</div>
+      <div class="row"><b>W</b> · Ai — làm gì — trước khi nào<br><span class="muted">(còn trong Decision Rights?)</span></div>
+      <div class="row"><b>T</b> · Outcome đạt chưa? <span class="muted">(đo, đừng cảm tính)</span></div>
+      <div class="row"><b>H</b> · Learning + chuẩn hóa gì cho team</div>
+    </div>
+    <div class="card">
+      <div class="side">Mặt sau — khi bí, hỏi 3 câu</div>
+      <div class="row">1 · Phần nào việc này <b>TÔI</b> kiểm soát được?</div>
+      <div class="row">2 · Đây là workaround hay permanent fix?</div>
+      <div class="row">3 · Việc này còn trong quyền của tôi, hay cần báo / xin ý kiến?</div>
+      <hr style="border:none;border-top:1px solid var(--border);margin:4mm 0">
+      <div class="row"><b>Báo vấn đề?</b>  → luôn kèm ≥2 options</div>
+      <div class="row"><b>Thấy risk?</b>  → escalate trong 24h</div>
+      <div class="row"><b>Đóng issue?</b>  → có RCA chưa?</div>
+    </div>
+  </div>
+
+  <div class="note" style="text-align:center;margin-top:8mm">
+    <b class="grow">Có vấn đề → dừng lại → Goal → Fact → Options → Hành động (trong quyền) → Đo → Học.</b>
+  </div>
+
+  <h2>Decision Rights — tra nhanh</h2>
+  <table>
+    <tr><th style="width:20%">Level</th><th style="width:28%">Nghĩa</th><th>Growth ở level này</th></tr>
+    <tr><td><b>1 — Tự chủ</b></td><td>Tự quyết trong phạm vi</td><td>Tự giải quyết gọn + ghi learning</td></tr>
+    <tr><td><b>2 — Chủ động + Báo Lead</b></td><td>Làm nhưng cho Lead biết</td><td>Tự phân tích + đề xuất + báo đúng lúc</td></tr>
+    <tr><td><b>3 — Xin ý kiến</b></td><td>Hỏi trước khi làm</td><td>Chuẩn bị đủ thông tin để Leader quyết nhanh</td></tr>
+  </table>
+  <p class="note"><span class="warn">→ Level 3 khi chạm:</span> scope · logic quan trọng · production impact · customer impact · risk/compliance · commitment. Phân vân → coi là level cao hơn.</p>
+</div>
+
+<!-- ============ TRANG 2: CASE WORKSHEET ============ -->
+<div class="page">
+  <div class="kicker">Workshop · Part 4</div>
+  <h1>Case Worksheet — chạy GROWTH</h1>
+  <p class="muted">Điền cho case của nhóm. Chỉ rõ: đâu là <b>fact</b>, đâu là <b>assumption</b>.</p>
+
+  <h3>Case: </h3><div class="fill"></div>
+
+  <div class="step"><div class="badge">G</div><div style="flex:1">
+    <b>GOAL</b> — outcome thật (không phải “task nào xong”)<div class="fill"></div></div></div>
+
+  <div class="step"><div class="badge">R</div><div style="flex:1">
+    <b>REALITY</b>
+    <table><tr><th>Fact</th><th>Assumption</th></tr><tr><td style="height:14mm"></td><td></td></tr>
+    <tr><th>Root cause</th><th>Constraint</th></tr><tr><td style="height:14mm"></td><td></td></tr></table></div></div>
+
+  <div class="step"><div class="badge">O</div><div style="flex:1">
+    <b>OPTIONS</b> (tối thiểu 3) — Impact / Effort / Risk / Dependency / Time
+    <table><tr><th style="width:8%">#</th><th>Phương án</th><th style="width:34%">Trade-off</th></tr>
+    <tr><td>A</td><td style="height:9mm"></td><td></td></tr>
+    <tr><td>B</td><td style="height:9mm"></td><td></td></tr>
+    <tr><td>C</td><td style="height:9mm"></td><td></td></tr></table>
+    <div class="row" style="margin-top:2mm">→ Đề xuất của nhóm: <span class="fill" style="display:inline-block;width:60%"></span> vì …</div></div></div>
+
+  <div class="step"><div class="badge">W</div><div style="flex:1">
+    <b>WILL</b> — Action / Owner / Deadline<div class="fill"></div>
+    <span class="warn">⚠ Còn trong Decision Rights không? Level mấy? </span> <span class="fill" style="display:inline-block;width:30%"></span></div></div>
+
+  <div class="step"><div class="badge">T</div><div style="flex:1">
+    <b>TRACK</b> — đo gì để biết outcome đạt<div class="fill"></div></div></div>
+
+  <div class="step"><div class="badge">H</div><div style="flex:1">
+    <b>HARVEST</b> — learning + cần standardize gì cho team<div class="fill tall"></div></div></div>
+</div>
+
+<!-- ============ TRANG 3: REFLECTION ============ -->
+<div class="page">
+  <div class="kicker">Workshop · Part 5 — viết cho chính mình</div>
+  <h1>Individual Reflection</h1>
+  <p class="muted">Không ai chấm điểm. Trung thực với bản thân là điều kiện duy nhất để phần này có ích.</p>
+
+  <div class="row"><b>1.</b> Tôi đang gặp vấn đề nào lặp lại?</div><div class="fill"></div>
+  <div class="row"><b>2.</b> Tôi thường phản ứng thế nào khi gặp nó?</div><div class="fill"></div>
+  <div class="row"><b>3.</b> Root cause thực sự là gì?</div><div class="fill"></div>
+  <div class="row"><b>4.</b> Tôi đang đổ lỗi cho yếu tố nào?</div><div class="fill"></div>
+  <div class="row"><b class="grow">5. Phần nào của việc này tôi thực sự kiểm soát được?</b> <span class="muted">(câu quan trọng nhất)</span></div><div class="fill tall"></div>
+  <div class="row"><b>6.</b> Tôi có thể thử cách làm khác nào?</div><div class="fill"></div>
+  <div class="row"><b>7.</b> Tôi cần hỗ trợ gì — và từ ai?</div><div class="fill"></div>
+  <div class="row"><b class="grow">8. Tôi sẽ thay đổi MỘT hành vi nào trong 30 ngày tới?</b></div><div class="fill tall"></div>
+
+  <div class="note">
+    <b>Tự kiểm câu 8</b> (đạt cả 3):
+    <div class="row">☐ Là <b>hành vi</b>, không phải thái độ ("set checkpoint" ✓ / "chủ động hơn" ✗)</div>
+    <div class="row">☐ <b>Đo được</b> — cuối 30 ngày tôi biết mình có làm hay không</div>
+    <div class="row">☐ <b>Trong tầm kiểm soát của tôi</b>, không phụ thuộc người khác đổi</div>
+    <p style="margin:3mm 0 0" class="muted">Ví dụ đạt: “Mọi task > 3 ngày, tôi set 1 checkpoint giữa chặng, không đợi sát deadline.”</p>
+  </div>
+
+  <h2>Cam kết cá nhân (nói trước team)</h2>
+  <p>Tôi sẽ <span class="fill" style="display:inline-block;width:55%"></span> mỗi khi <span class="fill" style="display:inline-block;width:30%"></span>.</p>
+  <p style="margin-top:8mm">Họ tên: <span class="fill" style="display:inline-block;width:45%"></span>  Ngày: <span class="fill" style="display:inline-block;width:25%"></span></p>
+</div>

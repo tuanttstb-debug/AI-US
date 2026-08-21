@@ -1,0 +1,5 @@
+# Output sinh ra khi chạy demo/script — không commit
+demo-tpbank-deck.pptx
+*.pptx
+__pycache__/
+*.pyc

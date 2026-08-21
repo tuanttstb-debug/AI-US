@@ -1,0 +1,3 @@
+# Slide sinh ra từ build_slides.py — dựng lại được, không commit binary
+*.pptx
+__pycache__/

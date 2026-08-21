@@ -45,6 +45,13 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 | deadline-brief | Nâng chất cảnh báo hạn | `03_Skills/deadline-brief/SKILL.md` |
 | decision-brief | Brief hỗ trợ quyết định nhanh | `03_Skills/decision-brief/SKILL.md` |
 | intake-triage | Thu thập & định tuyến việc đột xuất | `03_Skills/intake-triage/SKILL.md` |
+| tpbank-deck | Dựng PPTX theo chuẩn nhận diện TPBank (màu/logo/accent/font/6 layout) bằng python-pptx | `03_Skills/tpbank-deck/SKILL.md` |
+
+## Lệnh phiên (slash command — riêng repo hub AIOS)
+| Lệnh | Mục đích | File |
+|---|---|---|
+| `/start` | Bắt đầu phiên: nạp context theo cấu trúc hub (AI_CONTEXT không có PROJECT_OVERVIEW) | `.claude/commands/start.md` |
+| `/handover` | Bàn giao chuẩn: ghi delta 4 file AI_CONTEXT (6 trường) + push master | `.claude/commands/handover.md` |
 
 ## Decision (DEC)
 | ID | Tiêu đề | File |

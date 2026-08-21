@@ -27,3 +27,10 @@ rag_donut.png
 # Node
 node_modules/
 package-lock.json
+
+# Claude Code — settings cá nhân (permissions) chỉ local; commands/ thì commit
+.claude/settings.local.json
+
+# Slide/PPTX sinh từ skill tpbank-deck (dựng lại được, không commit binary)
+**/*.pptx
+__pycache__/

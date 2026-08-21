@@ -1,0 +1,140 @@
+<meta charset="utf-8">
+<title>GROWTH — Tóm tắt 1 trang</title>
+<style>
+  :root{ --ink:#1a222e; --accent:#0e7c86; --gray:#6b747f; --light:#f2f5f7; --amber:#c97a0e; --border:#dde2e6; }
+  *{ box-sizing:border-box; }
+  body{ font-family:"Segoe UI",system-ui,sans-serif; color:var(--ink); margin:0; line-height:1.35; }
+  .page{ width:210mm; min-height:297mm; padding:12mm 13mm; margin:0 auto; }
+  .page + .page{ page-break-before:always; }
+  h1{ font-size:20pt; margin:0; }
+  .sub{ color:var(--gray); font-size:10pt; margin:1mm 0 4mm; }
+  h2{ font-size:12pt; color:var(--accent); margin:5mm 0 1.5mm; border-bottom:1.5px solid var(--accent); padding-bottom:.8mm; }
+  p,li,td{ font-size:9.7pt; }
+  ul{ margin:1mm 0; padding-left:6mm; }
+  li{ margin:.6mm 0; }
+  .two{ display:flex; gap:8mm; }
+  .two > div{ flex:1; }
+  .grid6{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:2.5mm; margin-top:2mm; }
+  .g{ background:var(--light); border-left:3px solid var(--accent); padding:2.5mm 3mm; border-radius:1.5mm; }
+  .g b{ color:var(--accent); font-size:12pt; }
+  .g .n{ font-size:8.5pt; }
+  table{ width:100%; border-collapse:collapse; margin-top:1.5mm; }
+  td,th{ border:1px solid var(--border); padding:1.8mm 2.5mm; text-align:left; vertical-align:top; }
+  th{ background:var(--accent); color:#fff; font-size:9pt; }
+  .fixed{ color:var(--gray); }
+  .amber{ color:var(--amber); }
+  .band{ background:var(--ink); color:#fff; padding:4mm 5mm; border-radius:2mm; margin-top:4mm; }
+  .band b{ color:#12aab6; }
+  ol.principles{ columns:2; column-gap:8mm; padding-left:5mm; margin:1mm 0; }
+  ol.principles li{ font-size:9.2pt; margin:.8mm 0; break-inside:avoid; }
+  @media print{ .page{ margin:0; } @page{ size:A4; margin:0; } }
+  @media screen{ body{ background:#e9edf0; padding:10mm 0; } .page{ background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.15); } .page+.page{ margin-top:10mm; } }
+</style>
+
+<div class="page">
+  <h1>GROWTH Mindset — Tóm tắt 1 trang</h1>
+  <div class="sub">Team Số hóa Tín dụng · Operating Mindset, không phải khóa “tư duy tích cực”</div>
+
+  <div class="band">
+    <b>GROWTH</b> = biến vấn đề, feedback và kết quả thực tế → cách làm & kết quả tốt hơn.
+    &nbsp;→&nbsp; <b>Mỗi lần gặp vấn đề, lần sau xử lý tốt hơn lần trước.</b>
+  </div>
+
+  <h2>Framework — 6 bước xử lý mọi vấn đề</h2>
+  <div class="grid6">
+    <div class="g"><b>G</b> Goal<div class="n">Outcome thật là gì? (không phải “task nào xong”)</div></div>
+    <div class="g"><b>R</b> Reality<div class="n">Fact là gì? Tách khỏi assumption & cảm xúc.</div></div>
+    <div class="g"><b>O</b> Options<div class="n">≥3 phương án + đề xuất của tôi.</div></div>
+    <div class="g"><b>W</b> Will<div class="n">Ai–làm gì–khi nào. Còn trong Decision Rights?</div></div>
+    <div class="g"><b>T</b> Track<div class="n">Outcome đạt chưa? Đo, đừng cảm tính.</div></div>
+    <div class="g"><b>H</b> Harvest<div class="n">Learning + chuẩn hóa gì cho team.</div></div>
+  </div>
+
+  <div class="two">
+    <div>
+      <h2>Growth KHÔNG phải</h2>
+      <ul class="fixed">
+        <li>Làm nhiều/nhanh bằng mọi giá</li>
+        <li>Luôn tích cực (giấu risk)</li>
+        <li>Không được mắc lỗi</li>
+        <li>Cứ chủ động làm hết — <i>chủ động ≠ tự ý</i></li>
+        <li>Đồng ý với Leader</li>
+        <li>Không cần ai hỗ trợ</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Growth LÀ</h2>
+      <ul>
+        <li>Chủ động <b>trong</b> phạm vi (Decision Rights)</li>
+        <li>Báo risk <b>sớm</b> — cho team thời gian xoay</li>
+        <li>Luôn có <b>options</b>, không dừng ở “không được”</li>
+        <li>Tìm <b>root cause</b>, không dừng ở workaround</li>
+        <li>Rút <b>learning</b> sau mỗi task quan trọng</li>
+        <li>Biết <b>khi nào</b> tự làm / cần hỗ trợ</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Fixed → Growth (đổi câu nói, đổi cách nghĩ)</h2>
+  <table>
+    <tr><th style="width:24%">Tình huống</th><th style="width:33%">Fixed</th><th>Growth</th></tr>
+    <tr><td>Task chậm</td><td class="fixed">“Nhiều việc quá”</td><td>“Bottleneck ở đâu?”</td></tr>
+    <tr><td>Dev không làm</td><td class="fixed">“Dev chậm”</td><td>“Dependency block ở đâu, ai owner?”</td></tr>
+    <tr><td>Lỗi production</td><td class="fixed">“Ai làm sai?”</td><td>“Vì sao hệ thống cho phép lỗi này?”</td></tr>
+    <tr><td>Feedback xấu</td><td class="fixed">“Họ khó tính”</td><td>“Feedback chỉ ra gap nào của mình?”</td></tr>
+    <tr><td>Leader không đồng ý</td><td class="fixed">“Anh không hiểu”</td><td>“Mình đã đưa đủ evidence chưa?”</td></tr>
+  </table>
+</div>
+
+<div class="page">
+  <h2 style="margin-top:0">10 nguyên tắc cốt lõi</h2>
+  <ol class="principles">
+    <li><b>Problem is not the enemy. Unlearned problem is.</b></li>
+    <li>Không đổ lỗi trước khi hiểu root cause.</li>
+    <li>Không chỉ báo vấn đề — luôn đưa phương án.</li>
+    <li>Chủ động không đồng nghĩa tự ý.</li>
+    <li>Escalate sớm tốt hơn chữa cháy muộn.</li>
+    <li>Workaround không phải permanent solution.</li>
+    <li>Feedback là dữ liệu để cải thiện.</li>
+    <li>Ai quyết định → người đó ownership.</li>
+    <li>Sai 1 lần là learning; lặp lại là vấn đề hệ thống/hành vi.</li>
+    <li>Growth không phải hết cần hỗ trợ — mà biết khi nào tự làm, khi nào cần, và sau mỗi lần trưởng thành hơn.</li>
+  </ol>
+
+  <div class="two">
+    <div>
+      <h2>Decision Rights</h2>
+      <table>
+        <tr><th>Level</th><th>Nghĩa</th></tr>
+        <tr><td><b>1 Tự chủ</b></td><td>Tự giải quyết + ghi learning</td></tr>
+        <tr><td><b>2 Chủ động + Báo Lead</b></td><td>Tự phân tích + đề xuất + báo đúng lúc</td></tr>
+        <tr><td><b>3 Xin ý kiến</b></td><td>Chuẩn bị đủ thông tin để Leader quyết nhanh</td></tr>
+      </table>
+      <p class="amber" style="margin-top:2mm"><b>→ Level 3 khi chạm:</b> scope · logic quan trọng · production · customer · risk/compliance · commitment. Phân vân → coi là level cao hơn.</p>
+    </div>
+    <div>
+      <h2>6 cam kết của team</h2>
+      <ul>
+        <li>Không chỉ báo vấn đề — <b>đưa phương án</b>.</li>
+        <li>Không giấu risk — <b>báo sớm</b>.</li>
+        <li>Không chỉ fix lỗi — <b>tìm root cause</b>.</li>
+        <li>Không tự ý — <b>chủ động trong phạm vi</b>.</li>
+        <li>Không đổ lỗi — <b>tìm điều kiểm soát được</b>.</li>
+        <li>Không lặp lỗi cũ mà <b>không có learning</b>.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2>Ngày mai áp dụng thế nào</h2>
+  <ul>
+    <li><b>Trước 1 task:</b> viết 1 dòng Goal bắt đầu bằng “Đảm bảo…/Giúp…/Chốt được…”, không phải “Làm…/Fix…”.</li>
+    <li><b>Khi gặp khó:</b> trước khi báo Leader, chuẩn bị Reality + ≥2 Options + đề xuất.</li>
+    <li><b>Thấy tín hiệu risk:</b> escalate trong 24h, đừng đợi sát deadline.</li>
+    <li><b>Trước khi đổi 1 logic/scope:</b> hỏi “còn trong Decision Rights không?” — phân vân thì hỏi.</li>
+    <li><b>Đóng 1 issue quan trọng:</b> có RCA chưa? Ghi 3 dòng Harvest vào GROWTH LOG.</li>
+  </ul>
+
+  <div class="band" style="text-align:center">
+    <b>Mỗi vấn đề đi qua team phải để lại một cách làm tốt hơn.</b>
+  </div>
+</div>
