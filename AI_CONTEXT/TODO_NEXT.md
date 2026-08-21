@@ -16,6 +16,12 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-21 #3, Claude Code) — DEBUG deadline sai + Freshness guard weekly-report
+XONG: ✅ truy vết `BL1-026` (email 31/07 vs DB 31/08) → **parser đúng, gốc = snapshot cũ**; ✅ fetch LIVE xác nhận DB=31/08; ✅ **Freshness guard** (`aggregate.js` cảnh báo/`REPORT_REQUIRE_FRESH=1`→từ chối; `run.js` cấm `--cache --send`; footer báo thời điểm chốt + banner stale); ✅ verify tay 4 kịch bản. Ưu tiên tiếp:
+- [TT] Lịch thứ 6 giữ **`node run.js --send`** (tự fetch LIVE + guard chặn stale); **tránh `--cache` khi gửi**.
+- [CC] (tuỳ chọn) tách format footer/timestamp thành helper chung (gộp với **TD-WR-06** — dedup 2 builder).
+- [CC] (tuỳ chọn) thêm test tự động cho guard (fresh/stale/strict/cache+send) nếu weekly-report có runner.
+
 ## Delta (2026-08-21 #2, Claude Code) — skill brd-writer + tri thức REF-BRD
 XONG: ✅ scan cấu trúc BRD SCF (method-only) · ✅ tri thức canonical `REF-BRD-WRITING.md` · ✅ skill `brd-writer` (SKILL + template + checklist) · ✅ đăng ký INDEX. Ưu tiên tiếp:
 - [TT] Duyệt bộ chuẩn BRD; chọn hướng dùng thử (a hoặc b bên dưới).

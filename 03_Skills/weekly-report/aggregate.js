@@ -87,6 +87,24 @@ function isThisWeek(r, target) {
   return false;
 }
 function fmtDMY(s) { const d = parseVNDate(s); if (!d) return norm(s); const p = (n) => String(n).padStart(2, '0'); return `${p(d.getUTCDate())}/${p(d.getUTCMonth() + 1)}/${d.getUTCFullYear()}`; }
+
+// ── Freshness guard (TD-WR-08) ──
+// Báo cáo chỉ TƯƠI bằng lần fetch_gas.js gần nhất. Nếu snapshot cũ / chụp trước tuần BC,
+// số liệu (deadline, quá hạn…) có thể LỆCH với Sheet live → cảnh báo (hoặc TỪ CHỐI nếu REPORT_REQUIRE_FRESH=1).
+const MAX_SNAPSHOT_AGE_HOURS = Number(process.env.MAX_SNAPSHOT_AGE_HOURS || 12);
+function checkFreshness(snap, target) {
+  const warns = [];
+  const fetchedAt = snap && snap.fetchedAt ? new Date(snap.fetchedAt) : null;
+  if (!fetchedAt || isNaN(fetchedAt.getTime())) {
+    return { stale: true, ageHours: null, fetchedAt: (snap && snap.fetchedAt) || null, warns: ['snapshot thiếu `fetchedAt` hợp lệ (chưa fetch_gas.js?)'] };
+  }
+  const ageHours = (Date.now() - fetchedAt.getTime()) / 3.6e6;
+  if (ageHours > MAX_SNAPSHOT_AGE_HOURS) warns.push(`snapshot cũ ${ageHours.toFixed(1)}h > ngưỡng ${MAX_SNAPSHOT_AGE_HOURS}h`);
+  if (ageHours < -1) warns.push(`\`fetchedAt\` ở TƯƠNG LAI (${snap.fetchedAt}) — đồng hồ lệch?`);
+  const weekMon = isoWeekMonday(target.y, target.w);
+  if (fetchedAt < weekMon) warns.push(`snapshot chụp TRƯỚC tuần BC (${snap.fetchedAt} < Thứ 2 tuần ${target.w}/${target.y} = ${weekMon.toISOString().slice(0, 10)})`);
+  return { stale: warns.length > 0, ageHours: Math.round(ageHours * 10) / 10, fetchedAt: snap.fetchedAt, warns };
+}
 function labelToParts(l) { const m = norm(l).match(/Tuần\s*(\d{1,2})\s*\/\s*(\d{4})/i); return m ? { w: +m[1], y: +m[2] } : null; }
 
 function ragKey(rag) { const r = norm(rag).toLowerCase(); if (/red|đỏ|do$/.test(r)) return 'Red'; if (/amber|vàng|yellow|cam/.test(r)) return 'Amber'; if (/green|xanh/.test(r)) return 'Green'; return 'Green'; }
@@ -248,6 +266,20 @@ function main() {
   const target = process.env.REPORT_WEEK && labelToParts(process.env.REPORT_WEEK.replace(/^(\d{4})-W(\d+)$/i, 'Tuần $2/$1'))
     ? labelToParts(process.env.REPORT_WEEK.replace(/^(\d{4})-W(\d+)$/i, 'Tuần $2/$1')) : isoWeekParts(today);
   const weekLabel = `Tuần ${target.w}/${target.y}`;
+
+  // ── Freshness guard: chặn build trên dữ liệu cũ khi gửi thật (REPORT_REQUIRE_FRESH=1); ngược lại chỉ cảnh báo ──
+  const fresh = checkFreshness(snap, target);
+  if (fresh.stale) {
+    const msg = `[aggregate] ⚠ DỮ LIỆU KHÔNG TƯƠI: ${fresh.warns.join(' · ')}\n            → chạy \`node fetch_gas.js\` để làm mới snapshot trước khi build/gửi.`;
+    if (process.env.REPORT_REQUIRE_FRESH === '1') {
+      console.error(msg);
+      throw new Error('Snapshot KHÔNG tươi — TỪ CHỐI build (REPORT_REQUIRE_FRESH=1). Fetch live rồi chạy lại.');
+    }
+    console.warn(msg);
+  } else {
+    console.log(`[aggregate] ✓ Snapshot tươi (${fresh.ageHours}h) @ ${fresh.fetchedAt}`);
+  }
+
   const activeTasks = tasks.filter((r) => !isDone(r[C.status]));
 
   const areas = AREA_META.map((m) => {
@@ -285,7 +317,7 @@ function main() {
   const out = {
     generatedAt: new Date().toISOString(), weekLabel,
     scope: 'Khối Ngân hàng Doanh nghiệp — toàn bộ task đang chạy + case lớn + Dev_Plan',
-    source: { fetchedAt: snap.fetchedAt, serverTs: snap.serverTs },
+    source: { fetchedAt: snap.fetchedAt, serverTs: snap.serverTs, ageHours: fresh.ageHours, stale: fresh.stale, staleWarns: fresh.stale ? fresh.warns : [] },
     totals: { tasksAll: tasks.length, tasksActive: activeTasks.length, tasksOverdue: nOverdue, casesAll: cases.length, devActive: (areas.find((a) => a.kind === 'dev') || {}).nActive || 0 },
     exec: { decisions: decisions.slice(0, 8), nDecisions: decisions.length, alerts, wins, milestones },
     areas,

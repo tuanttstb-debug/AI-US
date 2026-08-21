@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-21 #3, Claude Code)
+**Freshness guard cho weekly-report (chống email báo cáo lấy dữ liệu cũ).** [TT] báo `BL1-026` trên email hiện deadline 31/07 trong khi DB là 31/08 → truy vết: **parser đúng, dữ liệu cũ**. Pipeline `weekly-report` đọc snapshot tĩnh `gas_snapshot.json`; email 31/07 sinh khi snapshot còn chốt lúc DB=31/07, sau sửa 31/08. Đã thêm **guard**: `aggregate.js` phát hiện snapshot cũ (>12h hoặc trước Thứ 2 tuần BC) → cảnh báo, và **TỪ CHỐI build** khi `REPORT_REQUIRE_FRESH=1`; `run.js --send` bật cờ này + cấm `--cache --send`; footer email/.docx đổi "đọc LIVE" → **"dữ liệu chốt lúc <thời điểm fetch>"** + banner đỏ khi stale. Verify tay 4 kịch bản (fresh pass / stale warn / stale-strict refuse exit1 / cache+send block exit1). **Blocker:** không. *(chưa commit trước handover — commit ở bước push phiên này.)*
+
 ## Delta (2026-08-21 #2, Claude Code)
 **Skill `brd-writer` + tri thức `REF-BRD-WRITING` từ scan BRD SCF.** AIOS nay có bộ chuẩn **viết BRD sản phẩm tín dụng TPBank**: (1) tri thức canonical `04_Knowledge/references/REF-BRD-WRITING.md` (cấu trúc 3 trụ · User Story + Acceptance Criteria phủ ngoại lệ · maker-checker · bộ bảng biểu chuẩn · văn phong · anti-pattern), rút *phương pháp* từ dự án tham chiếu SCF (đã lọc bỏ nghiệp vụ, đúng data-boundary); (2) skill `03_Skills/brd-writer/` (SKILL.md quy trình 7 bước + BRD_TEMPLATE.md rỗng + CHECKLIST.md), trỏ về REF để không trùng lặp; neo `[[SYS-TPBANK]]`+`[[REF-TPBANK-DELIVERY]]`. Danh mục skill: +brd-writer. **Blocker:** không. *(chưa commit trước handover — commit ở bước push phiên này.)*
 

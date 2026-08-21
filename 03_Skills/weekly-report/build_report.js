@@ -219,7 +219,7 @@ const doc = new Document({
       H1('4. Trọng tâm tuần tới'),
       ...planBullets(),
 
-      p(t(`— Nguồn: SHTD Dashboard (Google Sheets) đọc LIVE: ${DATA.totals.tasksAll} task (${DATA.totals.tasksActive} đang chạy, ${DATA.totals.tasksOverdue} quá hạn) · ${DATA.totals.casesAll} hồ sơ · ${DATA.totals.devActive} mục Dev_Plan. Sức khỏe "thực" đối chiếu deadline, không chỉ RAG tự đánh giá. Báo cáo nội bộ — chỉ metadata công việc. —`, { i: true, c: MUT, sz: 17 }), { spacing: { before: 260 }, alignment: AlignmentType.CENTER }),
+      p(t(`— Nguồn: SHTD Dashboard (Google Sheets), dữ liệu chốt lúc ${fmtTs(DATA.source.fetchedAt)}: ${DATA.totals.tasksAll} task (${DATA.totals.tasksActive} đang chạy, ${DATA.totals.tasksOverdue} quá hạn) · ${DATA.totals.casesAll} hồ sơ · ${DATA.totals.devActive} mục Dev_Plan. Sức khỏe "thực" đối chiếu deadline, không chỉ RAG tự đánh giá. Báo cáo nội bộ — chỉ metadata công việc. —`, { i: true, c: MUT, sz: 17 }), { spacing: { before: 260 }, alignment: AlignmentType.CENTER }),
     ],
   }],
 });

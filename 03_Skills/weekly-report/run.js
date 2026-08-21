@@ -11,8 +11,16 @@ const run = (f) => { console.log(`\n▶ ${f}`); execFileSync(process.execPath, [
 
 const useCache = process.argv.includes('--cache');
 const doSend = process.argv.includes('--send');
+
+// Freshness guard: KHÔNG cho gửi thật trên snapshot cũ.
+if (useCache && doSend) {
+  console.error('❌ --cache KHÔNG được dùng cùng --send: báo cáo gửi đi phải là dữ liệu LIVE.\n   Bỏ --cache (pipeline sẽ tự fetch_gas.js) rồi chạy lại.');
+  process.exit(1);
+}
+if (doSend) process.env.REPORT_REQUIRE_FRESH = '1'; // aggregate TỪ CHỐI build nếu snapshot không tươi
+
 try {
-  if (!useCache) run('fetch_gas.js'); else console.log('↻ --cache: dùng snapshot sẵn có');
+  if (!useCache) run('fetch_gas.js'); else console.log('↻ --cache: dùng snapshot sẵn có (chỉ để soạn/thử — KHÔNG gửi)');
   run('aggregate.js');
   run('build_email.js');   // HTML email responsive (bản đọc chính trên email/di động)
   run('build_report.js');  // .docx (bản lưu trữ/đính kèm)

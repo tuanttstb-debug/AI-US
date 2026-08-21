@@ -24,6 +24,7 @@ const fmtTy = (n) => n >= 1000 ? (n / 1000).toLocaleString('vi-VN', { maximumFra
 function fmtTs(iso) { try { return new Date(iso).toLocaleString('vi-VN', { hour: '2-digit', minute: '2-digit', day: '2-digit', month: '2-digit', year: 'numeric' }); } catch (e) { return iso; } }
 
 const EX = DATA.exec;
+const SRC = DATA.source || {};
 const P1 = DATA.areas.filter((a) => a.priority === 1);
 const P2 = DATA.areas.filter((a) => a.priority === 2);
 
@@ -226,8 +227,11 @@ const html = `<!doctype html>
     ${H1(4, 'Trọng tâm tuần tới')}
     <ul style="margin:6px 0 0;padding-left:20px;font:400 14px/1.5 ${FONT};color:${TEXT};">${planItems}</ul>
 
+    ${SRC.stale ? `<div style="margin-top:18px;padding:10px 12px;border-radius:8px;background:#FEF2F2;border:1px solid ${R};font:400 12px/1.5 ${FONT};color:${R};text-align:center;">
+      ⚠ Dữ liệu có thể chưa cập nhật (${esc((SRC.staleWarns || []).join(' · '))}) — đối chiếu lại với SHTD Dashboard nếu số liệu bất thường.
+    </div>` : ''}
     <div style="margin-top:22px;padding-top:12px;border-top:1px solid ${LINE};font:italic 12px/1.5 ${FONT};color:${MUT};text-align:center;">
-      Nguồn: SHTD Dashboard (Google Sheets) đọc LIVE: ${DATA.totals.tasksAll} task (${DATA.totals.tasksActive} đang chạy, ${DATA.totals.tasksOverdue} quá hạn) · ${DATA.totals.casesAll} hồ sơ · ${DATA.totals.devActive} mục Dev_Plan.<br>
+      Nguồn: SHTD Dashboard (Google Sheets), dữ liệu chốt lúc <b>${esc(fmtTs(SRC.fetchedAt))}</b>: ${DATA.totals.tasksAll} task (${DATA.totals.tasksActive} đang chạy, ${DATA.totals.tasksOverdue} quá hạn) · ${DATA.totals.casesAll} hồ sơ · ${DATA.totals.devActive} mục Dev_Plan.<br>
       Sức khỏe “thực” đối chiếu deadline, không chỉ RAG tự đánh giá. Báo cáo nội bộ — chỉ metadata công việc.
     </div>
 
