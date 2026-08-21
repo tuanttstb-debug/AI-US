@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-21 #2, Claude Code)
+**Skill `brd-writer` + tri thức `REF-BRD-WRITING` từ scan BRD SCF.** AIOS nay có bộ chuẩn **viết BRD sản phẩm tín dụng TPBank**: (1) tri thức canonical `04_Knowledge/references/REF-BRD-WRITING.md` (cấu trúc 3 trụ · User Story + Acceptance Criteria phủ ngoại lệ · maker-checker · bộ bảng biểu chuẩn · văn phong · anti-pattern), rút *phương pháp* từ dự án tham chiếu SCF (đã lọc bỏ nghiệp vụ, đúng data-boundary); (2) skill `03_Skills/brd-writer/` (SKILL.md quy trình 7 bước + BRD_TEMPLATE.md rỗng + CHECKLIST.md), trỏ về REF để không trùng lặp; neo `[[SYS-TPBANK]]`+`[[REF-TPBANK-DELIVERY]]`. Danh mục skill: +brd-writer. **Blocker:** không. *(chưa commit trước handover — commit ở bước push phiên này.)*
+
 ## Delta (2026-08-21, Claude Code)
 **Bộ đào tạo 3 trụ + skill dựng PPTX TPBank + lệnh phiên (commit `d1921b8`).** AIOS nay có: (1) **`training-program/`** — chương trình đào tạo Team Số hóa Tín dụng gồm **Design Thinking (M1) · Agile (M2) · Growth (M3) · Capstone (M4)** + followup, nối 3 trụ bằng ngôn ngữ chung (Options=Ideate=Prioritization · Harvest=Test-learning=Retro); bộ Growth cũ nằm ở `03_growth`. (2) Skill **`tpbank-deck`** — dựng PPTX chuẩn nhận diện TPBank bằng python-pptx (6 layout, asset brand thật trích từ pptx tham khảo SCF), verify render qua PowerPoint COM. (3) **Lệnh phiên riêng repo hub:** `.claude/commands/{start,handover}.md` (`/start` nạp context theo cấu trúc hub, `/handover` ghi delta 4 file + push). Danh mục skill: weekly-report · portfolio-digest · init-project · deadline/decision-brief · intake-triage · **tpbank-deck**. **Blocker:** không.
 

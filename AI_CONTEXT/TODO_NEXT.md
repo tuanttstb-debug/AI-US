@@ -16,6 +16,13 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-21 #2, Claude Code) — skill brd-writer + tri thức REF-BRD
+XONG: ✅ scan cấu trúc BRD SCF (method-only) · ✅ tri thức canonical `REF-BRD-WRITING.md` · ✅ skill `brd-writer` (SKILL + template + checklist) · ✅ đăng ký INDEX. Ưu tiên tiếp:
+- [TT] Duyệt bộ chuẩn BRD; chọn hướng dùng thử (a hoặc b bên dưới).
+- [CC] (a) Sinh **bản `.docx` mẫu** từ `BRD_TEMPLATE.md` (style Word: heading/bảng/mục lục tự động) để soạn trực tiếp.
+- [CC] (b) Chạy thử skill: [TT] cho tên sản phẩm tín dụng + vài Pain Point → [CC] dựng khung BRD v0.1 (điền phần 1 Tổng quan + 2 Quy trình).
+- [CC] (tuỳ chọn) bổ sung **thư viện lưu đồ mẫu** (as-is/to-be) + snippet AC ngoại lệ hay dùng vào skill.
+
 ## Delta (2026-08-21, Claude Code) — bộ đào tạo 3 trụ + skill tpbank-deck + lệnh phiên
 XONG (commit `d1921b8`): ✅ chương trình `training-program/` (DT·Agile·Growth·Capstone + followup) · ✅ skill `tpbank-deck` (PPTX chuẩn TPBank) · ✅ 3 deck slide M1/M2/M4 · ✅ lệnh `/start` + `/handover`. Ưu tiên tiếp:
 - [TT] Duyệt nội dung 3 module; chạy thử **1 workshop** (M1 Design Thinking hoặc M3 Growth) với team ≤8. Dùng **`/start`** đầu phiên, **`/handover`** cuối phiên từ nay.
