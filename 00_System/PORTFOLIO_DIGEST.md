@@ -2,38 +2,38 @@
 
 > ⚙️ **File tự sinh bởi `03_Skills/portfolio-digest/digest.js` — KHÔNG sửa tay.** Điểm vào & phần quy hoạch curated: `00_System/PORTFOLIO.md`.
 >
-> Sinh lúc: 2026-08-17T08:35:04.306Z · Nguồn: `AI_CONTEXT/SESSION_HANDOVER.md` + git mỗi repo (đọc-only).
+> Sinh lúc: 2026-08-22T02:42:35.616Z · Nguồn: `AI_CONTEXT/SESSION_HANDOVER.md` + git mỗi repo (đọc-only).
 
 ## Bảng nhanh
 
 | Dự án | Nhánh | Commit gần nhất | Dirty | Delta handover mới nhất |
 |---|---|---|---|---|
-| PRJ-SHTD · SHTD-Dashboard | main | 2026-08-16 `2a520f4` docs(S74): stamp commit hash 006ed60 vào handover | sạch | S74 — Fix nhắc việc task đã đóng: cơ chế RETRACT 3 tầng · v6.49 (GAS — ĐÃ redeploy, link không đổi) |
-| PRJ-AIUS · ai-usecase-platform | docs/v3.15.0-deployed | 2026-08-17 `e377098` @ docs: đổi thư mục ai_context/ -> AI_CONTEXT/ (chuẩn khung AI OS registry) | 12 file | Session: 2026-08-02 |
+| PRJ-SHTD · SHTD-Dashboard | main | 2026-08-22 `29369e4` feat(date-guard): S77 chống lệch định dạng ngày tận gốc (onEdit + daily) | 82 file | S77 — DateGuard: chống lệch định dạng ngày TẬN GỐC (backend + test) |
+| PRJ-AIUS · ai-usecase-platform | main | 2026-08-18 `dee94e6` @ docs: session handover 2026-08-18 — TECH_DEBT delta (đóng USERS-LEGACY-01, giảm USERMASTER-CONCURRENCY-01) | 14 file | Session: 2026-08-18 (Part 3) — Dọn rác: nguồn user DUY NHẤT = User_Master (SHTD) |
 | PRJ-LOG · Logistics-Dashboard | main | 2026-08-07 `ff8be68` feat(overhead): khoản CHƯA map vẫn phân loại Overhead (safety-net) + chốt baseline $45.061,40 | sạch | 2026-08-07 (CHỐT PHIÊN) — Tổng kết phiên (3 việc; chi tiết ở 3 block dưới) |
 | PRJ-NOXH · NOXH | main | 2026-08-17 `bf81743` @ docs(AI_CONTEXT): thêm PROJECT_STATE.md (chuẩn khung AI OS registry) | 1 file | 🔴 HANDOVER HIỆN TẠI (2026-07-31, phiên 3 — nối backend LIVE + push git) |
-| PRJ-SG · Smart Guarantee | main | 2026-08-17 `3f66e13` @ chore: khởi tạo dự án Smart Guarantee (khung AI_CONTEXT + CLAUDE.md) | sạch | Delta phiên (2026-08-17 — khởi tạo dự án) |
+| PRJ-SG · Smart Guarantee | main | 2026-08-18 `bafe44a` docs(context): session handover — thông luồng end-to-end + nợ tích hợp | 4 file | ⭐ Tổng kết phiên 2026-08-18 #10 (Claude Code) — 🎉 THÔNG LUỒNG end-to-end |
+| PRJ-BM · BeneMatch | main | 2026-08-19 `395ca71` docs(context): khởi tạo AI_CONTEXT + feature roadmap + handover (PRJ-BM) | sạch | Delta phiên (2026-08-19) #3 — Chốt kế hoạch & handover |
 
 ## Chi tiết delta mới nhất mỗi dự án
 
 ### PRJ-SHTD — SHTD-Dashboard
 *Hệ tác nghiệp Khối KHDN (AIOS đọc từ đây)*
 
-**S74 — Fix nhắc việc task đã đóng: cơ chế RETRACT 3 tầng · v6.49 (GAS — ĐÃ redeploy, link không đổi)**
-- **✅ Task**: thu hồi (mark-read) nhắc `due-3d/due-1d/due-today/overdue` khi entity done HOẶC biến mất, ở 3 tầng: (1) **real-time** `notifOnWrite` — `nowDone` → `_notifRetractEntity_()` gỡ ngay nhắc treo của entity (mọi recipient); (2) **daily self-heal** `notifScan` — `_notifLiveState_()` (tập `exist`/`done` mọi entity) + `_notifRetractStale_()` gỡ mọi nhắc due/overdue mà entity nay done/mất, chạy **TRƯỚC** `_notifSendDigests_` nên email cũng sạch → **tự chữa tồn kho lịch sử + task đóng ngoài app** (sửa Sheet tay/migration); (3) **dry-run** `notifRetractStalePreview()` soi backlog.
-- **✅ Files (1 source + 1 test + 3 wiring)**: `backend/NotificationService.gs` (NEW const `_NOTIF_DUE_TYPES`; NEW `_notifRetractEntity_`/`_notifLiveState_`/`_notifRetractStale_`/`notifRetractStalePreview`; MOD `notifOnWrite` retract-on-done, `notifScan` retract pass + bump `DATA_VER` khi thu hồi + log/return `retracted`). NEW `verify_notif_retract.mjs`. MOD `run_tests.mjs`, `config.js` v6.49, `index.html` `?v=20260816` (65 refs).
-- **✅ Decision**: (a) chỉ thu hồi **due-types** — `created`/`closed` là sự kiện 1 lần, giữ nguyên. (b) **retract = mark-read** (set ReadTs), KHÔNG xóa dòng → giữ dấu vết; `_notifPurge_` dọn sau 30 ngày như cũ. (c) KHÔNG lọc live-state trong `notifRead` (mỗi poll 15' → tránh đọc lại toàn bộ entity, nghịch tuning S72); 2 tầng real-time + daily đã phủ. Gap nhỏ: task đóng NGOÀI app chỉ sạch ở lần scan kế (chấp nhận). (d) bump `DATA_VER` khi có thu hồi → chuông client lấy bản sạch ở batch kế.
-- **✅ Test**: `verify_notif_retract.mjs` **19/19** — nạp **NGUYÊN VĂN** `NotificationService.gs` vào sandbox Node (`new Function` + stub SpreadsheetApp/Utilities/MailApp/entity-readers + fake sheet) → chạy **hàm GAS THẬT** (không port tay → không drift): live-state phân loại task/dev/milestone, retract done/missing, giữ task mở, bỏ created/read-sẵn, real-time onWrite close, tích hợp `notifScan` (retracted=2 + bump). `verify_notifications` (UI) **21/21** không đổi. GAS parse OK (qua sandbox eval).
-- **⛔ Blocker**: Không. ✅ **GAS đã redeploy (user, link KHÔNG đổi).** Tầng scan chỉ cần Save code; tầng real-time (`notifOnWrite` trong `doPost`) cần redeploy — đã xong.
-- **➡️ Next step**: (1) (GAS editor) `notifRetractStalePreview()` soi số nhắc stale → `notifScan()` chạy tay 1 lần dọn backlog ngay (không chờ trigger 8h). (2) Hard-reload → badge `v6.49`; đóng 1 task đang có nhắc overdue → chuông + digest kế **hết** nhắc task đó. (3) (nợ) điền Email `User_Master` cho digest.
+**S77 — DateGuard: chống lệch định dạng ngày TẬN GỐC (backend + test)**
+- **Task completed**: Truy vết nghi vấn "sửa nhầm file / thiếu deploy GAS" của vụ báo cáo tuần AIOS hiện deadline sai (`BL1-026` email 31/07 vs DB 31/08). **Kết luận có bằng chứng**: (1) deadline trong email **100% do AIOS dựng** (`aggregate.js parseVNDate+fmtDMY` → `build_email.js` HTML); GAS SHTD `ReportEmailService.sendWeeklyReport_` chỉ **relay** (`htmlBody: html` param "đã dựng ở AIOS", dòng 156/179) — KHÔNG parse/format ngày → sửa ở AIOS là **đúng file**, không cần deploy GAS là **đúng chủ đích** (không file GAS nào đổi). (2) parser AIOS đã verify đúng (`"31-thg 8-26"`→`Date.UTC(2026,7,31)`→`31/08/2026`, UTC nhất quán). (3) Gốc = **snapshot cũ** (đã guard bên AIOS hôm trước). **Việc phiên này**: bịt **rủi ro nền** — dữ liệu ngày trong Sheet có thể bị Google localise lại sau sửa tay/paste; `DateNormalizeMigration.gs` chỉ dọn 1 lần → dựng **DateGuard 2 tầng** chống tái phát.
+- **Files changed**: NEW `backend/DateGuard.gs` (onEdit real-time + daily scan + install/uninstall/selftest; tái dùng `_dnToISO`/`_DN_TARGETS`), NEW `verify_date_guard.mjs` (29/29), `run_tests.mjs` (+đăng ký). AI_CONTEXT (4 file). **KHÔNG đụng FE source** (audit `assets/js` xác nhận writer→`fmtDateExport`, reader→`toISODate` đã chuẩn từ S67.2; các `new Date()` là tính toán trên memory ISO). Không commit ~85 PNG `test-results` dirty (leftover cũ).
+- **Decision made**: (1) Fix ở **tầng dữ liệu (GAS trigger)** để cả dashboard lẫn báo cáo AIOS hưởng lợi, thay vì chỉ vá từng consumer. (2) **CHỈ rewrite** chuỗi locale/serial lệch & parse được; Date hợp lệ/ISO/rỗng bỏ qua (ít churn); không parse được → **giữ + log** (không phá dữ liệu ngân hàng). (3) `setNumberFormat('@')` **best-effort try/catch** — né lỗi "cột kiểu đã nhập" đã khiến S67.2 bỏ khoá plain-text. (4) daily @7h **trước** `notifScan`@8h để digest/báo cáo đọc dữ liệu sạch. (5) Không bump APP_VERSION (backend thuần).
+- **Blocker**: không. **✅ [TT] đã hoàn tất phía GAS** (dán DateGuard.gs + `commitNormalizeDates()` + `installDateGuardTriggers()` + `dailyDateGuard()` chạy tay).
+- **Next step**: [TT] nghiệm thu vào **kỳ gửi email tới** — deadline trong email khớp DB; thử sửa 1 ô ngày kiểu `31-thg 8-26` trên Sheet → reload → thành `2026-08-31` (real-time). [CC] (tuỳ chọn) mở rộng guard cho **8 sheet H2_*** nếu KPI cũng nhập ngày tay; gộp `_dnToISO` thành 1 nguồn nếu tách module chung.
+- **Regression risk**: **Thấp/không**. Toàn file MỚI, độc lập — 0 đổi FE, 0 đổi route/handler GAS đang chạy. Guard chỉ chuẩn hoá ĐÚNG các cột ngày đã quản lý; programmatic write không kích onEdit (không vòng lặp); idempotent (verify DG9). `verify_date_guard` 29/29; guard **không** chạy tự động trong test suite trình duyệt nên không ảnh hưởng suite cũ.
 
 ### PRJ-AIUS — ai-usecase-platform
 *Quản trị AI use-case (SPTD)*
 
-**Session: 2026-08-02**
-- **Scope:** (1) Đồng bộ duyệt milestone với duyệt US — xem chi tiết toàn cảnh trước khi duyệt; (2) Link demo bấm được trong mọi popup duyệt/chi tiết US; (3) Fix triệt để lỗi link demo dài (ổ chung) làm hỏng tạo US.
-- **Version:** 3.15.0
-- **Status:** ✅ **LIVE** — GAS deployed (URL không đổi), FE pushed `main` (`fc894b5`), feature branch merged + deleted. Đúng thứ tự GAS→FE. Chờ smoke test live.
+**Session: 2026-08-18 (Part 3) — Dọn rác: nguồn user DUY NHẤT = User_Master (SHTD)**
+- **Scope:** Rà soát toàn bộ, gỡ tính năng rác trỏ data cũ (sheet USERS nội bộ), gỡ quản lý user khỏi AI US, chốt nguồn user duy nhất = `User_Master` trên SHTD.
+- **Status:** ✅ Code xong + test local PASS: **Playwright 88/88** (đã xóa spec 02 users-page ~10 test) · SPTD 34/34 · KPI 38/38 · ID 14/14. **⚠️ CẦN redeploy GAS.**
 
 ### PRJ-LOG — Logistics-Dashboard
 *Báo cáo chi phí logistics (CEO)*
@@ -58,12 +58,23 @@
 - `SeedData.gs` (sinh từ `seed-data.js`) + `Setup.gs::setupSheets()` tạo 8 sheet + đổ seed (thay import
 
 ### PRJ-SG — Smart Guarantee
-*Số hoá phát hành & quản lý bảo lãnh*
+*PoC AI xử lý & sinh thư bảo lãnh (TPBank)*
 
-**Delta phiên (2026-08-17 — khởi tạo dự án)**
-- **Việc xong:** Khởi tạo dự án qua skill AIOS `init-project`: `git init` (nhánh `main`), scaffold `AI_CONTEXT/` (OVERVIEW/STATE/TODO/HANDOVER/TECH_DEBT) + `CLAUDE.md` bootstrap; tạo **`DESIGN_SYSTEM.md` kế thừa UI/UX từ PRJ-SHTD** ("TPBank BIZ" — tím-first, card-driven, token-based, breakpoints 1440/1280/1024/768/480); điền OVERVIEW/STATE/TODO khởi điểm (đánh dấu [CHỜ XÁC NHẬN] các mục nghiệp vụ). Đăng ký AIOS registry (thẻ PRJ-SG, PORTFOLIO, INDEX, portfolio-digest).
-- **File đổi:** `AI_CONTEXT/*` (5 khung + DESIGN_SYSTEM), `CLAUDE.md`; (AIOS) thẻ + PORTFOLIO/INDEX/projects.json.
-- **Quyết định:** UI/UX **kế thừa SHTD**; nghiệp vụ tham chiếu `SYS-BLOL`; stack/phạm vi **chưa chốt** (để phiên 1).
-- **Blocker:** chưa có GitHub remote (chỉ local); phạm vi nghiệp vụ chưa xác nhận.
-- **Bước kế:** [TT] chốt phạm vi + stack + tạo remote (TODO_NEXT mục Cao); [CC] dựng scaffold FE theo `DESIGN_SYSTEM.md`.
-- **Rủi ro hồi quy:** không (dự án mới, chưa có code).
+**⭐ Tổng kết phiên 2026-08-18 #10 (Claude Code) — 🎉 THÔNG LUỒNG end-to-end**
+- **Task completed:** Debug UAT thật (PDF `Test/IB2600452376.pdf` qua FE localhost:8765 → GAS live → Dify live) qua chuỗi lỗi, **thông toàn luồng**: FE upload → GAS OCR-extract → **Dify 4 LLM** → GAS suy route + parse + assemble → FE 5 tab → generate DOCX. 3 fix nối tiếp: (a) `Drive is not defined` → **Drive REST** (`Convert.gs`, phiên #9); (b) `DIFY_TIMEOUT 404` do `DIFY_BASE_URL` chứa `/v1/workflows/run` → **chuẩn hoá về host** (`Config.gs`); (c) `sandbox 429` (Dify Cloud giới hạn code node) → **workflow LLM-only 6 node** (bỏ route+assemble code node), chuyển route/parse/assemble sang GAS. [TT] xác nhận luồng thông; sẽ **tuning chất lượng** sau.
+- **Files changed:** `gas/Config.gs` (normalize DIFY_BASE_URL), `gas/Dify.gs` (`normalizeDify_` parse 4 output text + `routeFromClassification_`), `gas/Convert.gs` (mới, Drive REST), `gas/Text.gs`/`gas/Generate.gs` (dùng Convert), `gas/appsscript.json` (bỏ advanced service), `dify/smart-guarantee.workflow.yml` (rewrite LLM-only), `dify/WORKFLOW_SPEC.md`. Commits `fc1775f`→`b37793c`.
+- **Decision:** (1) **Dify = LLM-only**; route (deterministic) + parse JSON + assemble ở **GAS** — tránh sandbox 429, ổn định hơn. (2) Convert PDF/Word→Doc qua **Drive REST (UrlFetch)** thay Advanced Drive Service. (3) `DIFY_BASE_URL` = **host gốc** (`https://api.dify.ai`), code tự strip `/v1[/workflows/run]`. (4) Model **GPT-5.4-mini** ([TT] cấu hình 4 node LLM trong Dify). (5) Extract tự suy hệ biến `$ND` vs `[...]` từ classification trong prompt.
+- **Blocker:** **Hết blocker luồng.** Còn phần chất lượng (chưa đo): độ chính xác classification/segmentation/mapping; route `ONLINE_B8ZB` chưa test template thật (`$ND` field-code — TD-SG-06); tuning prompt/alias/placeholder.
+- **Next step:** [TT] **tuning** (prompt trong Dify, alias/placeholder/registry trong Sheet, model) + chạy `docs/UAT.md` (T1–T6) đo KPI. [CC] hỗ trợ theo kết quả: fix `$ND` OOXML nếu route ONLINE lỗi; tinh chỉnh schema/prompt; DOCX format.
+- **Regression risk:** trung bình — đổi cơ chế Dify output (object→4 text) + GAS parse/route; **luồng đã chạy thông** nhưng **chưa đo chất lượng/độ chính xác** trên bộ test.
+
+### PRJ-BM — BeneMatch
+*API xác minh tên pháp nhân bên thụ hưởng trước giải ngân (PoC/Demo TPBank)*
+
+**Delta phiên (2026-08-19) #3 — Chốt kế hoạch & handover**
+- **Việc xong:** Chốt kế hoạch triển khai chi tiết **Phase 1 — Risk Engine Core** (8 bước: signal contract → A1 aggregation → A4 flag → A2 synthetic → C3 config → C2 audit → C1 harness → regression gate). Chuẩn bị handover + push git.
+- **File đổi:** `SESSION_HANDOVER.md`, `PROJECT_STATE.md`, `TECH_DEBT.md` (delta); `TODO_NEXT.md` + `FEATURE_ROADMAP.md` đã cập nhật ở delta #2.
+- **Quyết định:** Push thẳng lên `main` của repo BeneMatch (repo hub tài liệu, đọc từ main mỗi phiên; theo yêu cầu trực tiếp của [TT]). Registry AIOS commit riêng ở repo AIOS.
+- **Blocker:** Chưa có endpoint/API key Dify Cloud (chặn Phase 0 GAS↔Dify). **Không chặn** prototype Phase 1 offline (logic Python thuần).
+- **Bước kế:** Chờ [TT] chọn hướng — **(A)** prototype Phase 1 offline ngay · **(B)** hoàn tất Phase 0 nền demo trước · **(C)** commit/push xong rồi mới code.
+- **Rủi ro hồi quy:** A1 (Phase 1) refactor Decision Engine → nguy cơ đổi hành vi 10 luật; **bắt buộc** chạy regression 7 case trước/sau, giữ field cũ trong `API_CONTRACT`, chỉ thêm field mới + bump version.
