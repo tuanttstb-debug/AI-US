@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-22 #2, Claude Code)
+**Sync-hub: Spoke SHTD-Dashboard — CR Kanban "Công việc của tôi" (thuần FE).** Phiên xuyên repo Hub→Spoke: 3 yêu cầu trên view Kanban My Work — (1) cột "Cần thực hiện" gộp đúng 4 trạng thái (Chưa bắt đầu/HT chuẩn bị/Tạm dừng/Blocked, constant `MW_KB_TODO_STATES`); (2) scroll đồng nhất cả 3 cột; (3) filter theo nhân sự cho Teamlead/Admin (droplist distinct pic, áp cả List+Kanban). Spoke v6.51→**v6.52**, commit `dbc84ce` (+docs `8870d1d`, push origin/main), `verify_my_work` **91/91**. KHÔNG cần redeploy GAS. Hub chỉ ghi cross-ref (`CROSS_REPO_LOG.md`) + digest. Gốc=spoke, cross-ref=Y.
+
 ## Delta (2026-08-22, Claude Code)
 **Spoke `BeneMatch` mở scope Batch Reconciliation (đa HĐ ↔ đa lệnh CT).** Phiên xuyên repo Hub→Spoke: dựng trọn tầng đối chiếu lô (OCR hybrid · gộp theo người thụ hưởng/MST · tổng nhóm+grand total, dung sai, over/under, duplicate · verify tên qua Dify V2) + tối ưu Dify **rule-first** (Warning Route 4 nhánh, LLM chỉ ca REVIEW mơ hồ; trả TD-BM-01/02, vá TD-BM-03). Verify offline đầy đủ (recon 14/14 · GAS parity byte-identical · OCR parse 5/5 · FE+artifact render). Commit spoke `865a826` (**local, push pending** — classifier chặn `git push`; [TT] chạy `! git push origin main`). Live end-to-end chờ [TT] cấp: Dify endpoint/key, Vision key+ảnh mẫu, deploy GAS, Sheet ID. Xem `00_System/CROSS_REPO_LOG.md`.
 

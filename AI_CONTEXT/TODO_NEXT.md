@@ -16,6 +16,11 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-22 #2, Claude Code) — Sync-hub: Spoke SHTD-Dashboard CR Kanban My Work
+XONG [CC] (spoke `SHTD-Dashboard`, commit `dbc84ce`+docs `8870d1d`, push origin/main): ✅ cột To-do gộp 4 trạng thái · ✅ scroll đồng nhất 3 cột Kanban · ✅ filter theo nhân sự (Teamlead/Admin). Thuần FE v6.52, `verify_my_work` 91/91, KHÔNG redeploy GAS. Ưu tiên tiếp:
+- [TT] Hard-reload PRD SHTD → badge `v6.52`; nghiệm thu 3 mục CR (xem `SHTD-Dashboard/AI_CONTEXT/TODO_NEXT.md` S78 PRIORITY 1).
+- [CC] (tuỳ chọn, spoke) cột Closed Date thay proxy Deadline (TD-MW-02); persist person filter theo phiên nếu [TT] cần.
+
 ## Delta (2026-08-22, Claude Code) — Spoke BeneMatch: scope Batch Reconciliation
 XONG [CC] (spoke `BeneMatch`, commit `865a826` local): ✅ recon engine + harness 14/14 · ✅ dataset synthetic 9 nhóm · ✅ tối ưu Dify yml (4 nhánh, TD-BM-01/02/03) · ✅ GAS gateway+OCR (parity byte-identical) · ✅ FE + artifact publish. Ưu tiên tiếp:
 - [TT] **Push BeneMatch:** `! git push origin main` (đẩy `865a826`+`395ca71` — classifier chặn push tự động).
