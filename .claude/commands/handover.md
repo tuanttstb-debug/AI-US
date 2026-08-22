@@ -31,6 +31,14 @@ Chèn ngay dưới dòng tiêu đề, phía trên delta cũ, theo đúng khuôn 
 ### 4. `AI_CONTEXT/TECH_DEBT.md` — chỉ khi có nợ mới/đã trả
 Thêm dòng tóm ở đầu (`> **Delta phiên YYYY-MM-DD:** …`) và/hoặc block `## TD-<MÃ> — <mô tả> (YYYY-MM-DD)`. Đánh ✅ nợ đã giải quyết. Không có thay đổi nợ → bỏ qua file này.
 
+## Sync-hub (nhịp 5 — khi phiên có chạm dự án spoke)
+> Áp dụng `02_Rules/cross-repo-workflow.md`. Bỏ qua mục này nếu phiên chỉ làm trong AIOS.
+1. **Ghi 1 dòng** vào `00_System/CROSS_REPO_LOG.md` (mới nhất trên cùng), đúng định dạng:
+   `YYYY-MM-DD · <REPO> · <commit> · <tóm tắt> · gốc=<hub|spoke-data|spoke-backend|…> · cross-ref=<Y/N>`
+2. **Chạy `portfolio-digest`** (`node 03_Skills/portfolio-digest/digest.js`) → cập nhật `00_System/PORTFOLIO_DIGEST.md` để hub nắm trạng thái spoke.
+3. **Cross-ref bắt buộc:** nếu bug/feature có gốc ở spoke → xác nhận `AI_CONTEXT` của **cả** spoke lẫn AIOS đều có liên kết chéo (theo Definition of Done §4 của rule).
+4. Nếu gốc ở spoke mà **chưa fix** cùng phiên → xác nhận đã mở `TECH_DEBT` + `TODO` **trong repo spoke** (không chỉ ghi ở hub).
+
 ## Quy ước bắt buộc
 - **Ngày tuyệt đối** (YYYY-MM-DD), không dùng "hôm nay/tuần trước".
 - Giọng ngắn, trực diện; tiếng Việt; owner rõ (`[TT]` Tuân · `[CC]` Claude Code · `[CW]` Cowork).

@@ -53,7 +53,10 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 | Lệnh | Mục đích | File |
 |---|---|---|
 | `/start` | Bắt đầu phiên: nạp context theo cấu trúc hub (AI_CONTEXT không có PROJECT_OVERVIEW) | `.claude/commands/start.md` |
-| `/handover` | Bàn giao chuẩn: ghi delta 4 file AI_CONTEXT (6 trường) + push master | `.claude/commands/handover.md` |
+| `/enter <path>` | Nạp context 1 dự án spoke (đọc 4 file AI_CONTEXT, không quét repo) — nhịp 2 xuyên repo | `.claude/commands/enter.md` |
+| `/handover` | Bàn giao chuẩn: ghi delta 4 file AI_CONTEXT (6 trường) + Sync-hub + push master | `.claude/commands/handover.md` |
+
+**Luật xuyên repo:** `02_Rules/cross-repo-workflow.md` (sở hữu hub⇄spoke · giao thức truy vết bug · vòng đời 5 nhịp · DoD). Nhật ký: `00_System/CROSS_REPO_LOG.md`.
 
 ## Decision (DEC)
 | ID | Tiêu đề | File |
