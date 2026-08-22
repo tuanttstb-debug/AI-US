@@ -4,6 +4,7 @@
 >
 > Định dạng: `YYYY-MM-DD · <REPO> · <commit> · <tóm tắt> · gốc=<hub|spoke-data|spoke-backend|…> · cross-ref=<Y/N>`
 
+- 2026-08-22 · PFMP (Project_Finance_Management_Platform) · local (chưa commit) · Chủ trương TGĐ (BPM+CRM) duyệt → đối chiếu scope + cập nhật kế hoạch + mockup v18 (hợp nhất v15/16/17, Phase 1 + luồng vòng đời + đa vai) + email nháp lãnh đạo IT · gốc=spoke · cross-ref=Y (hub rút skill `email-writer` + REF-TPBANK-DELIVERY §1b owner-unit IT từ `Email fix.docx`)
 - 2026-08-22 · SHTD-Dashboard · `dbc84ce` (+docs `8870d1d`) · CR Kanban My Work: cột To-do gộp 4 trạng thái (Chưa bắt đầu/HT chuẩn bị/Tạm dừng/Blocked) + scroll đồng nhất 3 cột + filter theo nhân sự (Teamlead/Admin) · thuần FE v6.52, verify 91/91 · gốc=spoke · cross-ref=Y
 - 2026-08-22 · BeneMatch · `865a826` (local, push pending) · Scope Batch Reconciliation: đa HĐ↔đa lệnh CT (OCR hybrid·gộp MST·tổng nhóm/duplicate/over-under·verify tên V2) + tối ưu Dify rule-first (trả TD-BM-01/02, vá TD-BM-03) · gốc=spoke · cross-ref=Y
 - 2026-08-22 · SHTD-Dashboard · `29369e4` · DateGuard.gs chống lệch định dạng ngày tận gốc (onEdit + daily) · gốc=spoke-data · cross-ref=Y (AIOS weekly-report `5b3b80b` freshness guard là guard phòng thủ hub cho cùng triệu chứng)

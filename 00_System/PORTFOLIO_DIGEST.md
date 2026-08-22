@@ -2,7 +2,7 @@
 
 > ⚙️ **File tự sinh bởi `03_Skills/portfolio-digest/digest.js` — KHÔNG sửa tay.** Điểm vào & phần quy hoạch curated: `00_System/PORTFOLIO.md`.
 >
-> Sinh lúc: 2026-08-22T08:26:34.044Z · Nguồn: `AI_CONTEXT/SESSION_HANDOVER.md` + git mỗi repo (đọc-only).
+> Sinh lúc: 2026-08-22T08:28:02.639Z · Nguồn: `AI_CONTEXT/SESSION_HANDOVER.md` + git mỗi repo (đọc-only).
 
 ## Bảng nhanh
 

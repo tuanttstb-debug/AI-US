@@ -21,6 +21,13 @@ XONG [CC] (spoke `SHTD-Dashboard`, commit `dbc84ce`+docs `8870d1d`, push origin/
 - [TT] Hard-reload PRD SHTD → badge `v6.52`; nghiệm thu 3 mục CR (xem `SHTD-Dashboard/AI_CONTEXT/TODO_NEXT.md` S78 PRIORITY 1).
 - [CC] (tuỳ chọn, spoke) cột Closed Date thay proxy Deadline (TD-MW-02); persist person filter theo phiên nếu [TT] cần.
 
+## Delta (2026-08-22 #2, Claude Code) — skill email-writer + owner-unit IT (từ email PFMP)
+XONG [CC]: ✅ scan `Email fix.docx` (diff nháp↔bản [TT] sửa) · ✅ skill hub `03_Skills/email-writer/` (SKILL+TEMPLATE+CHECKLIST) · ✅ REF-TPBANK-DELIVERY §1b owner-unit IT (cấp đơn vị) · ✅ INDEX + CROSS_REPO_LOG + memory. Ưu tiên tiếp:
+- [CC] Khi soạn email nội bộ TPBank → **dùng `email-writer`** + REF §1b (đừng lẫn ITA.IT kiến trúc vs CA.CB nghiệp vụ).
+- [TT] Quyết **commit/push spoke PFMP** (mockup v18 + email + AI_CONTEXT + charter chưa commit — lưu ý `Email fix.docx` chứa handle đầu mối; cân nhắc data-boundary repo).
+- [CC] (tuỳ chọn) **Onboard PFMP vào registry** (`init-project` — hiện chưa có thẻ PRJ/projects.json) để digest gom được.
+- [CC] (tuỳ chọn) Dựng bản email **HTML** giữ định dạng bảng (Outlook/Gmail) cho template.
+
 ## Delta (2026-08-22, Claude Code) — Spoke BeneMatch: scope Batch Reconciliation
 XONG [CC] (spoke `BeneMatch`, commit `865a826` local): ✅ recon engine + harness 14/14 · ✅ dataset synthetic 9 nhóm · ✅ tối ưu Dify yml (4 nhánh, TD-BM-01/02/03) · ✅ GAS gateway+OCR (parity byte-identical) · ✅ FE + artifact publish. Ưu tiên tiếp:
 - [TT] **Push BeneMatch:** `! git push origin main` (đẩy `865a826`+`395ca71` — classifier chặn push tự động).

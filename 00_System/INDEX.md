@@ -48,6 +48,7 @@ Mục lục tra cứu toàn bộ entity file theo ID. Cập nhật mỗi khi th�
 | intake-triage | Thu thập & định tuyến việc đột xuất | `03_Skills/intake-triage/SKILL.md` |
 | tpbank-deck | Dựng PPTX theo chuẩn nhận diện TPBank (màu/logo/accent/font/6 layout) bằng python-pptx | `03_Skills/tpbank-deck/SKILL.md` |
 | brd-writer | Viết/rà soát BRD sản phẩm tín dụng (cấu trúc 3 trụ · US+AC · maker-checker · template + checklist) | `03_Skills/brd-writer/SKILL.md` |
+| email-writer | Soạn email điều phối/thông báo nội bộ TPBank (văn phong + taxonomy phòng ban đúng · template + checklist) | `03_Skills/email-writer/SKILL.md` |
 
 ## Lệnh phiên (slash command — riêng repo hub AIOS)
 | Lệnh | Mục đích | File |

@@ -7,8 +7,8 @@ owner: PER-TTT
 tags: [tpbank, delivery, governance, process, blockers, playbook, reference]
 related: [SYS-TPBANK, PRJ-SG, PER-TTT]
 created: 2026-08-19
-updated: 2026-08-19
-version: 1
+updated: 2026-08-22
+version: 2
 source: Tổng hợp từ dự án tham chiếu SCF + so sánh PRJ-SG; nhãn confidence theo mục.
 ---
 
@@ -36,6 +36,22 @@ Playbook **cách một dự án được triển khai trong TPBank**: ai quyết
 | **BA** | Phân tích nghiệp vụ | BRD, spec, điều phối open questions |
 | **QA/QADA** | Kiểm thử | SIT/UAT |
 | **TGĐ / Board** | Ban điều hành | Phê duyệt **ngân sách** |
+
+### 1b. Owner hệ thống & đầu mối IT theo vai (owner units) [FACT — dự án PFMP Xây lắp 2026-08]
+> Cấp **đơn vị/vai trò** (không lưu danh tính cá nhân). Dùng khi lập Taskforce / gửi email điều phối / phân vai tích hợp. Bổ sung từ thực tế lập Taskforce PFMP.
+
+| Viết tắt | Vai trò / phụ trách |
+|---|---|
+| **PM.IT** | Điều phối Taskforce/dự án, kế hoạch & timeline, quản lý phạm vi |
+| **Dev1 + Dev3** | Owner **BPM** (ĐXGN & QTGN) — phân hệ quản lý công trình, luồng maker-checker, nguồn dữ liệu tự động (BPM/**CCP**) |
+| **Dev2** | Owner **CRM** — lớp xem/khai thác cho CR/CM/CB/RM |
+| **CBS** | Owner **FCC** — nguồn dữ liệu core (dư nợ, BL, LC, thu nợ…) |
+| **ITA.IT** | **Kiến trúc hệ thống** — phương án tích hợp BPM–CRM–FCC & các hệ liên quan (đầu mối quyết kiến trúc) |
+| **DP + Data** | **Quy hoạch & khai thác dữ liệu dùng chung**, tích hợp/chuẩn hoá nguồn nội bộ, Mã công trình làm khóa liên thông |
+| **CA.CB** | (phía **CB**, không phải IT) — tư vấn **nghiệp vụ vận hành nguồn dữ liệu**, phối hợp điều chỉnh QTNV owner |
+| **CCP** | Nền tảng core cấp nguồn dữ liệu tự động cho BPM (đi kèm FCC) |
+
+> ⚠️ **Đừng lẫn:** `ITA.IT` = kiến trúc CNTT (quyết kiến trúc) ≠ `CA.CB` = đơn vị nghiệp vụ phía CB. `CBS`=owner FCC, `Dev2`=owner CRM, `Dev1/Dev3`=owner BPM. `ORM` = review rủi ro vận hành (cửa bắt buộc, nhưng có thể **không** nằm trong Taskforce cấp đầu mối tuỳ dự án).
 
 ## 2. Thẩm quyền quyết định [FACT]
 | Quyết định | Ai |
