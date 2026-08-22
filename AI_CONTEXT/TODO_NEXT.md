@@ -16,6 +16,12 @@
 ## Điều kiện tuyển agent đầu tiên
 Chỉ khi weekly-report chạy ổn định thật (xem 02_Rules/agent-hiring-rule.md).
 
+## Delta (2026-08-22, Claude Code) — Spoke BeneMatch: scope Batch Reconciliation
+XONG [CC] (spoke `BeneMatch`, commit `865a826` local): ✅ recon engine + harness 14/14 · ✅ dataset synthetic 9 nhóm · ✅ tối ưu Dify yml (4 nhánh, TD-BM-01/02/03) · ✅ GAS gateway+OCR (parity byte-identical) · ✅ FE + artifact publish. Ưu tiên tiếp:
+- [TT] **Push BeneMatch:** `! git push origin main` (đẩy `865a826`+`395ca71` — classifier chặn push tự động).
+- [TT] Cấp để chạy live end-to-end: import yml Dify Cloud + **DIFY_API_URL/KEY** · **Vision API key** + ảnh hóa đơn mẫu · deploy **GAS** Web App · **Sheet ID**.
+- [CC] Khi có: nối FE "Live"→GAS · smoke-test OCR ảnh thật · hiệu chỉnh regex `parseInvoiceText_` (TD-BM-05 spoke).
+
 ## Delta (2026-08-21 #3, Claude Code) — DEBUG deadline sai + Freshness guard weekly-report
 XONG: ✅ truy vết `BL1-026` (email 31/07 vs DB 31/08) → **parser đúng, gốc = snapshot cũ**; ✅ fetch LIVE xác nhận DB=31/08; ✅ **Freshness guard** (`aggregate.js` cảnh báo/`REPORT_REQUIRE_FRESH=1`→từ chối; `run.js` cấm `--cache --send`; footer báo thời điểm chốt + banner stale); ✅ verify tay 4 kịch bản. Ưu tiên tiếp:
 - [TT] Lịch thứ 6 giữ **`node run.js --send`** (tự fetch LIVE + guard chặn stale); **tránh `--cache` khi gửi**.

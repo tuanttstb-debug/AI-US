@@ -2,7 +2,7 @@
 
 > ⚙️ **File tự sinh bởi `03_Skills/portfolio-digest/digest.js` — KHÔNG sửa tay.** Điểm vào & phần quy hoạch curated: `00_System/PORTFOLIO.md`.
 >
-> Sinh lúc: 2026-08-22T02:42:35.616Z · Nguồn: `AI_CONTEXT/SESSION_HANDOVER.md` + git mỗi repo (đọc-only).
+> Sinh lúc: 2026-08-22T06:50:09.798Z · Nguồn: `AI_CONTEXT/SESSION_HANDOVER.md` + git mỗi repo (đọc-only).
 
 ## Bảng nhanh
 
@@ -13,7 +13,7 @@
 | PRJ-LOG · Logistics-Dashboard | main | 2026-08-07 `ff8be68` feat(overhead): khoản CHƯA map vẫn phân loại Overhead (safety-net) + chốt baseline $45.061,40 | sạch | 2026-08-07 (CHỐT PHIÊN) — Tổng kết phiên (3 việc; chi tiết ở 3 block dưới) |
 | PRJ-NOXH · NOXH | main | 2026-08-17 `bf81743` @ docs(AI_CONTEXT): thêm PROJECT_STATE.md (chuẩn khung AI OS registry) | 1 file | 🔴 HANDOVER HIỆN TẠI (2026-07-31, phiên 3 — nối backend LIVE + push git) |
 | PRJ-SG · Smart Guarantee | main | 2026-08-18 `bafe44a` docs(context): session handover — thông luồng end-to-end + nợ tích hợp | 4 file | ⭐ Tổng kết phiên 2026-08-18 #10 (Claude Code) — 🎉 THÔNG LUỒNG end-to-end |
-| PRJ-BM · BeneMatch | main | 2026-08-19 `395ca71` docs(context): khởi tạo AI_CONTEXT + feature roadmap + handover (PRJ-BM) | sạch | Delta phiên (2026-08-19) #3 — Chốt kế hoạch & handover |
+| PRJ-BM · BeneMatch | main | 2026-08-22 `865a826` feat(reconcile): Batch Reconciliation da hoa don - da lenh CT + toi uu Dify rule-first | sạch | Delta phiên (2026-08-22) — Mở scope Batch Reconciliation + dựng end-to-end + tối ưu Dify |
 
 ## Chi tiết delta mới nhất mỗi dự án
 
@@ -71,10 +71,10 @@
 ### PRJ-BM — BeneMatch
 *API xác minh tên pháp nhân bên thụ hưởng trước giải ngân (PoC/Demo TPBank)*
 
-**Delta phiên (2026-08-19) #3 — Chốt kế hoạch & handover**
-- **Việc xong:** Chốt kế hoạch triển khai chi tiết **Phase 1 — Risk Engine Core** (8 bước: signal contract → A1 aggregation → A4 flag → A2 synthetic → C3 config → C2 audit → C1 harness → regression gate). Chuẩn bị handover + push git.
-- **File đổi:** `SESSION_HANDOVER.md`, `PROJECT_STATE.md`, `TECH_DEBT.md` (delta); `TODO_NEXT.md` + `FEATURE_ROADMAP.md` đã cập nhật ở delta #2.
-- **Quyết định:** Push thẳng lên `main` của repo BeneMatch (repo hub tài liệu, đọc từ main mỗi phiên; theo yêu cầu trực tiếp của [TT]). Registry AIOS commit riêng ở repo AIOS.
-- **Blocker:** Chưa có endpoint/API key Dify Cloud (chặn Phase 0 GAS↔Dify). **Không chặn** prototype Phase 1 offline (logic Python thuần).
-- **Bước kế:** Chờ [TT] chọn hướng — **(A)** prototype Phase 1 offline ngay · **(B)** hoàn tất Phase 0 nền demo trước · **(C)** commit/push xong rồi mới code.
-- **Rủi ro hồi quy:** A1 (Phase 1) refactor Decision Engine → nguy cơ đổi hành vi 10 luật; **bắt buộc** chạy regression 7 case trước/sau, giữ field cũ trong `API_CONTRACT`, chỉ thêm field mới + bump version.
+**Delta phiên (2026-08-22) — Mở scope Batch Reconciliation + dựng end-to-end + tối ưu Dify**
+- **Task completed:** Phỏng vấn tổng thể 2 vòng chốt **scope mới**: đối chiếu lô đa hóa đơn ↔ đa lệnh CT (OCR hybrid → gộp theo người thụ hưởng/MST → tổng nhóm + grand total, dung sai, over/under, duplicate, khớp tên qua V2 → cảnh báo). Dựng trọn: (1) **context/design** — `RECONCILIATION_SPEC.md`, `OCR_SPEC.md`, `DIFY_OPTIMIZATION.md`, cập nhật `API_CONTRACT`(batch)/`SYSTEM_ARCHITECTURE`/`PROJECT_STATE`. (2) **recon engine** `src/recon/` (normalize·csv·reconcile·verify_client) + config `thresholds.json`. (3) **dataset synthetic** 9 nhóm + **harness `test/recon.test.mjs` 14/14 pass**. (4) **tối ưu Dify yml** — Warning Route 4 nhánh, node mới `Build Deterministic Review Warning`, route deterministic qua `review_mode is DETERMINISTIC_WARNING`, LLM chỉ else; trả **TD-BM-01/02** + phát hiện & vá **TD-BM-03** (`contains`→`is`); validate YAML + chạy code node OK. (5) **GAS** `gas/Code.gs`+`Recon.gs`+`OcrService.gs` + **parity `verify_recon.mjs` (Recon.gs ≡ src/recon, byte-identical)** + `verify_ocr.mjs` (parse 5/5). (6) **FE** `fe/index.html` (verify render trình duyệt thật) + (7) **artifact** publish private (`present.html`).
+- **Files changed:** MỚI `AI_CONTEXT/{RECONCILIATION_SPEC,OCR_SPEC,DIFY_OPTIMIZATION}.md`, `src/recon/*`, `src/config/thresholds.json`, `data/synthetic/*`, `test/recon.test.mjs`, `gas/*`, `fe/*`. SỬA `AI_CONTEXT/{API_CONTRACT,SYSTEM_ARCHITECTURE,PROJECT_STATE,TODO_NEXT,TECH_DEBT}.md` + `Beneficiary Legal Entity Verification V2.yml` (backup `*.BACKUP-20260822.yml`). **Chưa commit** (chờ [TT]).
+- **Decision made:** OCR **hybrid** (GAS+Vision thật + synthetic fallback); mapping **gộp theo người thụ hưởng (MST)**; validate đủ 4; output **FE + artifact**; Dify **rule-first** (LLM chỉ REVIEW&ai_eligible=true); recon **engine JS riêng** (test offline) + Dify verify tên; lệnh CT **CSV**; OCR fields **tên+MST·tổng tiền·số HĐ+ngày**. Route deterministic qua `review_mode` (string) thay vì boolean `ai_eligible` cho an toàn DSL. Recon = **1 nguồn logic** (src/recon) + bản port GAS parity-tested; FE/artifact engine sinh từ Recon.gs (không copy tay).
+- **Blocker:** **Chờ [TT] cung cấp** (xem TODO_NEXT delta 2026-08-22): import yml Dify Cloud + DIFY_API_URL/KEY; Vision API key + ảnh hóa đơn mẫu; deploy GAS; Sheet ID. Toàn bộ đã dựng để "cắm vào là chạy".
+- **Next step:** [TT] cung cấp 4 mục trên. [CC] khi có: nối FE Live→GAS, smoke-test OCR ảnh thật, hiệu chỉnh regex (TD-BM-05). Kết việc spoke → về hub AIOS chạy `/handover` (Sync-hub).
+- **Regression risk:** **Thấp** cho phần offline (engine có regression gate 14/14 + parity gate; yml validate + LLM giữ đúng 1 edge vào; lõi verify 1-cặp KHÔNG đổi hành vi, chỉ sửa routing + type). **Chưa xác thực trên Dify Cloud thật** (chờ import) — rủi ro chính nằm ở khác biệt DSL Dify khi import (đã giảm bằng validate cấu trúc + dùng string condition có tiền lệ). OCR đường thật chưa chạy ảnh thật.

@@ -4,5 +4,6 @@
 >
 > Định dạng: `YYYY-MM-DD · <REPO> · <commit> · <tóm tắt> · gốc=<hub|spoke-data|spoke-backend|…> · cross-ref=<Y/N>`
 
+- 2026-08-22 · BeneMatch · `865a826` (local, push pending) · Scope Batch Reconciliation: đa HĐ↔đa lệnh CT (OCR hybrid·gộp MST·tổng nhóm/duplicate/over-under·verify tên V2) + tối ưu Dify rule-first (trả TD-BM-01/02, vá TD-BM-03) · gốc=spoke · cross-ref=Y
 - 2026-08-22 · SHTD-Dashboard · `29369e4` · DateGuard.gs chống lệch định dạng ngày tận gốc (onEdit + daily) · gốc=spoke-data · cross-ref=Y (AIOS weekly-report `5b3b80b` freshness guard là guard phòng thủ hub cho cùng triệu chứng)
 - 2026-08-21 · AIOS · `5b3b80b` · Freshness guard weekly-report (chặn gửi trên snapshot cũ) · gốc=hub-freshness (triệu chứng chung với spoke-data SHTD) · cross-ref=Y

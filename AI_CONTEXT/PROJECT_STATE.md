@@ -30,6 +30,9 @@ AI OS = lớp quản trị & trí tuệ ngồi trên SHTD Dashboard (hệ tác n
 - Lock git stale (`index.lock`/`HEAD.lock`) cũng gặp trên Claude Code khi commit trước bị gián đoạn — xem `AI_CONTEXT/TECH_DEBT.md` (2026-08-03).
 - Sandbox Cowork không gọi được URL ngoài → tích hợp GAS live giao Claude Code.
 
+## Delta (2026-08-22, Claude Code)
+**Spoke `BeneMatch` mở scope Batch Reconciliation (đa HĐ ↔ đa lệnh CT).** Phiên xuyên repo Hub→Spoke: dựng trọn tầng đối chiếu lô (OCR hybrid · gộp theo người thụ hưởng/MST · tổng nhóm+grand total, dung sai, over/under, duplicate · verify tên qua Dify V2) + tối ưu Dify **rule-first** (Warning Route 4 nhánh, LLM chỉ ca REVIEW mơ hồ; trả TD-BM-01/02, vá TD-BM-03). Verify offline đầy đủ (recon 14/14 · GAS parity byte-identical · OCR parse 5/5 · FE+artifact render). Commit spoke `865a826` (**local, push pending** — classifier chặn `git push`; [TT] chạy `! git push origin main`). Live end-to-end chờ [TT] cấp: Dify endpoint/key, Vision key+ảnh mẫu, deploy GAS, Sheet ID. Xem `00_System/CROSS_REPO_LOG.md`.
+
 ## Delta (2026-08-21 #3, Claude Code)
 **Freshness guard cho weekly-report (chống email báo cáo lấy dữ liệu cũ).** [TT] báo `BL1-026` trên email hiện deadline 31/07 trong khi DB là 31/08 → truy vết: **parser đúng, dữ liệu cũ**. Pipeline `weekly-report` đọc snapshot tĩnh `gas_snapshot.json`; email 31/07 sinh khi snapshot còn chốt lúc DB=31/07, sau sửa 31/08. Đã thêm **guard**: `aggregate.js` phát hiện snapshot cũ (>12h hoặc trước Thứ 2 tuần BC) → cảnh báo, và **TỪ CHỐI build** khi `REPORT_REQUIRE_FRESH=1`; `run.js --send` bật cờ này + cấm `--cache --send`; footer email/.docx đổi "đọc LIVE" → **"dữ liệu chốt lúc <thời điểm fetch>"** + banner đỏ khi stale. Verify tay 4 kịch bản (fresh pass / stale warn / stale-strict refuse exit1 / cache+send block exit1). **Blocker:** không. *(chưa commit trước handover — commit ở bước push phiên này.)*
 
